@@ -8,7 +8,7 @@ header("Content-type: text/html; charset=utf-8");
 ini();   
         
 function ini(){
-/*      require_once("include/global.php");   
+      require_once("include/global.php");   
         $us_name=$_POST["useraa"];
 		$us_date=$_POST['userDate']; 
 	  $sqlus="select * from  feedbackinfo where title='".$us_name."' and us_key='".$us_date."'";
@@ -19,7 +19,7 @@ function ini(){
    }else{
       echo 'no';
    }
-*/
+
 echo 'no';
 }
 ?>
