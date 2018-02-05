@@ -6,6 +6,6 @@ if ($_GET['key'] != "faxgrser0GHi2Nx2isI") {
 echo "<pre>";
 passthru("git pull");
 
-echo "</pre>"
+echo "</pre>";
 echo "deploy success!";
 ?>
