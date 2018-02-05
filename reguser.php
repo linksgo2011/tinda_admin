@@ -11,13 +11,14 @@ function ini()
     require_once("include/global.php");
     $regtitle = $_POST["regtitle"];
     $regpass1 = $_POST["regpass1"];
-    //$regleixing=$_POST["regleixing"];
-    $regname = $_POST["regname"];
     $regemail = $_POST["regemail"];
     $regarea = $_POST["regarea"];
-    $regaddress = $_POST["regaddress"];
     $regphome = $_POST["regphome"];
     $regcomment = $_POST["regcomment"];
+    $regMessDate = date("Y-m-d");
+    $regMessTime = date("h:i:s");
+    $nowDate = date("Y-m-d");
+
     $rs = mysql_query("select * from  feedbackinfo where title='" . $regtitle . "'");
     $rows = mysql_fetch_assoc($rs);
     if ($rows["id"] <> "") {
@@ -30,7 +31,47 @@ function ini()
         echo '2';
         die();
     }
-    $sqlA = "insert into feedbackinfo (title,pass,name,email,area,address,phone,comment) values ('$regtitle','$regpass1','$regname','$regemail','$regarea','$regaddress','$regphome','$regcomment')";
+    $sqlA = "insert into feedbackinfo (
+      title,
+      leixing,
+      pass,
+      name,
+      email,
+      area,
+      address,
+      phone,
+      comment,
+      mess_date,
+      mess_time,
+      Dl_date,
+      End_date,
+      Qzxx,
+      Cx_date,
+      Cx_pass,
+      Cx_shul,
+      Jifengs,
+      Us_koner
+      ) values (
+      '$regtitle',
+      'A1',
+      '$regpass1',
+      '',
+      '$regemail',
+      '$regarea',
+      '',
+      '$regphome',
+      '$regcomment',
+      '$regMessDate',
+      '$regMessTime',
+      '$nowDate',
+      '$nowDate',
+      0,
+      '$nowDate',
+      '',
+      0,
+      0,
+      ''
+    )";
     if (mysql_query($sqlA)) {
         echo '3';
         die();
