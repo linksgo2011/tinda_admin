@@ -69,7 +69,7 @@ if($_GET['tj'] == 'out'){
     <td width="348" bgcolor="ffffec"><?php echo $rows["phone"]?></td>
   </tr>
   <tr> 
-    <td width="72" bgcolor="ffffec">序列号</td>
+    <td width="72" bgcolor="ffffec">提示</td>
     <td width="348" bgcolor="ffffec"><font color=green><?php echo $rows["comment"]?>&nbsp;</font></td>
   </tr>
   <tr>
