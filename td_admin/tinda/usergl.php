@@ -130,7 +130,7 @@ $(document).ready(function(e) {
     <div class="formbody" style="background:#ddd">
 <form id="form1" name="form1" action="usergl.php" method="post">
       <label></label>
-      <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="用户名/经销商/姓名/手机/序列号" size="60">
+      <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="用户名/经销商/姓名/手机/提示" size="60">
       <input type="submit" class="btn" value="查找"/>
 </form>       
 	</div> 
@@ -149,7 +149,7 @@ $(document).ready(function(e) {
         <th>姓名</th>
         <th>手机</th>
         <th>日期</th>
-        <th>序列号</th>
+        <th>提示</th>
         <th>到期时间</th>
         <th>操作</th>
         </tr>
