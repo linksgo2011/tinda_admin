@@ -10,16 +10,17 @@ ini();
 function ini()
 {
     require_once("include/global.php");
-    $sey = $_POST['sey'];
-    $sey1 = $_POST['sey1'];
-//shop
-    $sqlA = "select * from finl where id='" . $sey1 . "'";
-    $rsA = mysql_query($sqlA);
-    $rowsA = mysql_fetch_assoc($rsA);
-    if ($rowsA["ggimg"] == "") {
+
+    $meteKey = "subBanner";
+
+    $selectSql = "select * from meta where `key`='$meteKey'";
+    $results = mysql_query($selectSql);
+    $record = mysql_fetch_assoc($results);
+
+    if ($record["value"] == "") {
         $arr = '<img src="images/gg1.jpg" width="100%">';
     } else {
-        $arr = "<img src='" . $rowsA["ggimg"] . "' width='100%'>";
+        $arr = "<img src='" . $record["value"] . "' width='100%'>";
     }
     echo json_encode($arr);
 //end

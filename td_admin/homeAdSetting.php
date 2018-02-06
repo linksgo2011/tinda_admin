@@ -66,7 +66,7 @@ if(mysql_num_rows($rs)<>1)
     }
     ?>
 
-    <form method="post" action="adminHomeAdSetting.php">
+    <form method="post" action="homeAdSetting.php">
         <!--  TOKEN      -->
         <input name="tjbx-abc" type="hidden" id="tjbx-abc" value="h-chi-vgs-8-com" />
 

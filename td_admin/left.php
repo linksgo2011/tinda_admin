@@ -45,7 +45,7 @@ $(function(){
         <li class="active"><cite></cite><a href="default.php" target="rightFrame">后 台 首 页</a><i></i></li>
         <li><cite></cite><a href="tinda/indexlb.php" target="rightFrame">首页轮播</a><i></i></li>
         <li><cite></cite><a href="admin-edit1.php" target="rightFrame">修改密码</a><i></i></li>
-        <li><cite></cite><a href="adminHomeAdSetting.php" target="rightFrame">后台广告</a><i></i></li>
+        <li><cite></cite><a href="homeAdSetting.php" target="rightFrame">后台广告</a><i></i></li>
         </ul>
     </dd>
     <dd>
@@ -63,7 +63,8 @@ $(function(){
     <ul class="menuson">
         <li><cite></cite><a href="tinda/usergl.php" target="rightFrame">用户管理</a><i></i></li>
         <li><cite></cite><a href="tinda/chaxfinl.php" target="rightFrame">查询类目</a><i></i></li>
-        </ul>     
+        <li><cite></cite><a href="subBannerSetting.php" target="rightFrame">查询页广告设置</a><i></i></li>
+    </ul>
     </dd> 
     
     <dd><div class="title"><span><img src="images/leftico05.png" /></span>密码查询</div>

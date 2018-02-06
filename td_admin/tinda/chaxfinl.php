@@ -212,8 +212,8 @@ if($_GET['tj'] == 'out'){
       &nbsp;排序:<input name="paix1" type="text" id="paix1" value="<?php echo $rows1["paix"]?>" size="15" class="dfinput" style="width:60px;">
       <img src="<?php if($rows1["logoA"]<>""){echo $rows1["logoA"];}else{echo '/images/icon-read2.png';}?>" height="24px"/>
       &nbsp;&nbsp;<a href="sanqlogo.php?Aid=<?php echo $rows1["id"]?>" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff00ff;color:#FFF;"> 上传图标</a>
-      <img src="<?php if($rows1["ggimg"]<>""){echo $rows1["ggimg"];}else{echo '/images/gg1.jpg';}?>" height="60px"/>
-      &nbsp;&nbsp;<a href="sanqgg.php?Aid=<?php echo $rows1["id"]?>" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#0a9300;color:#FFF;"> 修改广告</a>
+<!--      <img src="--><?php //if($rows1["ggimg"]<>""){echo $rows1["ggimg"];}else{echo '/images/gg1.jpg';}?><!--" height="60px"/>-->
+<!--      &nbsp;&nbsp;<a href="sanqgg.php?Aid=--><?php //echo $rows1["id"]?><!--" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#0a9300;color:#FFF;"> 修改广告</a>-->
       &nbsp;&nbsp;<input type="submit" name="xiugan" id="xiugan" value="确认" class="btn1">
       &nbsp;&nbsp;<a href="?Aid=<?php echo $rows1["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff0000;color:#FFF;"> 删除</a> 
     </li>
