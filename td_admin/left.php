@@ -44,8 +44,9 @@ $(function(){
     	<ul class="menuson">
         <li class="active"><cite></cite><a href="default.php" target="rightFrame">后 台 首 页</a><i></i></li>
         <li><cite></cite><a href="tinda/indexlb.php" target="rightFrame">首页轮播</a><i></i></li>
-        <li><cite></cite><a href="admin-edit1.php" target="rightFrame">修 改 密 码</a><i></i></li>
-        </ul>    
+        <li><cite></cite><a href="admin-edit1.php" target="rightFrame">修改密码</a><i></i></li>
+        <li><cite></cite><a href="adminHomeAdSetting.php" target="rightFrame">后台广告</a><i></i></li>
+        </ul>
     </dd>
     <dd>
     <div class="title">
