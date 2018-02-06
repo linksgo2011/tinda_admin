@@ -12,7 +12,7 @@ function ini()
     $finl = $_POST["sey"];
     $rs = mysql_query("select * from  hchi_setup");
     $rows = mysql_fetch_assoc($rs);
-    $arr[] = array('homegg' => $rows["homegg"], 'homeurl' => $rows["homeurl"]);
+    $arr[] = array('homegg' => $rows["homegg"], 'homeurl' => $rows["gomeurl"]);
     echo json_encode($arr);
 }
 
