@@ -41,6 +41,8 @@ if($_POST["tjbx-abc"]=='h-chi-vgs-8-com')
     }else{
         echo "<script language=javascript>alert('修改成功！');</script>";
     }
+
+    $record['value'] = $_POST['img'];
 }
 ?>
 
