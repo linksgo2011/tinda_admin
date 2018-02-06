@@ -64,7 +64,7 @@ function ini()
       '$regMessDate',
       '$regMessTime',
       '$nowDate',
-      '$nowDate',
+      '2018-1-1',
       0,
       '$nowDate',
       '',
