@@ -10,3 +10,9 @@
     UNIQUE KEY `key_UNIQUE` (`key`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
+ 
+ 
+ # 密码查询关闭提示
+
+> **ALTER TABLE `tinda`.`hchi_pscxsz` 
+ ADD COLUMN `closed_tip` VARCHAR(45) NULL AFTER `pz_beiz`;**
