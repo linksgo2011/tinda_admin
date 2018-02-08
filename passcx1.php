@@ -40,7 +40,7 @@ function ini()
     $countus = mysql_fetch_assoc($rsus);
     $usercxpass = $countus["cx_pass"] . ',' . $pa_cjh;//车架A
     $arr = array($countus["cx_pass"]);//编码数组
-    $arrsl = array($countus["cx_shul"]);//品牌查询次数数组
+    $arrsl = explode(",",$countus["cx_shul"]);//品牌查询次数数组
 /////////////////pdcxsz////////////////////////
     $arrnull = array();//空数组
     foreach ($arrsl as $key => $values) {//查询并写入新
@@ -55,10 +55,9 @@ function ini()
         $arrsl = array($pa_pingp . '1');//写入新查询
     } elseif ($arrnull[0] <> "" and $countus["cx_date"] == $l_date1) {//存在就修改
         $czxincs = substr($arrnull[0], -1);//实已查
-        $dqppkey = array_search($arrs1[0], $arrnull);//已查当前分健值
+        $dqppkey = array_search($arrnull[0], $arrsl);//已查当前分健值
 //  echo $czxincs.'<br />';
         $arrsl[$dqppkey] = $pa_pingp . ($czxincs + 1);//更新数组
-//  print_r($arrsl);
     }
 /////////////////pdcxsz end///////////////////////
     if ($l_date1 == $countus["cx_date"] and !in_array($pa_cjh, $arr) and $countsetup["pz_shul"] == $czxincs) {
