@@ -12,7 +12,15 @@ function ini()
     $us_name = $_POST["sey"];
     $rs = mysql_query("select * from  feedbackinfo where title='" . $us_name . "'");
     $rows = mysql_fetch_assoc($rs);
-    $arr[] = array('email' => $rows["email"], 'tels' => $rows["phone"], 'comment' => $rows['comment'], 'weigs' => $rows['qzxx'], 'daoqdate' => $rows['end_date'], 'danqjf' => $rows['jifengs']);
+    $arr[] = array(
+        'email' => $rows["email"],
+        'tels' => $rows["phone"],
+        'comment' => $rows['comment'],
+        'weigs' => $rows['qzxx'],
+        'daoqdate' => $rows['end_date'],
+        'danqjf' => $rows['jifengs'],
+        'area'=> $rows['area']
+    );
     echo json_encode($arr);
 }
 
