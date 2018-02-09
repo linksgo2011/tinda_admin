@@ -11,7 +11,6 @@ function ini()
     require_once("include/global.php");
     $username = $_POST["username1"];
     $usertoke = $_POST["usertoke1"];
-    $l_date1 = date("Y-m-d");
     if ($username == "" or $usertoke == "") {
         echo '1';
         die();
@@ -22,7 +21,7 @@ function ini()
             echo '2';
             die();
         }
-        if ($rows["us_koner"] <> "" and $rows["end_date"] < $l_date1) {
+        if ($rows["us_koner"] <> "" and strtotime($rows["end_date"]) < time()) {
             echo '3';
             die();
         } else {
