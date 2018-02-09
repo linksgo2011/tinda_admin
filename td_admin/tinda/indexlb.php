@@ -32,7 +32,7 @@ if($_GET['tj'] == 'out'){
 	if($_POST["tjbx-abc1"]=='h-chi-vgs-8-com')
 	{
 	$im_img=$_POST["img"];
-	$im_url=$_POST["url"];
+	$im_url=$_POST["im_url"];
 		$sql2="insert into hchi_images (im_img,im_url) values ('$im_img','$im_url')";
 		if(mysql_query($sql2))
 		{
