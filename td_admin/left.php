@@ -74,9 +74,16 @@ $(function(){
         <li><cite></cite><a href="tinda/newpass.php" target="rightFrame">最新申请</a><i></i></li>
         <li><cite></cite><a href="tinda/finlpass.php" target="rightFrame">分类管理</a><i></i></li>
     </ul>
-    </dd>   
+    </dd>
 
-    <dd><div class="title"><span><img src="images/leftico04.png" /></span>系统设置</div>
+    <dd><div class="title"><span><img src="images/leftico05.png" /></span>支付设置</div>
+        <ul class="menuson">
+            <li><cite></cite><a href="tinda/provisionSet.php" target="rightFrame">项目设置</a><i></i></li>
+            <li><cite></cite><a href="tinda/provisionLog.php" target="rightFrame">充值记录</a><i></i></li>
+        </ul>
+    </dd>
+
+        <dd><div class="title"><span><img src="images/leftico04.png" /></span>系统设置</div>
     <ul class="menuson">
         <li><cite></cite><a href="beifin.php" target="rightFrame">备份与恢复</a><i></i></li>
         <li><cite></cite><a href="Journal.php" target="rightFrame">系统日志</a><i></i></li>
