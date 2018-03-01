@@ -1,3 +1,24 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set("display_errors","On");//开启错误显示
+
+    include_once("../lib/WxpayAPI_php_v3.0.1/lib/WxPay.Api.php");
+    $input = new stdClass();
+
+//  out_trade_no、body、total_fee、trade_type
+    $input->out_trade_no = time();
+    $input->body = "JS支付测试";
+    $input->total_fee = 0.1;
+    $input->trade_type = "JSAPI";
+
+    print_r($input);
+
+    $result = WxPayApi::unifiedOrder($input);
+
+    print_r($result);
+    exit;
+?>
+
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
