@@ -1,31 +1,10 @@
-<?php
-    error_reporting(E_ALL);
-    ini_set("display_errors","On");//开启错误显示
-
-    include_once("../lib/WxpayAPI_php_v3.0.1/lib/WxPay.Api.php");
-    $input = new stdClass();
-
-//  out_trade_no、body、total_fee、trade_type
-    $input->out_trade_no = time();
-    $input->body = "JS支付测试";
-    $input->total_fee = 0.1;
-    $input->trade_type = "JSAPI";
-
-    print_r($input);
-
-    $result = WxPayApi::unifiedOrder($input);
-
-    print_r($result);
-    exit;
-?>
-
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>WeUI</title>
-    <link rel="stylesheet" href="../css/weui.css"/>
+    <title>腾达云支付</title>
+    <link rel="stylesheet" href="../../css/weui.css"/>
     <style>
         h1{text-align: center;font-weight: lighter}
     </style>
@@ -33,12 +12,12 @@
 
 <body>
 <h1>腾达云支付</h1>
-<form action="">
+<form action="doProvision.php">
     <div class="weui-cells__title">用户名</div>
     <div class="weui-cells">
         <div class="weui-cell">
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" placeholder="请输入用户名">
+                <input class="weui-input" required name="username" placeholder="请输入用户名">
             </div>
         </div>
     </div>
@@ -46,7 +25,7 @@
     <div class="weui-cells__title">项目</div>
     <div class="weui-cell weui-cell_select">
         <div class="weui-cell__bd">
-            <select class="weui-select" name="select1">
+            <select class="weui-select" name="project">
                 <option selected="" value="1">1年</option>
                 <option value="2">2年</option>
                 <option value="3">3年</option>
@@ -60,7 +39,7 @@
     </label>
 
     <div class="weui-btn-area">
-        <a class="weui-btn weui-btn_primary" href="javascript:">微信支付</a>
+        <button class="weui-btn weui-btn_primary">确认</button>
     </div>
 </form>
 
