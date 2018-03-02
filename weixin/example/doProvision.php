@@ -35,7 +35,6 @@ $orderSql = "insert into `order`
 '$productId','$userId','$orderNumber','$price',0,$now,$now)";
 
 $rs = mysql_query($orderSql);
-print_r($rs);exit;
 if(!$rs){
     echo "<h1>订单创建失败！</h1>";
     exit;
