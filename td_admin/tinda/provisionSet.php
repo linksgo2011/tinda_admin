@@ -31,7 +31,7 @@ require_once("../../include/admin.php");
             $sql = "insert into 
             product(`name`,`days`,`price`) 
             VALUES(
-              $name,$days,$price
+              '$name',$days,$price
             )";
         }else{
             $sql = "update product set 
