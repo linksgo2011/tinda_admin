@@ -121,7 +121,7 @@ function ini()
                 echo 1;
                 die();
             } else {
-                $sql1 = "insert into hchi_passcx (pa_pingp,pa_chex,pa_nianf,pa_xingqh,pa_cjh) values ('$pa_pingp','$pa_chex','$pa_nianf','$pa_xingqh','$pa_cjh')";
+                $sql1 = "insert into hchi_passcx (yhm,pa_pingp,pa_chex,pa_nianf,pa_xingqh,pa_cjh,pa_date) values ('$us_name','$pa_pingp','$pa_chex','$pa_nianf','$pa_xingqh','$pa_cjh','$l_date')";
                 if (mysql_query($sql1)) {
                     echo 1;
                     die();

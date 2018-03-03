@@ -1,8 +1,8 @@
-ï»¿<?php
+<?php
 
 header("Access-Control-Allow-Origin:*");
 header('Access-Control-Allow-Methods:POST');
-// å“åº”å¤´è®¾ç½®     
+// ÏìÓ¦Í·ÉèÖÃ     
 header('Access-Control-Allow-Headers:x-requested-with,content-type');
 header("Content-type: text/html; charset=utf-8");
 ini();
@@ -53,9 +53,9 @@ function ini()
       Us_koner
       ) values (
       '$regtitle',
-      'A1',
+      'APP',
       '$regpass1',
-      '',
+      'APP',
       '$regemail',
       '$regarea',
       '',

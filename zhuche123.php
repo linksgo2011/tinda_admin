@@ -26,6 +26,14 @@ if ($count1["title"] != "") {
     echo 'no';
     exit();
 }
+$sql3 = "select * from feedbackinfo where address='" . $address . "'";
+$rs3 = mysql_query($sql3);
+$count3 = mysql_fetch_assoc($rs3);
+if ($count3["address"] != "") {
+    echo 'dz';
+    exit();
+}
+
 $sql2 = "insert into feedbackinfo (title,leixing,name,email,area,address,phone,comment,mess_date,mess_time,pass) values ('$title1','A1','$name','$email','$area','$address','$phome','$comment','$mess_date','$mess_time','$pass1')";
 if (mysql_query($sql2)) {
     echo 'yes';

@@ -18,6 +18,12 @@ function ini()
 
     $name = $_POST['name'];
     $psw = $_POST['psw'];
+	
+	
+	 $search = "select `title` from feedbackinfo where title='$name'";  
+	 $res=mysql_query($search);  
+    if(mysql_num_rows($res)>0){
+
     $sql = "select * from feedbackinfo where title='" . $name . "' and  pass='" . $psw . "'";
     $rs = mysql_query($sql);
     $count = mysql_fetch_assoc($rs);
@@ -42,6 +48,8 @@ function ini()
     } else {
         echo '2';
     }
+}else{
+ echo '0';
 }
-
+}
 ?>

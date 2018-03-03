@@ -1,20 +1,7 @@
 ﻿<?php
 require_once("../../include/global.php");
-$ad_name1234=$_SESSION["ad_name1234"];
-$ad_id1234=$_SESSION["ad_id1234"];
 
-if($_GET['tj'] == 'out'){
- session_destroy();
- echo "<script language=javascript>alert('退出成功！');window.location='../index.php'</script>";
-}
-		$sql="select * from hchi_admin where ad_name='".$ad_name1234."' and id='".$ad_id1234."'";
-		$rs=mysql_query($sql);
-		if(mysql_num_rows($rs)<>1)
-	{
- session_destroy();
- 	echo "<script language=javascript>alert('未登录或登录超时！请返回，重新登录，谢谢!');window.top.location.href='../index.php'</script>";
-	die();
-	}
+
 ?>
 <?php
 	if($_GET['edit'] == 'del'){
@@ -102,7 +89,6 @@ $(document).ready(function(e) {
         <th>车型</th>
         <th>年份</th>
         <th>申请码</th>
-		<th>申请时间</th>
         <th>车架号</th>
         <th>PIN</th>
         <th>操作</th>
@@ -143,7 +129,6 @@ $(document).ready(function(e) {
         <td><?php echo $rows["pa_chex"]?></td>
         <td><?php echo $rows["pa_nianf"]?></td>
         <td><?php echo $rows["pa_xingqh"]?></td>
-		<td><?php echo $rows["pa_date"]?></td>
         <td><?php echo $rows["pa_cjh"]?></td>
         <td>
       <input name="pa_id" type="hidden" id="pa_id" value="<?php echo $rows["id"]?>">

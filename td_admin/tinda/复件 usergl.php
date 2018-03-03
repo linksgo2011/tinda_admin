@@ -148,10 +148,9 @@ $(document).ready(function(e) {
         <th>注册方式</th>
         <th>姓名</th>
         <th>手机</th>
-
+       <th>注册时间</th>
         <th>日期</th>
         <th>提示</th>
-       <th>注册时间</th>
         <th>到期时间</th>
         <th>操作</th>
         </tr>
@@ -205,10 +204,9 @@ $(document).ready(function(e) {
         <td><input name="name1" type="text" id="name1" value="<?php echo $rows["name"]?>" class="dfinput" style="width:120px;"></td>
         <td><input name="email1" type="text" id="email1" value="<?php echo $rows["email"]?>" class="dfinput" style="width:120px;"></td>
         <td><input name="phone" type="text" id="phone" value="<?php echo $rows["phone"]?>" class="dfinput" style="width:120px;"></td>
-
-        <td>最后登录：<?php echo $rows["dl_date"]?><br/>&nbsp;&nbsp;<font color="#FF0000">当前密码：</font><input name="pass1" type="text" id="pass1" value="<?php echo $rows["pass"]?>" size="18" class="dfinput" style="width:auto;"></td>
+        <td><?php echo $rows["mess_date"]?><br/>
+        <td>最后登录：<?php echo $rows["dl_date"]?><br/>&nbsp;&nbsp;密码：<input name="pass1" type="text" id="pass1" value="<?php echo $rows["pass"]?>" size="18" class="dfinput" style="width:auto;"></td>
         <td><input name="comment1" type="text" id="comment1" value="<?php echo $rows["comment"]?>" class="dfinput" style="width:180px;"></td>
-        <td><?php echo $rows["mess_date"]?></td>
         <td>
       <input name="xg_id" type="hidden" id="xg_id" value="<?php echo $rows["id"]?>">
       <input name="xg_date" type="text" id="xg_date" value="<?php echo $rows["end_date"]?>" size="12" class="dfinput" style="width:auto;">

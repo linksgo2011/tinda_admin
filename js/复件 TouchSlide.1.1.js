@@ -1,4 +1,4 @@
-﻿function indexLogin(){
+function indexLogin(){
 		var l_name = $.trim($("#l_name").val());
 		if(l_name == null || l_name == ""){
 			$("#lyts11").html("请输入用户名");
@@ -183,8 +183,9 @@ function indexzhuche(){
 		data	:	{"title1" : title1,"name" : name,"email" : email,"area" : area,"address" : address,"phome" : phome,"comment" : comment,"pass1" : pass1},
 		success	: 	function(data){
 			if(data == "yes"){
+			$("#lyts11").html("注册成功，请联系服务商为您正试开通……");
 			$("#lyts11").addClass("red1");
-            location.href = "ok.php";
+            location.href = "index.php";
 			return false;
 			}
 			if(data == "ndate"){
@@ -192,15 +193,11 @@ function indexzhuche(){
 			$("#lyts11").addClass("red1");
 		    }
 			if(data == "no"){
-			$("#lyts11").html("提示问题已被使用！");
-			$("#lyts11").addClass("red1");
-                      }
-			if(data == "dz"){
-			$("#lyts11").html("加密狗已经注册");
+			$("#lyts11").html("系列号已被使用！");
 			$("#lyts11").addClass("red1");
             }
 			if(data == "no1"){
-			$("#lyts11").html("错误");
+			$("#lyts11").html("操作有误，请稍候再试！");
 			$("#lyts11").addClass("red1");
             }
 		}

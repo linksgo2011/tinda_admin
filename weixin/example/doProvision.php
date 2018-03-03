@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 ini_set('date.timezone','Asia/Shanghai');
 
 ini_set("display_errors", 1);
@@ -20,7 +20,7 @@ $price = $product['price'];
 $days = $product['days'];
 
 if(!$user){
-    echo "<h1>用户找不到！</h1>";
+    echo "<h1>该帐号尚未注册,请扫描二维码安装并注册后进行开通</h1>";
     exit;
 }
 if(!$product){

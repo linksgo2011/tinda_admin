@@ -1,4 +1,4 @@
-<?php
+﻿<?php
       header("Content-type: text/html; charset=utf-8");
 	  require_once("../include/globalA.php");   
 	    $l_date=date("Y-m-d h:i:s");
@@ -9,7 +9,7 @@
 		$pa_chex=$_POST["cxchoux"];
         $pa_nianf=$_POST["cxnianf"];
         $pa_cjh=$_POST['cxchoujm'];
-if($password1=='a1d2g3j4l4s3f2h1k' and $password2=='q1e2t3u4o5w5r4y3i2p1' and $pa_pingp<>"" and $pa_cjh<>""){
+if($password1=='8988' and $password2=='8988' and $pa_pingp<>"" and $pa_cjh<>""){
 	  $sql="select * from hchi_passcx where pa_pingp='".$pa_pingp."' and  pa_cjh='".$pa_cjh."'";
 	  $rs=mysql_query($sql);
       $count=mysql_fetch_assoc($rs);   

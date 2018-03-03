@@ -3,6 +3,13 @@ require_once("../../include/global.php");
 $ad_name1234=$_SESSION["ad_name1234"];
 $ad_id1234=$_SESSION["ad_id1234"];
 
+	if($_POST["sousuo"]<>""){
+	  $sousuo=$_POST["sousuo"];
+	}else{
+	  $sousuo=$_GET["sousuo"];
+	}
+
+
 if($_GET['tj'] == 'out'){
  session_destroy();
  echo "<script language=javascript>alert('退出成功！');window.location='../index.php'</script>";
@@ -86,6 +93,16 @@ $(document).ready(function(e) {
     </ul>
     </div>
     
+	
+	    <div class="formbody" style="background:#ddd">
+<form id="form1" name="form1" action="glcxpass.php" method="post">
+      <label></label>
+      <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="车架号" size="60">
+      <input type="submit" class="btn" value="查找"/>
+</form>       
+	</div> 
+	
+	
     <div class="formbody">
     <!--div class="tools">
     	<ul class="toolbar">
@@ -102,6 +119,7 @@ $(document).ready(function(e) {
         <th>车型</th>
         <th>年份</th>
         <th>设备</th>
+	    <th>申请时间</th>
         <th>车架号</th>
         <th>PIN</th>
         <th>操作</th>
@@ -111,7 +129,16 @@ $(document).ready(function(e) {
         <tbody>
 <?php
 	$pagesize=20;
+		if($sousuo == ""){
 	$sql="select * from hchi_passcx where pa_pin<>''";
+		}else{
+			
+	$sql="select * from hchi_passcx where pa_cjh like '%".$sousuo."%'";
+	
+	
+	}
+	
+	
 	$rs=mysql_query($sql);
 	$recordcount=mysql_num_rows($rs);
 	$pagecount=($recordcount-1)/$pagesize+1;
@@ -130,7 +157,15 @@ $(document).ready(function(e) {
 		$pageno=$pagecount;
 	}
 	$startno=($pageno-1)*$pagesize;
+	
+	if($sousuo==""){
+
 	$sql="select * from hchi_passcx where pa_pin<>'' order by id desc limit $startno,$pagesize";
+	}else{
+			
+	$sql="select * from hchi_passcx where pa_cjh like '%".$sousuo."%' order by id desc limit $startno,$pagesize";
+			
+	}
 	$rs=mysql_query($sql);
 	while($rows=mysql_fetch_assoc($rs))
 	{
@@ -142,6 +177,7 @@ $(document).ready(function(e) {
         <td><?php echo $rows["pa_chex"]?></td>
         <td><?php echo $rows["pa_nianf"]?></td>
         <td><?php echo $rows["pa_xingqh"]?></td>
+	   <td><?php echo $rows["pa_date"]?></td>
         <td><?php echo $rows["pa_cjh"]?></td>
         <td>
       <input name="pa_id" type="hidden" id="pa_id" value="<?php echo $rows["id"]?>">

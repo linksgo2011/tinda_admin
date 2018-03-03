@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once("../include/global.php");
     $dateyx1=date("Y-m-d H:i:s");
 
@@ -111,7 +111,7 @@ if($_POST["Submit"] and $_POST["yzm"]='9302608ab12cd34ef56')
     
     
     
-    <div class="loginbm">版权所有  2016-2020  <a href="http://www.sthcwh.com">腾达云平台</a> </div>
+    <div class="loginbm">版权所有  2016-2020  <a href="http://www.tengdakey.com">腾达云平台</a> </div>
 	
     
 </body>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once("../include/global.php");
 $ad_id1234=$_SESSION["ad_id1234"];
 $adminqiux=$_SESSION["ad_qiux1234"];
@@ -46,6 +46,7 @@ $(function(){
         <li><cite></cite><a href="tinda/indexlb.php" target="rightFrame">首页轮播</a><i></i></li>
         <li><cite></cite><a href="admin-edit1.php" target="rightFrame">修改密码</a><i></i></li>
         <li><cite></cite><a href="homeAdSetting.php" target="rightFrame">后台广告</a><i></i></li>
+        <li><cite></cite><a href="xgbb.php" target="rightFrame">app设置</a><i></i></li>
         </ul>
     </dd>
     <dd>
@@ -59,10 +60,11 @@ $(function(){
         </ul>    
     </dd>
     <dd>
-    <div class="title"><span><img src="images/leftico02.png" /></span>资料查询</div>
+    <div class="title"><span><img src="images/leftico02.png" /></span>用户信息</div>
     <ul class="menuson">
         <li><cite></cite><a href="tinda/usergl.php" target="rightFrame">用户管理</a><i></i></li>
-        <li><cite></cite><a href="tinda/chaxfinl.php" target="rightFrame">查询类目</a><i></i></li>
+        <li><cite></cite><a href="../register.php" target="rightFrame">添加用户</a><i></i></li>
+        <li><cite></cite><a href="tinda/chaxfinl.php" target="rightFrame">资料菜单</a><i></i></li>
         <li><cite></cite><a href="subBannerSetting.php" target="rightFrame">查询页广告设置</a><i></i></li>
     </ul>
     </dd> 
@@ -74,16 +76,9 @@ $(function(){
         <li><cite></cite><a href="tinda/newpass.php" target="rightFrame">最新申请</a><i></i></li>
         <li><cite></cite><a href="tinda/finlpass.php" target="rightFrame">分类管理</a><i></i></li>
     </ul>
-    </dd>
+    </dd>   
 
-    <dd><div class="title"><span><img src="images/leftico05.png" /></span>支付设置</div>
-        <ul class="menuson">
-            <li><cite></cite><a href="tinda/provisionSet.php" target="rightFrame">项目设置</a><i></i></li>
-            <li><cite></cite><a href="tinda/provisionLog.php" target="rightFrame">充值记录</a><i></i></li>
-        </ul>
-    </dd>
-
-        <dd><div class="title"><span><img src="images/leftico04.png" /></span>系统设置</div>
+    <dd><div class="title"><span><img src="images/leftico04.png" /></span>系统设置</div>
     <ul class="menuson">
         <li><cite></cite><a href="beifin.php" target="rightFrame">备份与恢复</a><i></i></li>
         <li><cite></cite><a href="Journal.php" target="rightFrame">系统日志</a><i></i></li>

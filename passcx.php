@@ -42,7 +42,7 @@ function ini()
             $arr[] = array('names' => 1);
             echo json_encode($arr);
         } else {
-            $sql1 = "insert into hchi_passcx (pa_pingp,pa_chex,pa_nianf,pa_xingqh,pa_cjh) values ('$pa_pingp','$pa_chex','$pa_nianf','$pa_xingqh','$pa_cjh')";
+            $sql1 = "insert into hchi_passcx (yhm,pa_pingp,pa_chex,pa_nianf,pa_xingqh,pa_cjh) values ('$us_name','$pa_pingp','$pa_chex','$pa_nianf','$pa_xingqh','$pa_cjh')";
             if (mysql_query($sql1)) {
                 $arr[] = array('names' => 1);
                 echo json_encode($arr);
