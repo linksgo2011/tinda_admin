@@ -48,6 +48,10 @@ require_once("../../include/global.php");
     <div class="weui-btn-area">
         <button class="weui-btn weui-btn_primary">确认</button>
     </div>
+    
+    <div style="text-align: center">
+        <img src="../../images/qrcode.jpg" alt="">
+    </div>
 </form>
 
 <script>
