@@ -1,6 +1,6 @@
 <?php
 ini_set('date.timezone','Asia/Shanghai');
-error_reporting(E_ERROR);
+require_once("../../include/global.php");
 
 require_once "../lib/WxPay.Api.php";
 require_once '../lib/WxPay.Notify.php';
@@ -44,6 +44,34 @@ class PayNotifyCallBack extends WxPayNotify
 			$msg = "订单查询失败";
 			return false;
 		}
+
+		// 充值操作
+        $orderNumber = $data['out_trade_no'];
+
+		$querySql = "select * from order where order_number='$orderNumber'";
+
+		$rs = mysql_query($querySql);
+		$order = mysql_fetch_assoc($rs);
+
+        Log::DEBUG("order:" . json_encode($order));
+
+        if(!$order['is_dealed']){
+            // 充值逻辑
+
+            $userId = $order['user_id'];
+
+            $querySql = "select * from `feedbackinfo` where id=$userId";
+            $rs = mysql_query($querySql);
+            $user = mysql_fetch_assoc($rs);
+
+            $endDateTimeStamp = strtotime($user['end_date']) + $order['days']*24*60*60;
+            $endDate = date("Y-m-d",$endDateTimeStamp);
+
+            mysql_query("update `feedbackinfo` set end_date='$endDate' where id=$userId");
+
+            mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
+        }
+
 		return true;
 	}
 }

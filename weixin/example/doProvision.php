@@ -17,6 +17,7 @@ $orderNumber=$userId.$productId.time();
 $rs = mysql_query("select * from product where id=$productId");
 $product = mysql_fetch_assoc($rs);
 $price = $product['price'];
+$days = $product['days'];
 
 if(!$user){
     echo "<h1>用户找不到！</h1>";
@@ -31,8 +32,8 @@ if(!$product){
 $now = time();
 
 $orderSql = "insert into `order` 
-(product_id,user_id,order_number,amount,is_dealed,created,updated) value (
-'$productId','$userId','$orderNumber','$price',0,$now,$now)";
+(product_id,user_id,order_number,amount,is_dealed,created,updated,days) value (
+'$productId','$userId','$orderNumber','$price',0,$now,$now,$days)";
 
 $rs = mysql_query($orderSql);
 if(!$rs){
@@ -66,11 +67,11 @@ $input = new WxPayUnifiedOrder();
 $input->SetBody("腾达商品购买"+$product['name']);
 $input->SetAttach("default");
 $input->SetOut_trade_no($orderNumber);
-$input->SetTotal_fee($price);
+$input->SetTotal_fee($price*100);// 单位为分需要转换
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
-$input->SetNotify_url("http://admin.tengdakey.com/weixin/payCallback.php");
+$input->SetNotify_url("http://admin.tengdakey.com/weixin/example/notify.php");
 $input->SetTrade_type("JSAPI");
 $input->SetOpenid($openId);
 
