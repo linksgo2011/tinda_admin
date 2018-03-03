@@ -98,7 +98,8 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 
                 if(res.err_msg == "get_brand_wcpay_request:ok" ) {
                     alert("支付成功!");
-                    window.location.href = window.location.href.replace("doProvision","success");
+                    window.location.href = window.location.href.replace("doProvision","success")
+                        + "&order_number=<?php echo $orderNumber?>";
                 }else{
                     alert("充值失败，请重试！");
                 }
