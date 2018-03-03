@@ -48,7 +48,7 @@ class PayNotifyCallBack extends WxPayNotify
 		// 充值操作
         $orderNumber = $data['out_trade_no'];
 
-		$querySql = "select * from order where order_number='$orderNumber'";
+		$querySql = "select * from `order` where order_number='$orderNumber'";
 
 		$rs = mysql_query($querySql);
 		$order = mysql_fetch_assoc($rs);
@@ -68,6 +68,8 @@ class PayNotifyCallBack extends WxPayNotify
             $endDate = date("Y-m-d",$endDateTimeStamp);
 
             mysql_query("update `feedbackinfo` set end_date='$endDate' where id=$userId");
+
+            echo "update `feedbackinfo` set end_date='$endDate' where id=$userId";exit;
 
             mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
         }
