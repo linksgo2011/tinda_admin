@@ -25,14 +25,38 @@ require_once("../../include/admin.php");
     <table class="tablelist">
         <thead>
         <tr>
-            <th>用户名</th>
-            <th>项目</th>
+            <th>用户</th>
             <th>金额</th>
+            <th>充值天数</th>
             <th>充值时间</th>
         </tr>
         </thead>
         <tbody>
+        <?php
+        $rs = mysql_query("
 
+select `order`.*,
+`feedbackinfo`.* 
+from `order`,`feedbackinfo` 
+where is_dealed=1 and `order`.user_id=`feedbackinfo`.id 
+order by created desc
+
+");
+
+        while ($product = mysql_fetch_assoc($rs)) {
+            $user = $product['title'];
+            $amount = $product['amount'];
+            $days = $product['days'];
+            $created = date("Y-m-d h:i:s",$product['created']);
+
+            echo "<tr>
+                <td>$user</td>
+                <td>$amount</td>
+                <td>$days</td>
+                <td>$created</td>
+            </tr>";
+        }
+        ?>
         </tbody>
     </table>
 
