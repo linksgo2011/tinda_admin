@@ -94,8 +94,14 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 			'getBrandWCPayRequest',
 			<?php echo $jsApiParameters; ?>,
 			function(res){
-				WeixinJSBridge.log(res.err_msg);
-				alert(res.err_code+res.err_desc+res.err_msg);
+                WeixinJSBridge.log(res.err_msg);
+
+                if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                    alert("支付成功!");
+                    window.location.href = window.location.href.replace("doProvision","success");
+                }else{
+                    alert("充值失败，请重试！");
+                }
 			}
 		);
 	}
@@ -116,15 +122,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 	</script>
 </head>
 <body>
-
-    <!--测试输出-->
-    <?php
-        echo '<font color="#f00"><b>统一下单支付单信息</b></font><br/>';
-        printf_info($order);
-        printf_info($jsApiParameters);
-    ?>
-
-    <br/>
+    <h1>确认支付</h1>
     <label for="weuiAgree" class="weui-agree">
         <span class="weui-agree__text">
             支付金额：<?php echo $price?> 元
