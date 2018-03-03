@@ -40,7 +40,7 @@ require_once("../../include/global.php");
         </div>
     </div>
     <label for="weuiAgree" class="weui-agree">
-        <span class="weui-agree__text">
+        <span class="weui-agree__text" style="color:red;font-size: 14px;">
             支付金额：<span id="price">-</span>元
         </span>
     </label>

@@ -125,7 +125,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 <body>
     <h1>确认支付</h1>
     <label for="weuiAgree" class="weui-agree">
-        <span class="weui-agree__text">
+        <span class="weui-agree__text" style="color:red;font-size: 14px;">
             支付金额：<?php echo $price?> 元
         </span>
     </label>
