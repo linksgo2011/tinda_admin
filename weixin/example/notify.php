@@ -66,8 +66,8 @@ class PayNotifyCallBack extends WxPayNotify
 
             $endDateTimeStamp = strtotime($user['end_date']);
 
-            if($endDateTimeStamp < now()){
-                $endDateTimeStamp = now() + $order['days']*24*60*60;
+            if($endDateTimeStamp < time()){
+                $endDateTimeStamp = time() + $order['days']*24*60*60;
             }else{
                 $endDateTimeStamp = $endDateTimeStamp + $order['days']*24*60*60;
             }
