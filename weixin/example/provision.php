@@ -40,15 +40,15 @@ require_once("../../include/global.php");
         </div>
     </div>
     <label for="weuiAgree" class="weui-agree">
-        <span class="weui-agree__text">
-            支付金额：<font  color="#FF0000"  ><span id="price">-</span></font>元
+        <span class="weui-agree__text" style="color:red;font-size: 14px;">
+            支付金额：<span id="price">-</span>元
         </span>
     </label>
 
     <div class="weui-btn-area">
         <button class="weui-btn weui-btn_primary">确认</button>
     </div>
-
+    
 </form>
 <p style="text-align:center;">
 	<span style="color:#E53333;font-size:18px;"><strong>扫二维码进行安装新版手机软件</strong></span>
