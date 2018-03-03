@@ -79,7 +79,6 @@ class PayNotifyCallBack extends WxPayNotify
 
             mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
         }
-
 		return true;
 	}
 }
