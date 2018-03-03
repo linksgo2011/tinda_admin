@@ -67,9 +67,10 @@ class PayNotifyCallBack extends WxPayNotify
             $endDateTimeStamp = strtotime($user['end_date']) + $order['days']*24*60*60;
             $endDate = date("Y-m-d",$endDateTimeStamp);
 
-            mysql_query("update `feedbackinfo` set end_date='$endDate' where id=$userId");
 
-            echo "update `feedbackinfo` set end_date='$endDate' where id=$userId";exit;
+            if($userId){
+                mysql_query("update `feedbackinfo` set end_date='$endDate' where id=$userId");
+            }
 
             mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
         }
