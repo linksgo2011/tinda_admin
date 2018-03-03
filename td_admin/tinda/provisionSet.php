@@ -49,6 +49,12 @@ require_once("../../include/admin.php");
 
         die();
     }
+
+    if($_GET['edit'] == 'del'){
+        $id = $_GET['id'];
+        mysql_query("delete from product where id=$id");
+    }
+
     $listSql = "select * from product order by id";
     $productsResult = mysql_query($listSql);
 ?>
@@ -102,8 +108,9 @@ require_once("../../include/admin.php");
                 <td>
                     <input name="price" type="number" min="1" required class="dfinput" value="<?=$product['price']?>"/>
                 </td>
-                <td>
+                <td style="text-align: center">
                     <input type="submit" value="修改" class="btn1">
+                    <a href="?edit=del&id=<?php echo $product['id']?>">删除</a>
                 </td>
             </tr>
         </form>
