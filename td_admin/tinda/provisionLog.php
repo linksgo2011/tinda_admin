@@ -22,6 +22,12 @@ require_once("../../include/admin.php");
 </div>
 
 <div class="formbody">
+    <form name="" method="GET">
+        <label></label>
+        <input name="title" type="text" value="<?php echo $_GET['title']?>" class="dfinput" placeholder="用户名" size="60">
+        <input type="submit" class="btn" value="查找"/>
+    </form>
+    <br>
     <table class="tablelist">
         <thead>
         <tr>
@@ -33,15 +39,19 @@ require_once("../../include/admin.php");
         </thead>
         <tbody>
         <?php
+        $title = $_GET['title'];
+
         $rs = mysql_query("
 
 select `order`.*,
 `feedbackinfo`.* 
 from `order`,`feedbackinfo` 
 where is_dealed=1 and `order`.user_id=`feedbackinfo`.id 
+and `feedbackinfo`.title like '%$title%'
 order by created desc
 
 ");
+
 
         while ($product = mysql_fetch_assoc($rs)) {
             $user = $product['title'];

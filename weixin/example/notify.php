@@ -64,7 +64,14 @@ class PayNotifyCallBack extends WxPayNotify
             $rs = mysql_query($querySql);
             $user = mysql_fetch_assoc($rs);
 
-            $endDateTimeStamp = strtotime($user['end_date']) + $order['days']*24*60*60;
+            $endDateTimeStamp = strtotime($user['end_date']);
+
+            if($endDateTimeStamp < now()){
+                $endDateTimeStamp = now()*24*60*60;
+            }else{
+                $endDateTimeStamp = $order['days']*24*60*60;
+            }
+
             $endDate = date("Y-m-d",$endDateTimeStamp);
 
 

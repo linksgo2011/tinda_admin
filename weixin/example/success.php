@@ -14,6 +14,11 @@ if(!$order){
     echo "<h1>订单找不到！</h1>";
     exit;
 }
+
+$userId = $order['user_id'];
+$rs = mysql_query("select * from `feedbackinfo` where id='$userId'");
+$user = mysql_fetch_assoc($rs);
+
 ?>
 <html>
 <head>
@@ -25,6 +30,11 @@ if(!$order){
 <body>
     <h1>查看订单</h1>
 
+    <div class="page__bd">
+        <div class="weui-cells">
+            <p class="weui-cell">用户名：<?php echo $user['title']?></p>
+        </div>
+    </div>
     <div class="page__bd">
         <div class="weui-cells">
             <p class="weui-cell">订单号：<?php echo $order['order_number']?></p>
@@ -40,6 +50,21 @@ if(!$order){
             <p class="weui-cell">充值时长：<?php echo $order['days']?>天</p>
         </div>
     </div>
+    <div class="page__bd">
+        <div class="weui-cells">
+            <p class="weui-cell">到期时间：<?php echo $user['end_date']?></p>
+        </div>
+    </div>
+    <div class="weui-btn-area">
+        <a href="javascript:void" onclick="directToHome()" class="weui-btn weui-btn_primary">返回</a>
+    </div>
+
+    <script>
+        function directToHome(){
+            var url =window.location.origin+window.location.pathname.replace("success.php","provision.php");
+            window.location.href = url;
+        }
+    </script>
 </body>
 
 </html>
