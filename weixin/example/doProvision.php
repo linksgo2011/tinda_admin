@@ -74,11 +74,8 @@ $input->SetGoods_tag("test");
 $input->SetNotify_url("http://admin.tengdakey.com/weixin/example/notify.php");
 $input->SetTrade_type("JSAPI");
 $input->SetOpenid($openId);
-print_r($input);
 
 $order = WxPayApi::unifiedOrder($input);
-
-print_r($order);
 
 $jsApiParameters = $tools->GetJsApiParameters($order);
 ?>
