@@ -64,7 +64,7 @@ $openId = $tools->GetOpenid();
 
 //②、统一下单
 $input = new WxPayUnifiedOrder();
-$input->SetBody("腾达商品购买"+$product['name']);
+$input->SetBody("腾达商品购买".$product['name']);
 $input->SetAttach("default");
 $input->SetOut_trade_no($orderNumber);
 $input->SetTotal_fee($price*100);// 单位为分需要转换
