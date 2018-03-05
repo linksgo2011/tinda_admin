@@ -16,7 +16,7 @@ require_once("../../include/global.php");
 
 <body>
 <strong><h1>腾达手机版自助开通</h1></strong>
-<form action="doProvision.php">
+<form action="doProvision.php" onsubmit="disableSelf()">
     <div class="weui-cells__title">用户名(必须是已经注册的帐号)</div>
     <div class="weui-cells">
         <div class="weui-cell">
@@ -46,7 +46,7 @@ require_once("../../include/global.php");
     </label>
 
     <div class="weui-btn-area">
-        <button onclick="disableSelf()" class="weui-btn weui-btn_primary">确认</button>
+        <button class="weui-btn weui-btn_primary">确认</button>
     </div>
     
 </form>
@@ -57,8 +57,6 @@ require_once("../../include/global.php");
 	<img src="http://admin.tengdakey.com/weixin/zf.png" width="280" height="280" alt="" />
 </p>
 
-
-
 <script>
     function btnChange(item) {
         price = item.getAttribute("price");
@@ -66,7 +64,8 @@ require_once("../../include/global.php");
     }
 
     function disableSelf() {
-        this.disabled=true;
+        var button = document.getElementsByTagName("button")[0];
+        button.disabled=true;
     }
 </script>
 
