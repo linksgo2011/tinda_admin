@@ -12,7 +12,7 @@ $rs = mysql_query("select * from  feedbackinfo where title='$username'");
 $user = mysql_fetch_assoc($rs);
 
 $userId=$user['id'];
-$orderNumber=$userId.$productId.time();
+$orderNumber=$userId.$productId.time().rand(0,1000);
 
 $rs = mysql_query("select * from product where id=$productId");
 $product = mysql_fetch_assoc($rs);
