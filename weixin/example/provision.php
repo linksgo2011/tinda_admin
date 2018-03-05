@@ -46,7 +46,7 @@ require_once("../../include/global.php");
     </label>
 
     <div class="weui-btn-area">
-        <button class="weui-btn weui-btn_primary">确认</button>
+        <button onclick="disableSelf()" class="weui-btn weui-btn_primary">确认</button>
     </div>
     
 </form>
@@ -63,6 +63,10 @@ require_once("../../include/global.php");
     function btnChange(item) {
         price = item.getAttribute("price");
         document.getElementById("price").textContent = price;
+    }
+
+    function disableSelf() {
+        this.disabled=true;
     }
 </script>
 
