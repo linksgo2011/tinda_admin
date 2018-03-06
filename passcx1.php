@@ -86,13 +86,29 @@ function ini()
                 if ($l_date1 == $countus["cx_date"]) {
                     $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
+						
+									$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$html')";
+					          mysql_query($sql1);
+						
                         echo $html;
+						
+			
+						
                         die();
                     }
                 } elseif ($l_date1 <> $countus["cx_date"]) {
                     $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
+						
+								$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$html')";
+					          mysql_query($sql1);
+						
+						
+						
                         echo $html;
+						
+					
+						
                         die();
                     }
                 }
