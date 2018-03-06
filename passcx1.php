@@ -108,12 +108,19 @@ function ini()
                     $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
                         echo $count["pa_pin"];
+						$pin=$count["pa_pin"];
+						$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
+					          mysql_query($sql1);
+						
+						
                         die();
                     }
                 } elseif ($l_date1 <> $countus["cx_date"]) {
                     $sqlB = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlB)) {
                         echo $count["pa_pin"];
+										$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
+					          mysql_query($sql1);
                         die();
                     }
                 }

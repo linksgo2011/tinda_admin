@@ -11,11 +11,11 @@ ini();
 function ini()
 {
 $userszl = $_POST["userszl"];
-	$sql="select * from hchi_passcx where pa_pin<>'' and yhm=$userszl";
+	$sql="select * from rj where yhm=$userszl";
 	$rs=mysql_query($sql);
 	while($rows=mysql_fetch_assoc($rs))
 	{
- $arr = '<li class="mui-table-view-cell">车架号:'.$rows["pa_cjh"].'      PIN:'.$rows["pa_pin"].'</li>'.$arr;
+ $arr = '<li class="mui-table-view-cell">车架号:'.$rows["cjh"].'         PIN:'.$rows["pin"].'</li>'.$arr;
 
 }
 
