@@ -24,7 +24,7 @@ require_once("../../include/admin.php");
 <div class="formbody">
     <form name="" method="GET">
         <label></label>
-        <input name="title" type="text" value="<?php echo $_GET['title']?>" class="dfinput" placeholder="用户名" size="60">
+        <input name="usname" type="text" value="<?php echo $_GET['usname']?>" class="dfinput" placeholder="用户名" size="60">
         <input type="submit" class="btn" value="查找"/>
     </form>
     <br>
@@ -39,19 +39,36 @@ require_once("../../include/admin.php");
         </thead>
         <tbody>
         <?php
-        $title = $_GET['title'];
+        $title = $_GET['usname'];
+        $usname = $title;
 
-        $rs = mysql_query("
-
-select `order`.*,
+        $sql = "
+        select `order`.*,
 `feedbackinfo`.* 
 from `order`,`feedbackinfo` 
 where is_dealed=1 and `order`.user_id=`feedbackinfo`.id 
 and `feedbackinfo`.title like '%$title%'
 order by created desc
+        ";
+        $rs = mysql_query($sql);
+        $pagesize=20;
+        $pageno=$_GET["pageno"];
 
-");
+        $recordcount=mysql_num_rows($rs);
+        $pagecount=($recordcount-1)/$pagesize+1;
 
+        if(empty($pageno) || $pageno <1)
+        {
+            $pageno=1;
+        }
+        if($pageno>$pagecount)
+        {
+            $pageno=$pagecount;
+        }
+        $startno=($pageno-1)*$pagesize;
+
+        $sql .= "limit $startno,$pagesize";
+        $rs = mysql_query($sql);
 
         while ($product = mysql_fetch_assoc($rs)) {
             $user = $product['title'];
@@ -69,7 +86,9 @@ order by created desc
         ?>
         </tbody>
     </table>
-
+    <div class="pagin">
+        <?php require_once("../page.php");?>
+    </div>
 </div>
 
 </body>
