@@ -146,12 +146,12 @@ $(document).ready(function(e) {
         <td><?php echo $rows["pa_xingqh"]?></td>
 		<td><?php echo $rows["pa_date"]?></td>
         <td><?php echo $rows["pa_cjh"]?></td>
-        <td><?php echo $rows["yhm"]?></td>
         <td>
-      <input name="pa_id" type="hidden" id="pa_id" value="<?php echo $rows["id"]?>">
-      <input name="pa_pin" type="text" id="pa_pin" value="<?php echo $rows["pa_pin"]?>" size="50" class="dfinput" style="width:auto;">
+        <input name="pa_id" type="hidden" id="pa_id" value="<?php echo $rows["id"]?>">
+        <input name="pa_pin" type="text" id="pa_pin" value="<?php echo $rows["pa_pin"]?>" size="50" class="dfinput" style="width:auto;">
         </td>
-        <td><input type="submit" value="提交" class="btn1">&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
+            <td><?php echo $rows["yhm"]?></td>
+            <td><input type="submit" value="提交" class="btn1">&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
         </tr> 
 </form>
 <?php }?>
