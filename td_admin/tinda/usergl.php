@@ -9,10 +9,10 @@ $ad_id1234=$_SESSION["ad_id1234"];
 	}else{
 	   $pageno=$_POST["pageno"];
 	}
-	if($_POST["sousuo"]<>""){
-	  $sousuo=$_POST["sousuo"];
+	if($_POST["usname"]<>""){
+	  $usname=$_POST["usname"];
 	}else{
-	  $sousuo=$_GET["sousuo"];
+	  $usname=$_GET["usname"];
 	}
 
 if($_GET['tj'] == 'out'){
@@ -36,7 +36,7 @@ if($_GET['tj'] == 'out'){
 	if(mysql_query($sql)){ 
         echo '<html>'; 
         echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>'; 
-		echo "<script language=javascript>alert('删除成功！');window.location='usergl.php?pageno=".$pageno."&sousuo=".$sousuo."'</script>";
+		echo "<script language=javascript>alert('删除成功！');window.location='usergl.php?pageno=".$pageno."&usname=".$usname."'</script>";
         echo '</html>'; 
 		}
 	}
@@ -48,7 +48,7 @@ if($_GET['tj'] == 'out'){
 		$sql1="update feedbackinfo set us_koner=us_koner"."1 where id=$Aid";
 		if (mysql_query($sql1))
 		{
-		echo "<script language=javascript>alert('下线成功！');window.location='usergl.php?pageno=".$pageno."&sousuo=".$sousuo."'</script>";
+		echo "<script language=javascript>alert('下线成功！');window.location='usergl.php?pageno=".$pageno."&usname=".$usname."'</script>";
 		}
 		die();
 	}
@@ -69,14 +69,14 @@ if($_GET['tj'] == 'out'){
 		$phone=$_POST["phone"];
 
 		if($pass=="" or xg_date=="" or title1=="" or name1=="" or email1=="" or comment1==""){
-		echo "<script language=javascript>alert('请认真填写参数！');window.location='usergl.php?pageno=".$pageno."&sousuo=".$sousuo."'</script>";
+		echo "<script language=javascript>alert('请认真填写参数！');window.location='usergl.php?pageno=".$pageno."&usname=".$usname."'</script>";
 		exit();
 		}
 
 		$sql1="update feedbackinfo set pass='$pass',end_date='$xg_date',title='$title1',name='$name1',email='$email1',comment='$comment1',phone='$phone' where id=$xg_id";
 		if(mysql_query($sql1))
 		{
-		echo "<script language=javascript>alert('修改成功！');window.location='usergl.php?pageno=".$pageno."&sousuo=".$sousuo."'</script>";
+		echo "<script language=javascript>alert('修改成功！');window.location='usergl.php?pageno=".$pageno."&usname=".$usname."'</script>";
 		}
 		die();
 	}
@@ -128,9 +128,9 @@ $(document).ready(function(e) {
     </div>
     
     <div class="formbody" style="background:#ddd">
-<form id="form1" name="form1" action="usergl.php" method="post">
+<form id="form1" name="form1" action="usergl.php" method="get">
       <label></label>
-      <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="用户名/经销商/姓名/手机/提示" size="60">
+      <input name="usname" type="text" id="usname" value="<?php echo $usname?>" class="dfinput" placeholder="用户名/经销商/姓名/手机/提示" size="60">
       <input type="submit" class="btn" value="查找"/>
 </form>       
 	</div> 
@@ -160,10 +160,10 @@ $(document).ready(function(e) {
         <tbody>
 <?php
 	$pagesize=20;
-	if($sousuo==""){
+	if($usname==""){
 	$sql="select * from feedbackinfo";
 	}else{
-	$sql="select * from feedbackinfo where title like '%".$sousuo."%' OR name like '%".$sousuo."%' OR email like '%".$sousuo."%' OR phone like '%".$sousuo."%' OR comment like '%".$sousuo."%'";
+	$sql="select * from feedbackinfo where title like '%".$usname."%' OR name like '%".$usname."%' OR email like '%".$usname."%' OR phone like '%".$usname."%' OR comment like '%".$usname."%'";
 	}
 	$rs=mysql_query($sql);
 	$recordcount=mysql_num_rows($rs);
@@ -183,10 +183,10 @@ $(document).ready(function(e) {
 		$pageno=$pagecount;
 	}
 	$startno=($pageno-1)*$pagesize;
-	if($sousuo==""){
+	if($usname==""){
 	$sql="select * from feedbackinfo order by id desc limit $startno,$pagesize";
 	}else{
-	$sql="select * from feedbackinfo where title like '%".$sousuo."%' OR name like '%".$sousuo."%' OR email like '%".$sousuo."%' OR phone like '%".$sousuo."%' OR comment like '%".$sousuo."%' order by id desc limit $startno,$pagesize";
+	$sql="select * from feedbackinfo where title like '%".$usname."%' OR name like '%".$usname."%' OR email like '%".$usname."%' OR phone like '%".$usname."%' OR comment like '%".$usname."%' order by id desc limit $startno,$pagesize";
 	}
 	$rs=mysql_query($sql);
 	while($rows=mysql_fetch_assoc($rs))
@@ -195,7 +195,7 @@ $(document).ready(function(e) {
 <form name="form2" method="post" action="">
       <input name="tjbx-abc" type="hidden" id="tjbx-abc" value="h-chi-vgs-8-com" />
       <input name="pageno" type="hidden" id="pageno" value="<?php echo $pageno?>">
-      <input name="sousuo" type="hidden" id="sousuo" value="<?php echo $sousuo?>">
+      <input name="usname" type="hidden" id="usname" value="<?php echo $usname?>">
         <tr>
         <td>
         <input name="title1" type="text" id="title1" value="<?php echo $rows["title"]?>" size="6" class="dfinput" style="width:120px;">
@@ -213,7 +213,7 @@ $(document).ready(function(e) {
       <input name="xg_id" type="hidden" id="xg_id" value="<?php echo $rows["id"]?>">
       <input name="xg_date" type="text" id="xg_date" value="<?php echo $rows["end_date"]?>" size="12" class="dfinput" style="width:auto;">
         </td>
-        <td><input type="submit" name="xiugan" id="xiugan" value="修改" class="btn1"><br/>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=xiaxian&pageno=<?php echo $pageno?>&sousuo=<?php echo $sousuo?>" class="tablelink">强制下线</a>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del&pageno=<?php echo $pageno?>&sousuo=<?php echo $sousuo?>" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
+        <td><input type="submit" name="xiugan" id="xiugan" value="修改" class="btn1"><br/>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=xiaxian&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" class="tablelink">强制下线</a>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
         </tr> 
 </form>
 <?php }?>
