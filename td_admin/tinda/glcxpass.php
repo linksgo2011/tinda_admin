@@ -122,6 +122,7 @@ $(document).ready(function(e) {
 	    <th>申请时间</th>
         <th>车架号</th>
         <th>PIN</th>
+        <th>用户</th>
         <th>操作</th>
         </tr>
         </thead>
@@ -183,7 +184,8 @@ $(document).ready(function(e) {
       <input name="pa_id" type="hidden" id="pa_id" value="<?php echo $rows["id"]?>">
       <input name="pa_pin" type="text" id="pa_pin" value="<?php echo $rows["pa_pin"]?>" size="50" class="dfinput" style="width:auto;">
         </td>
-        <td><input type="submit" value="修改" class="btn1">&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
+            <td><?php echo $rows["pa_cjh"]?></td>
+            <td><input type="submit" value="修改" class="btn1">&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
         </tr> 
 </form>
 <?php }?>
