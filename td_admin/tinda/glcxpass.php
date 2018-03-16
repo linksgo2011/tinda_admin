@@ -97,7 +97,7 @@ $(document).ready(function(e) {
 	    <div class="formbody" style="background:#ddd">
 <form id="form1" name="form1" action="glcxpass.php" method="post">
       <label></label>
-      <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="车架号" size="60">
+      <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="车架号/用户名" size="60">
       <input type="submit" class="btn" value="查找"/>
 </form>       
 	</div> 
