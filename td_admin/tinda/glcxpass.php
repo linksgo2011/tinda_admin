@@ -134,9 +134,8 @@ $(document).ready(function(e) {
 	$sql="select * from hchi_passcx where pa_pin<>''";
 		}else{
 			
-	$sql="select * from hchi_passcx where pa_cjh like '%".$sousuo."%'";
-	
-	
+	$sql="select * from hchi_passcx where pa_cjh like '%".$sousuo."%' or yhm like '%".$sousuo."%'";
+
 	}
 	
 	
@@ -163,8 +162,8 @@ $(document).ready(function(e) {
 
 	$sql="select * from hchi_passcx where pa_pin<>'' order by id desc limit $startno,$pagesize";
 	}else{
-			
-	$sql="select * from hchi_passcx where pa_cjh like '%".$sousuo."%' order by id desc limit $startno,$pagesize";
+
+        $sql="select * from hchi_passcx where pa_cjh like '%".$sousuo."%' or yhm like  '%".$sousuo."%' order by id desc limit $startno,$pagesize";
 			
 	}
 	$rs=mysql_query($sql);
