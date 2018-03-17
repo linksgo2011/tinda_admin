@@ -11,7 +11,7 @@ ini();
 function ini()
 {
 $userszl = $_POST["userszl"];
-	$sql="select * from rj where yhm=$userszl";
+	$sql="select * from rj where yhm='$userszl'";
 	$rs=mysql_query($sql);
 	while($rows=mysql_fetch_assoc($rs))
 	{
