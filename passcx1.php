@@ -122,6 +122,7 @@ function ini()
             $existQuery = mysql_fetch_assoc($existQueryResult);
             if($existQuery["id"]){
                 echo 5;
+                exit;
             }
 
             $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "'";
