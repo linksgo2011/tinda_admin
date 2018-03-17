@@ -116,6 +116,14 @@ function ini()
 ///////zwcx end
         } elseif ($countzhanw["cx_url"] == "" and $countsetup["pz_off"] == 1) {//站内开启
 ///////znkq shop
+///
+            $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and pa_pin=''";
+            $existQueryResult = mysql_query($sqlForCheckExist);
+            $existQuery = mysql_fetch_assoc($existQueryResult);
+            if($existQuery["id"]){
+                echo 5;
+            }
+
             $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "'";
             $rsAA = mysql_query($sqlAA);
             $count = mysql_fetch_assoc($rsAA);
@@ -135,7 +143,7 @@ function ini()
                     $sqlB = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlB)) {
                         echo $count["pa_pin"];
-                        $sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
+//                        $sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
 //                        mysql_query($sql1);
                         die();
                     }
