@@ -117,13 +117,15 @@ function ini()
         } elseif ($countzhanw["cx_url"] == "" and $countsetup["pz_off"] == 1) {//站内开启
 ///////znkq shop
 ///
-            $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and pa_pin=''";
-            $existQueryResult = mysql_query($sqlForCheckExist);
-            $existQuery = mysql_fetch_assoc($existQueryResult);
-            if($existQuery["id"]){
-                echo 5;
-                exit;
-            }
+///
+            // 已经存在的查询就不允许再次提交
+//            $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and pa_pin=''";
+//            $existQueryResult = mysql_query($sqlForCheckExist);
+//            $existQuery = mysql_fetch_assoc($existQueryResult);
+//            if($existQuery["id"]){
+//                echo 5;
+//                exit;
+//            }
 
             $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "'";
             $rsAA = mysql_query($sqlAA);
