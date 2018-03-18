@@ -118,15 +118,6 @@ function ini()
 ///////znkq shop
 ///
 ///
-            // 已经存在的查询就不允许再次提交
-//            $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and pa_pin=''";
-//            $existQueryResult = mysql_query($sqlForCheckExist);
-//            $existQuery = mysql_fetch_assoc($existQueryResult);
-//            if($existQuery["id"]){
-//                echo 5;
-//                exit;
-//            }
-
             $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "'";
             $rsAA = mysql_query($sqlAA);
             $count = mysql_fetch_assoc($rsAA);
@@ -155,6 +146,16 @@ function ini()
                 echo 1;
                 die();
             } else {
+
+                // 已经存在的查询就不允许再次提交
+                $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and pa_pin=''";
+                $existQueryResult = mysql_query($sqlForCheckExist);
+                $existQuery = mysql_fetch_assoc($existQueryResult);
+                if($existQuery["id"]){
+                    echo 5;
+                    exit;
+                }
+
                 $sql1 = "insert into hchi_passcx (yhm,pa_pingp,pa_chex,pa_nianf,pa_xingqh,pa_cjh,pa_date) values ('$us_name','$pa_pingp','$pa_chex','$pa_nianf','$pa_xingqh','$pa_cjh','$l_date')";
                 if (mysql_query($sql1)) {
                     echo 1;
