@@ -22,6 +22,31 @@ $package = array(
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../../kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="../../kindeditor/plugins/code/prettify.css" />
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+    <script charset="utf-8" src="../../kindeditor/kindeditor-all.js"></script>
+    <script charset="utf-8" src="../../kindeditor/lang/zh-CN.js"></script>
+    <script charset="utf-8" src="../../kindeditor/plugins/code/prettify.js"></script>
+
+    <script>
+        KindEditor.ready(function(K) {
+            var editor = K.editor({
+                allowFileManager : true
+            });
+            K('#image-button').click(function() {
+                editor.loadPlugin('image', function() {
+                    editor.plugin.imageDialog({
+                        imageUrl : K('#img').val(),
+                        clickFn : function(url, title, width, height, border, align) {
+                            K('#img').val(url);
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -39,8 +64,8 @@ $package = array(
 
     if ($_POST["tjbx-abc"] == 'h-chi-vgs-8-com') {
 
-        function addLiveUser($api,$package){
-            list($formToken, $id, $username, $title) = array_values($_POST);
+        function addLiveUser($api,$package,$appID){
+            list($formToken, $id, $username, $title,$img) = array_values($_POST);
 
             // check user info and get user id
             $rs = mysql_query("select * from  feedbackinfo where title='" . $username . "'");
@@ -78,9 +103,9 @@ $package = array(
             $now = time();
 
             $sql = "insert into 
-            live(`user_id`,`title`,`push_url`,`channel_id`,`app_id`,`created`,`updated`) 
+            live(`user_id`,`title`,`push_url`,`channel_id`,`app_id`,`created`,`updated`,`img`) 
             VALUES(
-              '$userID','$title','$pushURL','$channelID','$appID',$now,$now
+              '$userID','$title','$pushURL','$channelID','$appID',$now,$now,$img
             )";
 
             if (mysql_query($sql)) {
@@ -90,7 +115,7 @@ $package = array(
             }
         }
 
-        addLiveUser($api,$package);
+        addLiveUser($api,$package,$appID);
     }
     ?>
 
@@ -106,6 +131,11 @@ $package = array(
             <li>
                 <label>直播标题</label>
                 <input name="title" required class="dfinput"/>
+            </li>
+            <li>
+                <label for="img">封面</label>
+                <input name="img" type="text" class="dfinput" id="img" value="<?php echo $record["value"]?>" readonly="readonly" />
+                <input type="button" id="image-button" class="btn1" value="选择图片" />&nbsp;&nbsp;640*180像素
             </li>
             <li>
                 <label>&nbsp;</label>
