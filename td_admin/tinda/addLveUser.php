@@ -105,7 +105,7 @@ $package = array(
             $sql = "insert into 
             live(`user_id`,`title`,`push_url`,`channel_id`,`app_id`,`created`,`updated`,`img`) 
             VALUES(
-              '$userID','$title','$pushURL','$channelID','$appID',$now,$now,$img
+              '$userID','$title','$pushURL','$channelID','$appID',$now,$now,'$img'
             )";
 
             if (mysql_query($sql)) {
