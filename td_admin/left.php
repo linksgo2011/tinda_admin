@@ -89,6 +89,7 @@ $(function(){
         <ul class="menuson">
             <li><cite></cite><a href="tinda/liveUsers.php" target="rightFrame">直播用户</a><i></i></li>
             <li><cite></cite><a href="tinda/addLveUser.php" target="rightFrame">直播开通</a><i></i></li>
+            <li><cite></cite><a href="tinda/applyLives.php" target="rightFrame">申请审核</a><i></i></li>
         </ul>
     </dd>
 

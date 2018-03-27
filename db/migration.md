@@ -16,3 +16,11 @@
 
 > **ALTER TABLE `tinda`.`hchi_pscxsz` 
  ADD COLUMN `closed_tip` VARCHAR(45) NULL AFTER `pz_beiz`;**
+ 
+ 
+ 
+ # 增加用户积分
+ ALTER TABLE `tinda`.`feedbackinfo` 
+ ADD COLUMN `point` INT NOT NULL DEFAULT 0 COMMENT '积分' AFTER `us_koner`;
+
+
