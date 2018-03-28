@@ -23,4 +23,15 @@
  ALTER TABLE `tinda`.`feedbackinfo` 
  ADD COLUMN `point` INT NOT NULL DEFAULT 0 COMMENT '积分' AFTER `us_koner`;
 
+# product表
+
+ALTER TABLE `tinda`.`product` 
+ADD COLUMN `type` INT NULL DEFAULT 1 COMMENT '1 充时间 2充积分' AFTER `days`;
+
+ALTER TABLE `tinda`.`product` 
+ADD COLUMN `point` INT(11) NULL DEFAULT 0 AFTER `type`;
+
+ALTER TABLE `tinda`.`order` 
+ADD COLUMN `type` INT(11) NULL DEFAULT 1 COMMENT '1 充时间 2充积分' AFTER `days`,
+ADD COLUMN `point` INT(11) NULL DEFAULT 0 AFTER `type`;
 

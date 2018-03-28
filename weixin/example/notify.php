@@ -56,28 +56,41 @@ class PayNotifyCallBack extends WxPayNotify
         Log::DEBUG("order:" . json_encode($order));
 
         if(!$order['is_dealed']){
-            // 充值逻辑
+            if($order['type'] == 1){
+                // 充时间
+                $userId = $order['user_id'];
 
-            $userId = $order['user_id'];
+                $querySql = "select * from `feedbackinfo` where id=$userId";
+                $rs = mysql_query($querySql);
+                $user = mysql_fetch_assoc($rs);
 
-            $querySql = "select * from `feedbackinfo` where id=$userId";
-            $rs = mysql_query($querySql);
-            $user = mysql_fetch_assoc($rs);
+                $endDateTimeStamp = strtotime($user['end_date']);
 
-            $endDateTimeStamp = strtotime($user['end_date']);
+                if($endDateTimeStamp < time()){
+                    $endDateTimeStamp = time() + $order['days']*24*60*60;
+                }else{
+                    $endDateTimeStamp = $endDateTimeStamp + $order['days']*24*60*60;
+                }
+                $endDate = date("Y-m-d",$endDateTimeStamp);
 
-            if($endDateTimeStamp < time()){
-                $endDateTimeStamp = time() + $order['days']*24*60*60;
+                if($userId){
+                    mysql_query("update `feedbackinfo` set end_date='$endDate' where id=$userId");
+                }
+
+                mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
             }else{
-                $endDateTimeStamp = $endDateTimeStamp + $order['days']*24*60*60;
-            }
-            $endDate = date("Y-m-d",$endDateTimeStamp);
+                // 充积分
+                $userId = $order['user_id'];
+                $point = $order['point'];
 
-            if($userId){
-                mysql_query("update `feedbackinfo` set end_date='$endDate' where id=$userId");
+                if($userId){
+                    mysql_query("update `feedbackinfo` 
+                    set point=point+$point where id=$userId");
+                }
+
+                mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
             }
 
-            mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
         }
 		return true;
 	}

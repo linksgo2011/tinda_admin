@@ -18,6 +18,8 @@ $rs = mysql_query("select * from product where id=$productId");
 $product = mysql_fetch_assoc($rs);
 $price = $product['price'];
 $days = $product['days'];
+$point = $product['point'];
+$type = $product['type'];
 
 if(!$user){
     echo "<h1>该帐号尚未注册,请扫描二维码安装并注册后进行开通</h1>";
@@ -32,10 +34,11 @@ if(!$product){
 $now = time();
 
 $orderSql = "insert into `order` 
-(product_id,user_id,order_number,amount,is_dealed,created,updated,days) value (
-'$productId','$userId','$orderNumber','$price',0,$now,$now,$days)";
+(product_id,user_id,order_number,amount,is_dealed,created,updated,days,`type`,`point`) value (
+'$productId','$userId','$orderNumber','$price',0,$now,$now,$days,$type,$point)";
 
 $rs = mysql_query($orderSql);
+
 if(!$rs){
     echo "<h1>订单创建失败！</h1>";
     exit;
