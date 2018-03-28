@@ -10,7 +10,7 @@ require_once("../../include/admin.php");
     <title></title>
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <style>
-        .dfinput{width:100px;}
+        .tablelist .dfinput{width:100px;}
     </style>
 </head>
 
