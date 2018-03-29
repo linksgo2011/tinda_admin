@@ -58,6 +58,8 @@ require_once("../../include/admin.php");
         mysql_query("delete from product where id=$id");
     }
 
+    $types = array("1"=>"时间","2"=>"积分");
+
     $listSql = "select * from product order by id";
     $productsResult = mysql_query($listSql);
 ?>
@@ -119,7 +121,7 @@ require_once("../../include/admin.php");
                     <input name="name" class="dfinput" required value="<?=$product['name']?>"/>
                 </td>
                 <td>
-                    <?=array("1"=>"时间","2"=>"积分")[$product['type']]?>
+                    <?=$types[$product['type']]?>
                     <input name="type" type="hidden" value="<?=$product['type']?>"/>
                 </td>
                 <td>

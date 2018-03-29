@@ -72,12 +72,13 @@ order by created desc
         $sql .= "limit $startno,$pagesize";
         $rs = mysql_query($sql);
 
+        $attr = array("1"=>"时间","2"=>"积分");
         while ($product = mysql_fetch_assoc($rs)) {
             $user = $product['title'];
             $amount = $product['amount'];
             $days = $product['days'];
             $point = $product['point'];
-            $type = array("1"=>"时间","2"=>"积分")[$product['type']];
+            $type = $attr[$product['type']];
             $created = date("Y-m-d h:i:s",$product['created']);
 
             echo "<tr>

@@ -103,6 +103,7 @@ function passLive($api,$package,$appID){
 }
 
     $appID = "1254896179"; // 应用ID
+    $pointAttr = array(0=>"否",1=>'是');
 
     if($_GET['edit'] == 'pass'){
         passLive($api,$package,$appID);
@@ -182,7 +183,7 @@ $livesResult = mysql_query($listSql);
                     <?=date("Y-m-d H:i:s",$live['time'])?>
                 </td>
                 <td>
-                    <?=array(0=>"否",1=>'是')[$live['if_need_point']]?>
+                    <?=$pointAttr[$live['if_need_point']]?>
                 </td>
                 <td>
                     <?=$live['point']?>
