@@ -104,6 +104,7 @@ function passLive($api,$package,$appID){
 
     $appID = "1254896179"; // 应用ID
     $pointAttr = array(0=>"否",1=>'是');
+    $statusTypes = array(0=>"申请中",1=>'已经处理',2=>'拒绝');
 
     if($_GET['edit'] == 'pass'){
         passLive($api,$package,$appID);
@@ -189,7 +190,7 @@ $livesResult = mysql_query($listSql);
                     <?=$live['point']?>
                 </td>
                 <td>
-                    <?=array(0=>"申请中",1=>'已经处理',2=>'拒绝')[$live['status']]?>
+                    <?=$statusTypes[$live['status']]?>
                 </td>
                 <td>
                     <img src="<?=$live['img']?>" alt="">

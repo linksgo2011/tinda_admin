@@ -35,3 +35,23 @@ ALTER TABLE `tinda`.`order`
 ADD COLUMN `type` INT(11) NULL DEFAULT 1 COMMENT '1 充时间 2充积分' AFTER `days`,
 ADD COLUMN `point` INT(11) NULL DEFAULT 0 AFTER `type`;
 
+#live 表
+ALTER TABLE  `live` ADD  `time` INT( 11 ) NOT NULL ,
+ADD  `if_need_point` INT( 1 ) NOT NULL DEFAULT  '0',
+ADD  `point` INT( 11 ) NOT NULL DEFAULT  '0',
+ADD  `if_returned_point` INT( 1 ) NOT NULL DEFAULT  '0'
+
+#创建apply_live表
+CREATE TABLE `apply_live` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
+  `username` varchar(45) DEFAULT NULL,
+  `if_need_point` tinyint(1) DEFAULT '0',
+  `point` int(11) DEFAULT '0',
+  `status` tinyint(1) DEFAULT '0',
+  `time` int(11) DEFAULT NULL,
+  `img` varchar(254) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
