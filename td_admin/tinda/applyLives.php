@@ -193,7 +193,7 @@ $livesResult = mysql_query($listSql);
                     <?=$statusTypes[$live['status']]?>
                 </td>
                 <td>
-                    <img src="<?=$live['img']?>" alt="">
+                    <img width="50px" src="<?=$live['img']?>" alt="">
 
                 </td>
                 <td style="text-align: center">
