@@ -18,7 +18,7 @@ if(!$order){
 $userId = $order['user_id'];
 $rs = mysql_query("select * from `feedbackinfo` where id='$userId'");
 $user = mysql_fetch_assoc($rs);
-
+$types = array("1"=>"时间","2"=>"积分");
 ?>
 <html>
 <head>
@@ -37,12 +37,22 @@ $user = mysql_fetch_assoc($rs);
     </div>
     <div class="page__bd">
         <div class="weui-cells">
+            <p class="weui-cell">类型：<?php echo $types[$order['type']]?></p>
+        </div>
+    </div>
+    <div class="page__bd">
+        <div class="weui-cells">
             <p class="weui-cell">订单号：<?php echo $order['order_number']?></p>
         </div>
     </div>
     <div class="page__bd">
         <div class="weui-cells">
             <p class="weui-cell">金额：<?php echo $order['amount']?></p>
+        </div>
+    </div>
+    <div class="page__bd">
+        <div class="weui-cells">
+            <p class="weui-cell">积分：<?php echo $order['point']?></p>
         </div>
     </div>
     <div class="page__bd">

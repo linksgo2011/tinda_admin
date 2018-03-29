@@ -86,7 +86,7 @@ require_once("../../include/admin.php");
             </li>
             <li>
                 <label>时间(天)</label>
-                <input name="days" type="number" min="1" required class="dfinput" />
+                <input name="days" type="number" min="0" required class="dfinput" />
             </li>
 
             <li>
