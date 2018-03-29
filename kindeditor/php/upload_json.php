@@ -9,6 +9,8 @@
 
 require_once 'JSON.php';
 
+error_reporting(0);
+
 $php_path = dirname(__FILE__) . '/';
 $php_url = dirname($_SERVER['PHP_SELF']) . '/';
 
