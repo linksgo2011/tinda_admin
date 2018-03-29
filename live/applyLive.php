@@ -4,7 +4,7 @@ ini_set('display_errors','On');
 
 require_once("../include/global.php");
 
-list($title,$time,$ifNeedPoint,$point,$username) = array_values($_POST);
+list($title,$time,$ifNeedPoint,$point,$img,$username) = array_values($_POST);
 $ifNeedPoint = $ifNeedPoint?1:0;
 $point = min(0,$point);
 
@@ -37,8 +37,8 @@ if($applyLive){
     return ;
 }
 
-$createSql = "insert into apply_live (`title`,`username`,`time`,`if_need_point`,`point`) value(
-          '$title','$username',$time,$ifNeedPoint,$point
+$createSql = "insert into apply_live (`title`,`username`,`time`,`if_need_point`,`point`,`img`) value(
+          '$title','$username',$time,$ifNeedPoint,$point,'$img'
 )";
 
 if(mysql_query($createSql)){

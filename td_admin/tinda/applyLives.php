@@ -47,7 +47,7 @@ function passLive($api,$package,$appID){
     }
     $username = $applyLive['username'];
     $title = $applyLive['title'];
-    $img = ""; // TODO 封面
+    $img = $applyLive['img']; // TODO 封面
     $time = $applyLive['time'];
     $ifNeedPoint = $applyLive['if_need_point'];
     $point = $applyLive['point'];
@@ -161,6 +161,7 @@ $livesResult = mysql_query($listSql);
             <th>是否需要积分</th>
             <th>观看积分</th>
             <th>状态</th>
+            <th>封面</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -188,6 +189,10 @@ $livesResult = mysql_query($listSql);
                 </td>
                 <td>
                     <?=array(0=>"申请中",1=>'已经处理',2=>'拒绝')[$live['status']]?>
+                </td>
+                <td>
+                    <img src="<?=$live['img']?>" alt="">
+
                 </td>
                 <td style="text-align: center">
                     <?php if($live['status'] == 0):?>
