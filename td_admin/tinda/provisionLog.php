@@ -33,7 +33,9 @@ require_once("../../include/admin.php");
         <tr>
             <th>用户</th>
             <th>金额</th>
-            <th>充值天数</th>
+            <th>类型</th>
+            <th>积分</th>
+            <th>时间(天)</th>
             <th>充值时间</th>
         </tr>
         </thead>
@@ -74,11 +76,15 @@ order by created desc
             $user = $product['title'];
             $amount = $product['amount'];
             $days = $product['days'];
+            $point = $product['point'];
+            $type = array("1"=>"时间","2"=>"积分")[$product['type']];
             $created = date("Y-m-d h:i:s",$product['created']);
 
             echo "<tr>
                 <td>$user</td>
                 <td>$amount</td>
+                <td>$type</td>
+                <td>$point</td>
                 <td>$days</td>
                 <td>$created</td>
             </tr>";

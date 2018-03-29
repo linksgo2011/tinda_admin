@@ -85,6 +85,14 @@ $(function(){
         </ul>
     </dd>
 
+    <dd><div class="title"><span><img src="images/leftico05.png" /></span>直播管理</div>
+        <ul class="menuson">
+            <li><cite></cite><a href="tinda/liveUsers.php" target="rightFrame">直播用户</a><i></i></li>
+            <li><cite></cite><a href="tinda/addLveUser.php" target="rightFrame">直播开通</a><i></i></li>
+            <li><cite></cite><a href="tinda/applyLives.php" target="rightFrame">申请审核</a><i></i></li>
+        </ul>
+    </dd>
+
     <dd><div class="title"><span><img src="images/leftico04.png" /></span>系统设置</div>
     <ul class="menuson">
         <li><cite></cite><a href="beifin.php" target="rightFrame">备份与恢复</a><i></i></li>

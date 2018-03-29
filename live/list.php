@@ -28,7 +28,10 @@ foreach ($rsp['channelSet'] as $item) {
 }
 
 $idString = join(",",$ids);
-$rs = mysql_query("select * from live where channel_id in ($idString)");
+$keyword = $_GET['keyword'];
+$wherePart = $keyword?"and `title` like '%$keyword%'":"";
+
+$rs = mysql_query("select * from live where channel_id in ($idString) $wherePart");
 
 $output = array();
 

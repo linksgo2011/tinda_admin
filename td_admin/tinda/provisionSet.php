@@ -9,6 +9,9 @@ require_once("../../include/admin.php");
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .tablelist .dfinput{width:100px;}
+    </style>
 </head>
 
 <body>
@@ -25,22 +28,22 @@ require_once("../../include/admin.php");
 <?php
 
     if ($_POST["tjbx-abc"] == 'h-chi-vgs-8-com') {
-        list($formToken,$id,$name,$days,$price) = array_values($_POST);
+        list($formToken,$id,$name,$type,$point,$days,$price) = array_values($_POST);
 
         if(!$id){
             $sql = "insert into 
-            product(`name`,`days`,`price`) 
+            product(`name`,`days`,`price`,`type`,`point`) 
             VALUES(
-              '$name',$days,$price
+              '$name',$days,$price,$type,$point
             )";
         }else{
             $sql = "update product set 
             name='$name',
             days='$days',
-            price='$price'
+            price='$price',
+            point='$point'
             where id='" . $id . "'";
         }
-
         if (mysql_query($sql)) {
             echo "<script language=javascript>alert('设置成功！');window.location='provisionSet.php'</script>";
         } else {
@@ -69,25 +72,38 @@ require_once("../../include/admin.php");
                 <input name="name" class="dfinput" required />
             </li>
             <li>
-                <label>时间</label>
+                <label>类型</label>
+                <select name="type" class="dfinput">
+                    <option value="1">时间</option>
+                    <option value="2">积分</option>
+                </select>
+            </li>
+            <li>
+                <label>积分</label>
+                <input name="point" type="number" min="0" required class="dfinput" />
+            </li>
+            <li>
+                <label>时间(天)</label>
                 <input name="days" type="number" min="1" required class="dfinput" />
             </li>
+
             <li>
                 <label>金额</label>
                 <input name="price" type="number" min="0" required class="dfinput" />
             </li>
-
             <li>
                 <label>&nbsp;</label>
                 <input type="submit" class="btn" value="提&nbsp;&nbsp;交"/>
             </li>
         </ul>
     </form>
-    <table class="tablelist" style="width:300px;">
+    <table class="tablelist" style="">
         <thead>
         <tr>
             <th>项目名称</th>
-            <th>时间</th>
+            <th>类型</th>
+            <th>积分</th>
+            <th>时间(天)</th>
             <th>金额</th>
             <th>操作</th>
         </tr>
@@ -103,10 +119,17 @@ require_once("../../include/admin.php");
                     <input name="name" class="dfinput" required value="<?=$product['name']?>"/>
                 </td>
                 <td>
-                    <input name="days" type="number" min="1" required class="dfinput" value="<?=$product['days']?>"/>
+                    <?=array("1"=>"时间","2"=>"积分")[$product['type']]?>
+                    <input name="type" type="hidden" value="<?=$product['type']?>"/>
                 </td>
                 <td>
-                    <input name="price" type="number" min="1" required class="dfinput" value="<?=$product['price']?>"/>
+                    <input name="point" type="number" min="0" required class="dfinput" value="<?=$product['point']?>"/>
+                </td>
+                <td>
+                    <input name="days" type="number" min="0" required class="dfinput" value="<?=$product['days']?>"/>
+                </td>
+                <td>
+                    <input name="price" type="number" min="0" required class="dfinput" value="<?=$product['price']?>"/>
                 </td>
                 <td style="text-align: center">
                     <input type="submit" value="修改" class="btn1">

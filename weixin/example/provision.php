@@ -26,7 +26,7 @@ require_once("../../include/global.php");
         </div>
     </div>
 
-    <div class="weui-cells__title">开通时间</div>
+    <div class="weui-cells__title">选择充值产品</div>
     <div class="weui-cell weui-cell_select">
         <div class="weui-cell__bd">
             <select class="weui-select" required name="project" id="productList" onchange='btnChange(this[selectedIndex]);'>
