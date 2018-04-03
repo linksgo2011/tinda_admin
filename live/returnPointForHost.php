@@ -4,11 +4,7 @@ ini_set('display_errors','On');
 require_once '../lib/QcloudApi/QcloudApi.php';
 require_once("../include/global.php");
 
-$config = array(
-    'SecretId'       => "AKIDJSO6brOhHdlfLlfsc6MN8euvgCS0RXUD",
-    'SecretKey'      => "c0A6qMehW6TbWDgutc7NN7cr8E5i7HDv",
-    'RequestMethod'  => 'GET',
-    'DefaultRegion'  => 'ap-guangzhou');
+$config = include "../include/config-live.php";
 $api = QcloudApi::load(QcloudApi::MODULE_LIVE, $config);
 
 $liveID = $_POST['live_id'];

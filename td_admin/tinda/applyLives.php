@@ -102,7 +102,7 @@ function passLive($api,$package,$appID){
     }
 }
 
-    $appID = "1254896179"; // 应用ID
+    $appID = "1253555733"; // 应用ID
     $pointAttr = array(0=>"否",1=>'是');
     $statusTypes = array(0=>"申请中",1=>'已经处理',2=>'拒绝');
 

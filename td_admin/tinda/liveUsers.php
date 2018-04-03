@@ -34,7 +34,7 @@ $package = array(
 
 <div class="formbody">
 <?php
-    $appID = "1254896179"; // 应用ID
+    $appID = "1253555733"; // 应用ID
 
     if ($_POST["tjbx-abc"] == 'h-chi-vgs-8-com') {
         list($formToken,$id,$title) = array_values($_POST);

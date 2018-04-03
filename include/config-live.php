@@ -1,8 +1,8 @@
 <?php
 
 return array(
-    'SecretId'       => "AKIDJSO6brOhHdlfLlfsc6MN8euvgCS0RXUD",
-    'SecretKey'      => "c0A6qMehW6TbWDgutc7NN7cr8E5i7HDv",
+    'SecretId'       => "AKIDGQPDpV1j6IOJ4Sc9A3lMly3HOI3daPXU",
+    'SecretKey'      => "ueDfv41nldJrEwZQ9h3EDXt8C8ygDat4",
     'RequestMethod'  => 'GET',
     'DefaultRegion'  => 'ap-guangzhou'
 );

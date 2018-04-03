@@ -8,7 +8,7 @@ require_once '../../lib/QcloudApi/QcloudApi.php';
 $config = include "../../include/config-live.php";
 
 $api = QcloudApi::load(QcloudApi::MODULE_LIVE, $config);
-$appID="1254896179";
+$appID="1253555733";
 
 $package = array(
     'SignatureMethod' => 'HmacSHA256'
