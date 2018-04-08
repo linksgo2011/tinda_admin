@@ -10,16 +10,12 @@
     UNIQUE KEY `key_UNIQUE` (`key`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
- 
- 
- # 密码查询关闭提示
+# 密码查询关闭提示
 
 > **ALTER TABLE `tinda`.`hchi_pscxsz` 
  ADD COLUMN `closed_tip` VARCHAR(45) NULL AFTER `pz_beiz`;**
  
- 
- 
- # 增加用户积分
+# 增加用户积分
  ALTER TABLE `tinda`.`feedbackinfo` 
  ADD COLUMN `point` INT NOT NULL DEFAULT 0 COMMENT '积分' AFTER `us_koner`;
 
@@ -55,3 +51,12 @@ CREATE TABLE `apply_live` (
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
+#创建live_rate
+
+CREATE TABLE `tinda`.`live_rate` (
+  `id` INT UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `live_id` INT NULL,
+  `user_id` INT NULL,
+  `rate` INT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
