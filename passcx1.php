@@ -118,7 +118,7 @@ function ini()
 ///////znkq shop
 ///
 ///
-            $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "'";
+            $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "' and `pa_xingqh`='$pa_xingqh'";
             $rsAA = mysql_query($sqlAA);
             $count = mysql_fetch_assoc($rsAA);
             if ($count["id"] <> "" and $count["pa_pin"] <> "") {
