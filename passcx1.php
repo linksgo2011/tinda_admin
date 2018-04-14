@@ -10,6 +10,7 @@ function ini()
 {
 /////////////////////
     require_once("include/global.php");
+
     $l_date = date("Y-m-d h:i:s");
     $l_date1 = date("Y-m-d");
     $pa_pingp = $_POST["papingp"];
@@ -149,6 +150,16 @@ function ini()
 
                 // 已经存在的查询就不允许再次提交
                 $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and pa_pin=''";
+                $existQueryResult = mysql_query($sqlForCheckExist);
+                $existQuery = mysql_fetch_assoc($existQueryResult);
+                if($existQuery["id"]){
+                    echo 5;
+                    exit;
+                }
+
+                // 当天提交过就不允许再次提交
+                $today = date("Y-m-d");
+                $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and `pa_date` > $today";
                 $existQueryResult = mysql_query($sqlForCheckExist);
                 $existQuery = mysql_fetch_assoc($existQueryResult);
                 if($existQuery["id"]){
