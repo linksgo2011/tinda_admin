@@ -40,5 +40,5 @@ if($pagecount>9)//<5P
 }
 ?>
 
-        <li class="paginItem"><?php if($pageALL<>$pagecount and $pagecount>1){?><a href="?pageno=<?php echo $pageALL+1?>&tjrfl=<?php echo $tjrfl?>&usname=<?php echo $usname?>&usmod=<?php echo $usmod?>&zfbname=<?php echo $zfbname?>"><span class="pagenxt"></span></a><?php }else{?><a><span class="pagenxt1"></span></a><?php }?></li>
+        <li class="paginItem"><?php if($pageALL<>$pagecount and $pagecount>1){?><a href="?pageno=<?php echo $pageALL+1?>&tjrfl=<?php echo $tjrfl?>&usname=<?php echo $usname?>&usmod=<?php echo $usmod?>&zfbname=<?php echo $zfbname?>&sousuo=<?php echo $sousuo?>"><span class="pagenxt"></span></a><?php }else{?><a><span class="pagenxt1"></span></a><?php }?></li>
      </ul>    <br />  
