@@ -157,16 +157,6 @@ function ini()
                     exit;
                 }
 
-                // 当天提交过就不允许再次提交
-                $today = date("Y-m-d");
-                $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and `pa_date` > $today";
-                $existQueryResult = mysql_query($sqlForCheckExist);
-                $existQuery = mysql_fetch_assoc($existQueryResult);
-                if($existQuery["id"]){
-                    echo 5;
-                    exit;
-                }
-
                 $sql1 = "insert into hchi_passcx (yhm,pa_pingp,pa_chex,pa_nianf,pa_xingqh,pa_cjh,pa_date) values ('$us_name','$pa_pingp','$pa_chex','$pa_nianf','$pa_xingqh','$pa_cjh','$l_date')";
                 if (mysql_query($sql1)) {
                     echo 1;
