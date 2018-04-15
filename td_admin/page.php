@@ -33,7 +33,7 @@ if($pagecount>9)//<5P
 		 {
          echo "<li class='paginItem current'><a>$i</a></li>";
 		 }else{
-         echo "<li class='paginItem'><a href='?pageno=$i&tjrfl=$tjrfl&usname=$usname&usmod=$usmod&zfbname=$zfbname'>$i</a></li>";
+         echo "<li class='paginItem'><a href='?pageno=$i&tjrfl=$tjrfl&usname=$usname&usmod=$usmod&zfbname=$zfbname&sousuo=$sousuo'>$i</a></li>";
 		 }
      }
 	echo "<li class='paginItem more'><a>...</a>";
