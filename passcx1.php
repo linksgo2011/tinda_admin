@@ -10,6 +10,7 @@ function ini()
 {
 /////////////////////
     require_once("include/global.php");
+    require_once("include/log.php");
 
     $l_date = date("Y-m-d h:i:s");
     $l_date1 = date("Y-m-d");

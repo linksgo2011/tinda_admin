@@ -11,7 +11,7 @@
 	require_once(XXCMS_ROOT."include/sql-zl.php");
 	require_once("Mysql.Class.php");
 
-    require_once(XXCMS_ROOT."include/log.php");
+    // require_once(XXCMS_ROOT."include/log.php"); stop this temporarily due to the performance issue
 
 	//ʵ�����ݿ����
 	$db=new mysql($mydbhost,$mydbuser,$mydbpw,$mydbname,$conn,$mydbcharset);
