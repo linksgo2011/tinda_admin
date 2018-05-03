@@ -60,3 +60,9 @@ CREATE TABLE `tinda`.`live_rate` (
   `rate` INT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+  
+# VIP 
+
+ALTER TABLE `tinda`.`feedbackinfo` 
+ADD COLUMN `vip` TINYINT(2) NULL DEFAULT 0 AFTER `point`;
+

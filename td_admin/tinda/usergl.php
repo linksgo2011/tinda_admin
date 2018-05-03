@@ -67,13 +67,14 @@ if($_GET['tj'] == 'out'){
 		$email1=$_POST["email1"];
 		$comment1=$_POST["comment1"];
 		$phone=$_POST["phone"];
+		$vip = $_POST['vip'];
 
 		if($pass=="" or xg_date=="" or title1=="" or name1=="" or email1=="" or comment1==""){
 		echo "<script language=javascript>alert('请认真填写参数！');window.location='usergl.php?pageno=".$pageno."&usname=".$usname."'</script>";
 		exit();
 		}
 
-		$sql1="update feedbackinfo set pass='$pass',end_date='$xg_date',title='$title1',name='$name1',email='$email1',comment='$comment1',phone='$phone' where id=$xg_id";
+		$sql1="update feedbackinfo set pass='$pass',end_date='$xg_date',title='$title1',name='$name1',email='$email1',comment='$comment1',phone='$phone',vip=$vip where id=$xg_id";
 		if(mysql_query($sql1))
 		{
 		echo "<script language=javascript>alert('修改成功！');window.location='usergl.php?pageno=".$pageno."&usname=".$usname."'</script>";
@@ -87,7 +88,6 @@ if($_GET['tj'] == 'out'){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
-<link href="../css/select.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/showdate.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.idTabs.min.js"></script>
@@ -153,6 +153,7 @@ $(document).ready(function(e) {
         <th>提示</th>
        <th>注册时间</th>
         <th>到期时间</th>
+        <th>VIP</th>
         <th>操作</th>
         </tr>
         </thead>
@@ -212,6 +213,12 @@ $(document).ready(function(e) {
         <td>
       <input name="xg_id" type="hidden" id="xg_id" value="<?php echo $rows["id"]?>">
       <input name="xg_date" type="text" id="xg_date" value="<?php echo $rows["end_date"]?>" size="12" class="dfinput" style="width:auto;">
+        </td>
+        <td>
+            <select name="vip" id="vip" class="uew-select">
+                <option <?php echo $rows['vip']?'selected':'' ?> value="1">VIP</option>
+                <option <?php echo $rows['vip']?'':'selected' ?> value="0" value="">普通用户</option>
+            </select>
         </td>
         <td><input type="submit" name="xiugan" id="xiugan" value="修改" class="btn1"><br/>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=xiaxian&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" class="tablelink">强制下线</a>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
         </tr> 

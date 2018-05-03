@@ -4,6 +4,7 @@ require_once("../../include/global.php");
 
 require_once "../lib/WxPay.Api.php";
 require_once '../lib/WxPay.Notify.php';
+require_once("../../include/utils.php");
 require_once 'log.php';
 
 //初始化日志
@@ -91,6 +92,8 @@ class PayNotifyCallBack extends WxPayNotify
                 mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
             }
 
+            // 更新用户为VIP
+            setUserToVIP($userId);
         }
 		return true;
 	}
