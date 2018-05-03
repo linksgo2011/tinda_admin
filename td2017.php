@@ -27,22 +27,26 @@ function ini()
     $sql = "select * from feedbackinfo where title='" . $name . "' and  pass='" . $psw . "'";
     $rs = mysql_query($sql);
     $count = mysql_fetch_assoc($rs);
-    $day = strtotime($count["end_date"]);
+    $day = strtotime($count["end_date"]) - 24 * 60 * 60;
     if ($count["title"] == "") {
         echo '3';
         exit();
     }
-
-    if ($count["us_koner"] == "" || ($count["us_koner"] == $us_koner)) {
-        $user_id = $count["id"];
-        $sqldate = "update feedbackinfo set dl_date='" . $l_date . "',us_koner='" . $us_koner . "' where id='" . $user_id . "'";
-        mysql_query($sqldate);
-        echo '1';
+    //////
+    if ($count["title"] != "" and strtotime($count["end_date"]) > strtotime($l_date1)) {
+        if ($count["us_koner"] == "" || ($count["us_koner"] == $us_koner)) {
+            $user_id = $count["id"];
+            $sqldate = "update feedbackinfo set dl_date='" . $l_date . "',us_koner='" . $us_koner . "' where id='" . $user_id . "'";
+            mysql_query($sqldate);
+            echo '1';
+        } else {
+            $user_id = $count["id"];
+            $sqldate = "update feedbackinfo set end_date='" . date('Y-m-d', $day) . "',qzxx=qzxx+1,dl_date='" . $l_date . "',us_koner='" . $us_koner . "' where id='" . $user_id . "'";
+            mysql_query($sqldate);
+            echo '1';
+        }
     } else {
-        $user_id = $count["id"];
-        $sqldate = "update feedbackinfo set end_date='" . date('Y-m-d', $day) . "',qzxx=qzxx+1,dl_date='" . $l_date . "',us_koner='" . $us_koner . "' where id='" . $user_id . "'";
-        mysql_query($sqldate);
-        echo '1';
+        echo '2';
     }
 }else{
  echo '0';
