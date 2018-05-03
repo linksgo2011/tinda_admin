@@ -27,7 +27,7 @@ function ini()
     $sql = "select * from feedbackinfo where title='" . $name . "' and  pass='" . $psw . "'";
     $rs = mysql_query($sql);
     $count = mysql_fetch_assoc($rs);
-    $day = strtotime($count["end_date"]) - 24 * 60 * 60;
+    $day = strtotime($count["end_date"]);
     if ($count["title"] == "") {
         echo '3';
         exit();
