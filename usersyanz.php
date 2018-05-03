@@ -20,10 +20,6 @@ function ini()
         if ($rows["us_koner"] <> "" and $rows["us_koner"] <> $usertoke) {
             echo '2';
             die();
-        }
-        if ($rows["us_koner"] <> "" and strtotime($rows["end_date"]) < time()) {
-            echo '3';
-            die();
         } else {
             echo '1';
             die();
