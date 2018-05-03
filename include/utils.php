@@ -17,3 +17,13 @@ function setUserToVIP($userId){
     }
 }
 
+function out($status,$data,$message){
+    echo json_encode(
+        array(
+            'status'=>$status,
+            'data'=>$data,
+            'message'=>$message
+        )
+    );
+    exit;
+}
