@@ -1,7 +1,7 @@
 <?php
-$mydbhost="localhost";
+$mydbhost="127.0.0.1";
 $mydbuser="root";
-$mydbpw  ="chens0925CHENS7";
+$mydbpw  ="";
 $mydbname="tinda";
 $conn    =""; 
 $mydbcharset="utf8";
