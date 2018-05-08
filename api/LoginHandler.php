@@ -15,6 +15,7 @@ class LoginHandler extends BaseHandler{
 
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $token = $_POST['token'];
 
         $user = $db->get("feedbackinfo", [
             "id",
@@ -33,13 +34,21 @@ class LoginHandler extends BaseHandler{
         }
 
         if($user['id']){
+
+            // update token
+            $db->update("feedbackinfo",
+                array('us_koner'=>$token),
+                array("id[=]"=>$user['id'])
+            );
+
             $token = Authenticator::encode($user['id']);
             $this->out(200,array(
                 "token"=>$token,
                 "permission"=>$permission
             ));
+
         }else{
-            $this->out(403);
+            $this->out(401);
         }
     }
 }
