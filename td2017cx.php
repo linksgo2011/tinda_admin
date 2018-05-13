@@ -12,9 +12,11 @@ function ini()
     require_once("include/global.php");
     $sey = $_POST['sey'];
     $sey1 = $_POST['sey1'];
+    $module = $_GET['module'] ? $_GET['module']:"data";
+
 //shop
     if ($sey == "zlcx") {
-        $rs = mysql_query("select * from finl where fl1=0 order by id asc");
+        $rs = mysql_query("select * from finl where fl1=0 and `module`='$module' order by id asc");
         while ($rows = mysql_fetch_assoc($rs)) {
             $arr[] = array('id' => $rows["id"], 'name' => $rows["name"], 'logoA' => $rows['logoA']);
         }
