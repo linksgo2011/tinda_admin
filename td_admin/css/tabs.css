@@ -1,0 +1,11 @@
+.tabs{
+
+}
+.tabs li{
+    display: inline-block;
+    padding:10px 20px;
+}
+
+.tabs li.current a{
+    color:#00a4ac;
+}
