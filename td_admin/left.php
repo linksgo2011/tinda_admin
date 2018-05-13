@@ -64,8 +64,7 @@ $(function(){
     <ul class="menuson">
         <li><cite></cite><a href="tinda/usergl.php" target="rightFrame">用户管理</a><i></i></li>
         <li><cite></cite><a href="../register.php" target="rightFrame">添加用户</a><i></i></li>
-        <li><cite></cite><a href="tinda/chaxfinl.php" target="rightFrame">资料菜单</a><i></i></li>
-        <li><cite></cite><a href="tinda/addInfo.php" target="rightFrame">添加资料</a><i></i></li>
+        <li><cite></cite><a href="tinda/chaxfinl.php?module=data" target="rightFrame">资料菜单</a><i></i></li>
         <li><cite></cite><a href="subBannerSetting.php" target="rightFrame">查询页广告设置</a><i></i></li>
     </ul>
     </dd> 
