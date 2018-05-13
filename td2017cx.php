@@ -12,7 +12,7 @@ function ini()
     require_once("include/global.php");
     $sey = $_POST['sey'];
     $sey1 = $_POST['sey1'];
-    $module = $_GET['module'] ? $_GET['module']:"data";
+    $module = $_POST['module'] ? $_POST['module']:"data";
 
 //shop
     if ($sey == "zlcx") {
