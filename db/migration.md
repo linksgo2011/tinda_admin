@@ -66,3 +66,9 @@ CREATE TABLE `tinda`.`live_rate` (
 ALTER TABLE `tinda`.`feedbackinfo` 
 ADD COLUMN `vip` TINYINT(2) NULL DEFAULT 0 AFTER `point`;
 
+
+# module
+
+ALTER TABLE `tinda`.`finl` 
+ADD COLUMN `module` VARCHAR(45) NULL DEFAULT 'data' AFTER `ggimg`;
+

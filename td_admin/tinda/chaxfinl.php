@@ -3,6 +3,11 @@ require_once("../../include/global.php");
 $ad_name1234=$_SESSION["ad_name1234"];
 $ad_id1234=$_SESSION["ad_id1234"];
 
+if(!$_GET['module']){
+    echo "<script language=javascript>window.top.location.href='?module=data'</script>";
+    die();
+}
+
 if($_GET['tj'] == 'out'){
  session_destroy();
  echo "<script language=javascript>alert('退出成功！');window.location='../index.php'</script>";
@@ -19,15 +24,16 @@ if($_GET['tj'] == 'out'){
 <?php
 	if($_POST["tjbx-abc"]=='h-chi-vgs-8-com')
 	{
-	$xg_id=$_POST["xg_id"];
+        $xg_id=$_POST["xg_id"];
 	$name1=$_POST["name1"];
 	$logoA=$_POST["img"];
 	$url1=$_POST["url1"];
 	$paix1=$_POST["paix1"];
+
 		$sql1="update finl set name='$name1',url1='$url1',paix='$paix1' where id='".$xg_id."'";
 		if (mysql_query($sql1))
 		{
-		echo "<script language=javascript>alert('修改成功！');window.location='chaxfinl.php'</script>";
+		echo "<script language=javascript>alert('修改成功！');window.location=window.location.href</script>";
 		}
 		die();
 	}
@@ -39,23 +45,27 @@ if($_GET['tj'] == 'out'){
 	$name1=$_POST["name1"];
 	$logoA=$_POST["img"];
 	$url1=$_POST["url2"];
-		$sql2="insert into finl (fl1,name,logoA,url1) values ('$fl1','$name1','$logoA','$url1')";
+	$module = $_GET['module'];
+		$sql2="insert into finl (fl1,name,logoA,url1,`module`) values 
+              ('$fl1','$name1','$logoA','$url1','$module')";
 		if(mysql_query($sql2))
 		{
-		echo "<script language=javascript>alert('添加成功！');window.location='chaxfinl.php'</script>";
+		echo "<script language=javascript>alert('添加成功！');window.location=window.location.href</script>";
 		}
+		echo $sql2;exit;
 		die();
 	}
 ?>
 <?php
 	if($_GET['edit'] == 'del'){
 	$Aid=$_GET["Aid"];
+	$module = $_GET['module'];
 
 	$sql="delete from finl where id=$Aid";
-	if(mysql_query($sql)){ 
-		echo "<script language=javascript>alert('删除成功！');window.location='chaxfinl.php'</script>";
+	if(mysql_query($sql)){
+		echo "<script language=javascript>alert('删除成功！');window.location='chaxfinl.php?module=$module'</script>";
 		 }else{
-		echo "<script language=javascript>alert('操作错误！');window.location='chaxfinl.php'</script>";
+		echo "<script language=javascript>alert('操作错误！');window.location='chaxfinl.php?module=$module'</script>";
 		}
 	}
 ?>
@@ -65,6 +75,7 @@ if($_GET['tj'] == 'out'){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link href="../css/tabs.css" rel="stylesheet" type="text/css" />
 <!--link href="../css/select.css" rel="stylesheet" type="text/css" /-->
 <script type="text/javascript" src="../js/showdate.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
@@ -126,20 +137,37 @@ if($_GET['tj'] == 'out'){
     <li><a href="#">查询类目</a></li>
     </ul>
     </div>
-    
+
+
+<ul class="tabs">
+    <li class="<?php echo $_GET['module']=='data'?'current':'';?>">
+        <a href="?module=data" name="" >资料管理</a>
+    </li>
+    <li class="<?php echo $_GET['module']=='dashboard'?'current':'';?>">
+        <a href="?module=dashboard" name="" >仪表资料</a>
+    </li>
+    <li class="<?php echo $_GET['module']=='maintain'?'current':'';?>">
+        <a href="?module=maintain" name="" >维修资料</a>
+    </li>
+    <li class="<?php echo $_GET['module']=='aircell'?'current':'';?>">
+        <a href="?module=aircell" name="" >气囊资料</a>
+    </li>
+</ul>
+
 <div class="formbody" style="background:#ddd">
     <div id="usual1" class="usual"> 
     
   	<div class="tabson">
-<form id="form1" name="form1" action="chaxfinl.php" method="post">
+<form id="form1" name="form1"  method="post">
       <input name="tjbx-abc1" type="hidden" id="tjbx-abc1" value="h-chi-vgs-8-com" />
     <ul class="forminfo">
     <li>
       <label>分类</label>
       <select name="fl1" id="fl1"  class="dfinput">
       <option value="0" selected>+新建大类</option>
-<?php 
-	$sql="select * from finl where fl1=0";
+<?php
+    $module = $_GET['module'];
+	$sql="select * from finl where fl1=0 and `module`='$module'";
 	$rs=mysql_query($sql);
 	while($rows=mysql_fetch_assoc($rs))
 	{
@@ -180,14 +208,15 @@ if($_GET['tj'] == 'out'){
     
   	<div class="tabson">
 <?php
-	$sql="select * from finl where fl1=0 order by id asc";
+    $module = $_GET['module'];
+	$sql="select * from finl where fl1=0 and `module`='$module' order by id asc";
 	$rs=mysql_query($sql);
 	while($rows=mysql_fetch_assoc($rs))
 	{
 ?>
 
 <!--    车系    -->
-<form name="form1" method="post" action="chaxfinl.php">
+<form name="form1" method="post" >
       <input name="tjbx-abc" type="hidden" id="tjbx-abc" value="h-chi-vgs-8-com" />
     <ul class="forminfo">
     <li>|:
@@ -195,7 +224,7 @@ if($_GET['tj'] == 'out'){
       <input name="name1" type="text" id="name1" value="<?php echo $rows["name"]?>" size="15" class="dfinput">
         <img src="<?php if($rows["logoA"]<>""){echo $rows["logoA"];}else{echo '/images/icon-read2.png';}?>" height="24px"/>
         &nbsp;&nbsp;<a href="sanqlogo.php?Aid=<?php echo $rows["id"]?>" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff00ff;color:#FFF;"> 上传图标</a>
-      &nbsp;&nbsp;<input type="submit" name="xiugan" id="xiugan" value="确认" class="btn1">&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del">删除</a>
+      &nbsp;&nbsp;<input type="submit" name="xiugan" id="xiugan" value="确认" class="btn1">&nbsp;&nbsp;<a href="?module=<?php echo $rows["module"]?>&Aid=<?php echo $rows["id"]?>&edit=del">删除</a>
     </li>
     </ul>
     </form> 
@@ -207,7 +236,7 @@ if($_GET['tj'] == 'out'){
 	while($rows1=mysql_fetch_assoc($rs1))
 	{
 ?>
-<form name="form1" method="post" action="chaxfinl.php">
+<form name="form1" method="post" >
       <input name="tjbx-abc" type="hidden" id="tjbx-abc" value="h-chi-vgs-8-com" />
     <ul class="forminfo" >
     <li>||----品牌:
@@ -230,7 +259,7 @@ if($_GET['tj'] == 'out'){
 	while($rows2=mysql_fetch_assoc($rs2))
 	{
 ?>
-<form name="form1" method="post" action="chaxfinl.php">
+<form name="form1" method="post" >
       <input name="tjbx-abc" type="hidden" id="tjbx-abc" value="h-chi-vgs-8-com" />
     <ul class="forminfo" >
     <li>|||----:
