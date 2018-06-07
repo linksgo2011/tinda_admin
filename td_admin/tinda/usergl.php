@@ -201,6 +201,7 @@ $(document).ready(function(e) {
         <td>
         <input name="title1" type="text" id="title1" value="<?php echo $rows["title"]?>" size="6" class="dfinput" style="width:120px;">
         <a href="#" onClick="javascript:window.open('viewdetail.php?info_id=<?php echo $rows["id"] ?>','InfoDetail','toolbar=no,scrollbars=yes,resizable=yes,top=0,left=0,width=460 height=360');">查看资料</a>
+            <a href="#" onClick="javascript:window.open('viewlogs.php?username=<?php echo $rows["title"] ?>','InfoDetail','toolbar=no,scrollbars=yes,resizable=yes,top=0,left=0,width=460 height=360');">查看日志</a>
         </td>
         <td><?php echo $rows["qzxx"]?>次</td>
         <td><input name="name1" type="text" id="name1" value="<?php echo $rows["name"]?>" class="dfinput" style="width:120px;"></td>
