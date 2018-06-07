@@ -23,11 +23,8 @@ if($_GET['tj'] == 'out'){
 	$rows=mysql_fetch_assoc($rs);
 ?>
 <html>
-<title>腾达汽车资料查询系统 手机版登记信息</title>
-<meta NAME="腾达汽车资料查询系统 手机版登记信息">
-<meta NAME="腾达汽车资料查询系统 手机版登记信息">
-<meta NAME="腾达汽车资料查询系统 手机版登记信息">
-<meta NAME="腾达汽车资料查询系统 手机版登记信息">
+<title>腾达汽车资料查询系统 查询日志</title>
+<meta NAME="腾达汽车资料查询系统 查询日志">
 <style type="text/css">
 <!--
 .p9 {  font-size: 9pt; line-height: 16pt}
