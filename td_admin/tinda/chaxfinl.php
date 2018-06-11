@@ -246,7 +246,7 @@ if($_GET['tj'] == 'out'){
       <img src="<?php if($rows1["logoA"]<>""){echo $rows1["logoA"];}else{echo '/images/icon-read2.png';}?>" height="24px"/>
       &nbsp;&nbsp;<a href="sanqlogo.php?Aid=<?php echo $rows1["id"]?>" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff00ff;color:#FFF;"> 上传图标</a>
       &nbsp;&nbsp;<input type="submit" name="xiugan" id="xiugan" value="确认" class="btn1">
-      &nbsp;&nbsp;<a href="?Aid=<?php echo $rows1["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff0000;color:#FFF;"> 删除</a> 
+      &nbsp;&nbsp;<a href="?module=<?php echo $_GET["module"]?>&Aid=<?php echo $rows1["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff0000;color:#FFF;"> 删除</a>
     </li>
       
     </ul>
