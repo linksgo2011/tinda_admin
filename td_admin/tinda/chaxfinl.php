@@ -269,7 +269,7 @@ if($_GET['tj'] == 'out'){
       &nbsp;排序:<input name="paix1" type="text" id="paix1" value="<?php echo $rows2["paix"]?>" size="15" class="dfinput" style="width:60px;">
       <img src="<?php if($rows2["logoA"]<>""){echo $rows2["logoA"];}else{echo '/images/fl_1.jpg';}?>" height="24px"/>
       &nbsp;&nbsp;<a href="sanqlogo.php?Aid=<?php echo $rows2["id"]?>" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff00ff;color:#FFF;"> 上传图标</a>
-      &nbsp;&nbsp;<input type="submit" name="xiugan" id="xiugan" value="确认" class="btn1">&nbsp;&nbsp;<a href="chax-body.php?Aid=<?php echo $rows2["id"]?>"style="padding:5px 12px 5px 12px;background-color:#ff9900;color:#FFF;">录入祥情</a>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows2["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff0000;color:#FFF;"> 删除</a>
+      &nbsp;&nbsp;<input type="submit" name="xiugan" id="xiugan" value="确认" class="btn1">&nbsp;&nbsp;<a href="chax-body.php?Aid=<?php echo $rows2["id"]?>"style="padding:5px 12px 5px 12px;background-color:#ff9900;color:#FFF;">录入祥情</a>&nbsp;&nbsp;<a href="?module=<?php echo $_GET["module"]?>&Aid=<?php echo $rows2["id"]?>&edit=del" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink" style="padding:5px 12px 5px 12px;background-color:#ff0000;color:#FFF;"> 删除</a>
       </li>
     </ul>
     </form> 
