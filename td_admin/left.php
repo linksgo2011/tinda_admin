@@ -73,6 +73,7 @@ $(function(){
     <ul class="menuson">
         <li><cite></cite><a href="tinda/chasetup.php" target="rightFrame">查询设置</a><i></i></li>
         <li><cite></cite><a href="tinda/glcxpass.php" target="rightFrame">管理查询</a><i></i></li>
+        <li><cite></cite><a href="tinda/autoSearch.php" target="rightFrame">自动查询</a><i></i></li>
         <li><cite></cite><a href="tinda/newpass.php" target="rightFrame">最新申请</a><i></i></li>
         <li><cite></cite><a href="tinda/finlpass.php" target="rightFrame">分类管理</a><i></i></li>
     </ul>
