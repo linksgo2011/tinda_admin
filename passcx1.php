@@ -89,7 +89,7 @@ function ini()
                     $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
 						
-									$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_chex')";
+									$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
 					          mysql_query($sql1);
 						
                         echo $html;
@@ -102,7 +102,7 @@ function ini()
                     $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
 						
-								$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_chex')";
+								$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
 					          mysql_query($sql1);
 						
 						
