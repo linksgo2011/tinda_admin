@@ -72,3 +72,15 @@ ADD COLUMN `vip` TINYINT(2) NULL DEFAULT 0 AFTER `point`;
 ALTER TABLE `tinda`.`finl` 
 ADD COLUMN `module` VARCHAR(45) NULL DEFAULT 'data' AFTER `ggimg`;
 
+# add created field to rj table 
+
+ALTER TABLE `tinda`.`rj` 
+ADD COLUMN `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
+
+# add new field for `rj`
+
+ALTER TABLE `tinda`.`rj` 
+ADD COLUMN `chex` VARCHAR(45) NULL AFTER `created`;
+
+
+

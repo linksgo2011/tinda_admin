@@ -41,7 +41,8 @@ if($_GET['tj'] == 'out'){
             $row=mysql_fetch_array($rs);
             $yhm=$row["yhm"];
             $cjh=$row["pa_cjh"];
-            $sql1 = "insert into rj (yhm,cjh,pin) values ('$yhm','$cjh','$papin')";
+            $chex=$row['pa_chex'];
+            $sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$yhm','$cjh','$papin','$chex')";
             mysql_query($sql1);
 
 		    echo "<script language=javascript>alert('提交成功！');window.location='newpass.php'</script>";

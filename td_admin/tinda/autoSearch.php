@@ -115,6 +115,7 @@ $(document).ready(function(e) {
     <table class="tablelist">
     	<thead>
             <tr>
+                <th>车型</th>
                 <th>车架号</th>
                 <th>密码</th>
                 <th>用户名</th>
@@ -165,6 +166,7 @@ $(document).ready(function(e) {
 	{
 ?>
         <tr>
+        <td><?php echo $rows["chex"]?></td>
         <td><?php echo $rows["cjh"]?></td>
         <td><?php echo $rows["pin"]?></td>
         <td><?php echo $rows["yhm"]?></td>

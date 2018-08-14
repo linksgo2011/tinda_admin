@@ -32,6 +32,7 @@ function ini()
     $sqlzhanw = "select * from  hchi_cxfl where cx_title='" . $pa_pingp . "'";
     $rszhanw = mysql_query($sqlzhanw);
     $countzhanw = mysql_fetch_assoc($rszhanw);//品牌查询
+    $chex = $sqlzhanw['cx_title'];
 
     $sqlsetup = "select * from  hchi_pscxsz";
     $rssetup = mysql_query($sqlsetup);
@@ -89,7 +90,7 @@ function ini()
                     $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
 						
-									$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$html')";
+									$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$chex')";
 					          mysql_query($sql1);
 						
                         echo $html;
@@ -102,7 +103,7 @@ function ini()
                     $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
 						
-								$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$html')";
+								$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$chex')";
 					          mysql_query($sql1);
 						
 						
