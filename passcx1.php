@@ -11,7 +11,6 @@ function ini()
 /////////////////////
     require_once("include/global.php");
     require_once("include/log.php");
-    require_once("include/pay.php");
 
     $l_date = date("Y-m-d h:i:s");
     $l_date1 = date("Y-m-d");
@@ -87,45 +86,31 @@ function ini()
                 die();
             } else {
                 if ($l_date1 == $countus["cx_date"]) {
-                    try{
-                        payWithPoint($us_name);
-                    }catch(Exception $e){
-                        echo $e->getMessage();
-                        exit;
-                    }
-
                     $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
-						
-									$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
-					          mysql_query($sql1);
-						
+
+                        $sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
+                        mysql_query($sql1);
+
                         echo $html;
-						
-			
-						
+
+
+
                         die();
                     }
                 } elseif ($l_date1 <> $countus["cx_date"]) {
-                    try{
-                        payWithPoint($us_name);
-                    }catch(Exception $e){
-                        echo $e->getMessage();
-                        exit;
-                    }
-
                     $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
-						
-								$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
-					          mysql_query($sql1);
-						
-						
-						
+
+                        $sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
+                        mysql_query($sql1);
+
+
+
                         echo $html;
-						
-					
-						
+
+
+
                         die();
                     }
                 }
@@ -147,7 +132,7 @@ function ini()
 //						$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
 //					          mysql_query($sql1);
 
-						
+
                         die();
                     }
                 } elseif ($l_date1 <> $countus["cx_date"]) {
