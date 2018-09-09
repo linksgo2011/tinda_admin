@@ -66,131 +66,137 @@ function ini()
     if ($l_date1 == $countus["cx_date"] and !in_array($pa_cjh, $arr) and $countsetup["pz_shul"] == $czxincs) {
         $cxpassA = "yes";
     }
-
     /*--------是否已查询 end-------*/
     if ($cxpassA == "yes") {
-        // 查询次数用完使用积分支付
-        try{
-            payWithPoint($us_name);
-        }catch(Exception $e){
-            echo $e->getMessage();
-            exit;
-        }
-    }
+        echo 5;
+    } else {//查询数用完
+        if ($countzhanw["cx_url"] <> "") {//站外查询
+///////zwcx shop
+            $url = $countzhanw["cx_url"] . '?type=' . $countzhanw["cx_type"] . '&vinm=' . $pa_cjh . '&CarType=' . $countzhanw["cx_cartype"] . '&sqm=' . $pa_xingqh;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            $html = curl_exec($ch);
+            curl_close($ch);
+            if ($html == "no") {
+                echo 3;
+                die();
+            } elseif ($html == "") {
+                echo 2;
+                die();
+            } else {
+                if ($l_date1 == $countus["cx_date"]) {
+                    try{
+                        payWithPoint($us_name);
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                        exit;
+                    }
 
-    if ($countzhanw["cx_url"] <> "") {//站外查询
-    ///////zwcx shop
-        $url = $countzhanw["cx_url"] . '?type=' . $countzhanw["cx_type"] . '&vinm=' . $pa_cjh . '&CarType=' . $countzhanw["cx_cartype"] . '&sqm=' . $pa_xingqh;
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $html = curl_exec($ch);
-        curl_close($ch);
-        if ($html == "no") {
-            echo 3;
-            die();
-        } elseif ($html == "") {
-            echo 2;
-            die();
-        } else {
-            if ($l_date1 == $countus["cx_date"]) {
+                    $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
+                    if (mysql_query($sqlA)) {
+						
+									$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
+					          mysql_query($sql1);
+						
+                        echo $html;
+						
+			
+						
+                        die();
+                    }
+                } elseif ($l_date1 <> $countus["cx_date"]) {
+                    try{
+                        payWithPoint($us_name);
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                        exit;
+                    }
 
-                $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
-                if (mysql_query($sqlA)) {
-
-                                $sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
-                          mysql_query($sql1);
-
-                    echo $html;
-
-
-
-                    die();
-                }
-            } elseif ($l_date1 <> $countus["cx_date"]) {
-
-                $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
-                if (mysql_query($sqlA)) {
-
-                            $sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
-                          mysql_query($sql1);
-
-
-
-                    echo $html;
-
-
-
-                    die();
-                }
-            }
-        }
-    ///////zwcx end
-    } elseif ($countzhanw["cx_url"] == "" and $countsetup["pz_off"] == 1) {//站内开启
-    ///////znkq shop
-    ///
-    ///
-        $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "' and `pa_xingqh`='$pa_xingqh'";
-        $rsAA = mysql_query($sqlAA);
-        $count = mysql_fetch_assoc($rsAA);
-        if ($count["id"] <> "" and $count["pa_pin"] <> "") {
-            if ($l_date1 == $countus["cx_date"]) {
-                $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
-                if (mysql_query($sqlA)) {
-                    echo $count["pa_pin"];
-    //						$pin=$count["pa_pin"];
-    //						$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
-    //					          mysql_query($sql1);
-
-
-                    die();
-                }
-            } elseif ($l_date1 <> $countus["cx_date"]) {
-                $sqlB = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
-                if (mysql_query($sqlB)) {
-                    echo $count["pa_pin"];
-    //                        $sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
-    //                        mysql_query($sql1);
-                    die();
+                    $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
+                    if (mysql_query($sqlA)) {
+						
+								$sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
+					          mysql_query($sql1);
+						
+						
+						
+                        echo $html;
+						
+					
+						
+                        die();
+                    }
                 }
             }
-        } elseif ($count["id"] <> "" and $count["pa_pin"] == "") {
-            echo 1;
-            die();
-        } else {
+///////zwcx end
+        } elseif ($countzhanw["cx_url"] == "" and $countsetup["pz_off"] == 1) {//站内开启
+///////znkq shop
+///
+///
+            $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "' and `pa_xingqh`='$pa_xingqh'";
+            $rsAA = mysql_query($sqlAA);
+            $count = mysql_fetch_assoc($rsAA);
+            if ($count["id"] <> "" and $count["pa_pin"] <> "") {
+                if ($l_date1 == $countus["cx_date"]) {
+                    $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
+                    if (mysql_query($sqlA)) {
+                        echo $count["pa_pin"];
+//						$pin=$count["pa_pin"];
+//						$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
+//					          mysql_query($sql1);
 
-            // 已经存在的查询就不允许再次提交
-            $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and pa_pin=''";
-            $existQueryResult = mysql_query($sqlForCheckExist);
-            $existQuery = mysql_fetch_assoc($existQueryResult);
-            if($existQuery["id"]){
-                echo 5;
-                exit;
-            }
-
-            // 当天提交过就不允许再次提交
-            $today = date("Y-m-d");
-            $sqlForCheckExist = "select * from hchi_passcx where `pa_pingp`='$pa_pingp' yhm='$us_name' and `pa_date` > $today";
-            $existQueryResult = mysql_query($sqlForCheckExist);
-            $existQuery = mysql_fetch_assoc($existQueryResult);
-            if($existQuery["id"]){
-                echo 5;
-                exit;
-            }
-
-            $sql1 = "insert into hchi_passcx (yhm,pa_pingp,pa_chex,pa_nianf,pa_xingqh,pa_cjh,pa_date) values ('$us_name','$pa_pingp','$pa_chex','$pa_nianf','$pa_xingqh','$pa_cjh','$l_date')";
-            if (mysql_query($sql1)) {
+						
+                        die();
+                    }
+                } elseif ($l_date1 <> $countus["cx_date"]) {
+                    $sqlB = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
+                    if (mysql_query($sqlB)) {
+                        echo $count["pa_pin"];
+//                        $sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
+//                        mysql_query($sql1);
+                        die();
+                    }
+                }
+            } elseif ($count["id"] <> "" and $count["pa_pin"] == "") {
                 echo 1;
                 die();
+            } else {
+
+                // 已经存在的查询就不允许再次提交
+                $sqlForCheckExist = "select * from hchi_passcx where yhm='$us_name' and pa_pin=''";
+                $existQueryResult = mysql_query($sqlForCheckExist);
+                $existQuery = mysql_fetch_assoc($existQueryResult);
+                if($existQuery["id"]){
+                    echo 5;
+                    exit;
+                }
+
+                // 当天提交过就不允许再次提交
+                $today = date("Y-m-d");
+                $sqlForCheckExist = "select * from hchi_passcx where `pa_pingp`='$pa_pingp' yhm='$us_name' and `pa_date` > $today";
+                $existQueryResult = mysql_query($sqlForCheckExist);
+                $existQuery = mysql_fetch_assoc($existQueryResult);
+                if($existQuery["id"]){
+                    echo 5;
+                    exit;
+                }
+
+                $sql1 = "insert into hchi_passcx (yhm,pa_pingp,pa_chex,pa_nianf,pa_xingqh,pa_cjh,pa_date) values ('$us_name','$pa_pingp','$pa_chex','$pa_nianf','$pa_xingqh','$pa_cjh','$l_date')";
+                if (mysql_query($sql1)) {
+                    echo 1;
+                    die();
+                }
             }
+///////zngb end
+        } elseif ($countzhanw["cx_url"] == "" and $countsetup["pz_off"] == 2) {//站内关闭
+///////zngb shop
+            echo 4;
+            die();
+///////zngb shop
         }
-    ///////zngb end
-    } elseif ($countzhanw["cx_url"] == "" and $countsetup["pz_off"] == 2) {//站内关闭
-    ///////zngb shop
-        echo 4;
-        die();
-    ///////zngb shop
+//////////
     }
-}
+}//查询数用完
 ?>
