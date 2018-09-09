@@ -82,5 +82,10 @@ ADD COLUMN `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
 ALTER TABLE `tinda`.`rj` 
 ADD COLUMN `chex` VARCHAR(45) NULL AFTER `created`;
 
+# add field for points pay
+ALTER TABLE `tinda`.`hchi_pscxsz` 
+ADD COLUMN `points` INT NULL DEFAULT 0 AFTER `closed_tip`;
+
+
 
 

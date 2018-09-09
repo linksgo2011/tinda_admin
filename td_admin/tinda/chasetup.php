@@ -67,8 +67,9 @@ $rows1 = mysql_fetch_assoc($rs1);
         $pz_shul = $_POST["pz_shul"];
         $pz_off = $_POST["pz_off"];
         $closed_tip = $_POST['closed_tip'];
+        $points = $_POST['points'];
 
-        $sql1 = "update hchi_pscxsz set pz_shul='$pz_shul',pz_off='$pz_off',closed_tip='$closed_tip' where id='" . $Aid . "'";
+        $sql1 = "update hchi_pscxsz set pz_shul='$pz_shul',pz_off='$pz_off',closed_tip='$closed_tip',points='$points' where id='" . $Aid . "'";
         if (mysql_query($sql1)) {
             echo "<script language=javascript>alert('设置成功！');window.location='chasetup.php'</script>";
         } else {
@@ -86,6 +87,11 @@ $rows1 = mysql_fetch_assoc($rs1);
             <li>
                 <label>查询每天</label><input name="pz_shul" type="text" class="dfinput" id="pz_shul"
                                           value="<?php echo $rows1["pz_shul"] ?>" style="width:80px;"/>&nbsp;次
+            </li>
+           <li>
+                <label>扣除积分</label><input name="points" type="number" class="dfinput" id="pz_shul"
+                                          value="<?php echo $rows1["points"] ?>" style="width:80px;"/>
+            &nbsp;分/次
             </li>
             <li>
                 <label>密码</label>

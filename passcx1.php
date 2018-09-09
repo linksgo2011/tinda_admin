@@ -11,6 +11,7 @@ function ini()
 /////////////////////
     require_once("include/global.php");
     require_once("include/log.php");
+    require_once("include/pay.php");
 
     $l_date = date("Y-m-d h:i:s");
     $l_date1 = date("Y-m-d");
@@ -86,6 +87,13 @@ function ini()
                 die();
             } else {
                 if ($l_date1 == $countus["cx_date"]) {
+                    try{
+                        payWithPoint($us_name);
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                        exit;
+                    }
+
                     $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
 						
@@ -99,6 +107,13 @@ function ini()
                         die();
                     }
                 } elseif ($l_date1 <> $countus["cx_date"]) {
+                    try{
+                        payWithPoint($us_name);
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                        exit;
+                    }
+
                     $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
 						
@@ -131,7 +146,7 @@ function ini()
 //						$pin=$count["pa_pin"];
 //						$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
 //					          mysql_query($sql1);
-						
+
 						
                         die();
                     }

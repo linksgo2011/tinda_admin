@@ -83,6 +83,7 @@ $(function(){
         <ul class="menuson">
             <li><cite></cite><a href="tinda/provisionSet.php" target="rightFrame">项目设置</a><i></i></li>
             <li><cite></cite><a href="tinda/provisionLog.php" target="rightFrame">充值记录</a><i></i></li>
+            <li><cite></cite><a href="tinda/recharge.php" target="rightFrame">充积分</a><i></i></li>
         </ul>
     </dd>
 
