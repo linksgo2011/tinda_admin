@@ -154,6 +154,7 @@ $(document).ready(function(e) {
        <th>注册时间</th>
         <th>到期时间</th>
         <th>VIP</th>
+        <th>积分</th>
         <th>操作</th>
         </tr>
         </thead>
@@ -215,12 +216,15 @@ $(document).ready(function(e) {
       <input name="xg_id" type="hidden" id="xg_id" value="<?php echo $rows["id"]?>">
       <input name="xg_date" type="text" id="xg_date" value="<?php echo $rows["end_date"]?>" size="12" class="dfinput" style="width:auto;">
         </td>
+
+
         <td>
             <select name="vip" id="vip" class="uew-select">
                 <option <?php echo $rows['vip']?'selected':'' ?> value="1">VIP</option>
                 <option <?php echo $rows['vip']?'':'selected' ?> value="0" value="">普通用户</option>
             </select>
         </td>
+            <td><?php echo $rows["point"]?></td><td>
         <td><input type="submit" name="xiugan" id="xiugan" value="修改" class="btn1"><br/>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=xiaxian&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" class="tablelink">强制下线</a>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
         </tr> 
 </form>
