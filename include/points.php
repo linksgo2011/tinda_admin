@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -31,4 +30,23 @@ function payWithPoint($username){
     if(!mysql_query($updateUserSql)){
         throw new Exception("用户更新失败");
     }
+
+    return $price;
+}
+
+/**
+ * 检查积分是否充足
+ * @param $username
+ * @throws Exception
+ */
+function checkPoint($username){
+    $price = getPriceOfPoints();
+
+    $userSql = "select * from feedbackinfo where title='$username'";
+    $rs = mysql_query($userSql);
+    $user = mysql_fetch_assoc($rs);
+
+
+    $balance = $user['point'];
+    return $balance > $price;
 }

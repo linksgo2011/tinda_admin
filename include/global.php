@@ -1,6 +1,8 @@
 <?php
 	session_start();
-    error_reporting(0);
+
+    ini_set("display_errors", "On");
+    error_reporting(E_ALL^E_NOTICE^E_WARNING^E_DEPRECATED);
 	header("content-type:text/html; charset=utf8");
 	define('XXCMS_ROOT', str_replace("\\", '/', substr(dirname(__FILE__), 0, -7)));
 	$http_ref=isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';

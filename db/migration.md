@@ -87,5 +87,8 @@ ALTER TABLE `tinda`.`hchi_pscxsz`
 ADD COLUMN `points` INT NULL DEFAULT 0 AFTER `closed_tip`;
 
 
+# add points for log
+ALTER TABLE `tinda`.`rj` 
+ADD COLUMN `points` INT NULL DEFAULT 0 AFTER `chex`;
 
 

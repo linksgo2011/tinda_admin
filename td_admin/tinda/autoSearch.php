@@ -119,6 +119,7 @@ $(document).ready(function(e) {
                 <th>车架号</th>
                 <th>密码</th>
                 <th>用户名</th>
+                <th>积分</th>
                 <th>时间</th>
             </tr>
         </thead>
@@ -171,6 +172,7 @@ $(document).ready(function(e) {
         <td><?php echo $rows["cjh"]?></td>
         <td><?php echo $rows["pin"]?></td>
         <td><?php echo $rows["yhm"]?></td>
+        <td><?php echo $rows["points"]?></td>
         <td><?php echo $rows["created"]?></td>
         <td>
        </tr>

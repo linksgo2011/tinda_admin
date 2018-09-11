@@ -11,6 +11,7 @@ function ini()
 /////////////////////
     require_once("include/global.php");
     require_once("include/log.php");
+    require_once("include/points.php");
 
     $l_date = date("Y-m-d h:i:s");
     $l_date1 = date("Y-m-d");
@@ -65,6 +66,24 @@ function ini()
     if ($l_date1 == $countus["cx_date"] and !in_array($pa_cjh, $arr) and $countsetup["pz_shul"] == $czxincs) {
         $cxpassA = "yes";
     }
+
+    print_r(
+        array($countus["cx_date"],
+            $l_date1,$pa_cjh, $arr,$countsetup["pz_shul"],$czxincs)
+    );exit;
+
+    echo $cxpassA;exit;
+    if($cxpassA == "yes"){
+
+        $usePoints = true;
+        if(!checkPoint($us_name)){
+            echo "次数或积分不足！";
+            exit;
+        }
+
+        $cxpassA = "no";
+    }
+
     /*--------是否已查询 end-------*/
     if ($cxpassA == "yes") {
         echo 5;
@@ -85,11 +104,22 @@ function ini()
                 echo 2;
                 die();
             } else {
+                $usedPoints = 0;
+                if($usePoints){
+                    try{
+                        $usedPoints = payWithPoint($us_name);
+
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                        exit;
+                    }
+                }
+
                 if ($l_date1 == $countus["cx_date"]) {
                     $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
 
-                        $sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
+                        $sql1 = "insert into rj (yhm,cjh,pin,chex,points) values ('$us_name','$pa_cjh','$html','$pa_pingp','$usedPoints')";
                         mysql_query($sql1);
 
                         echo $html;
@@ -102,7 +132,7 @@ function ini()
                     $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
 
-                        $sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$us_name','$pa_cjh','$html','$pa_pingp')";
+                        $sql1 = "insert into rj (yhm,cjh,pin,chex,points) values ('$us_name','$pa_cjh','$html','$pa_pingp','$usedPoints')";
                         mysql_query($sql1);
 
 
@@ -124,13 +154,26 @@ function ini()
             $rsAA = mysql_query($sqlAA);
             $count = mysql_fetch_assoc($rsAA);
             if ($count["id"] <> "" and $count["pa_pin"] <> "") {
+                // 找到站内数据
+                $usedPoints = 0;
+                if($usePoints){
+                    try{
+                        $usedPoints = payWithPoint($us_name);
+
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                        exit;
+                    }
+                }
+
                 if ($l_date1 == $countus["cx_date"]) {
                     $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlA)) {
                         echo $count["pa_pin"];
-//						$pin=$count["pa_pin"];
-//						$sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
-//					          mysql_query($sql1);
+						$pin=$count["pa_pin"];
+						$chex=$count['pa_chex'];
+						$sql1 = "insert into rj (yhm,cjh,pin,chex,points) values ('$us_name','$pa_cjh','$pin','$chex','$usedPoints')";
+					          mysql_query($sql1);
 
 
                         die();
@@ -139,8 +182,10 @@ function ini()
                     $sqlB = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
                     if (mysql_query($sqlB)) {
                         echo $count["pa_pin"];
-//                        $sql1 = "insert into rj (yhm,cjh,pin) values ('$us_name','$pa_cjh','$pin')";
-//                        mysql_query($sql1);
+                        $pin=$count["pa_pin"];
+                        $chex=$count['pa_chex'];
+                        $sql1 = "insert into rj (yhm,cjh,pin,chex,points) values ('$us_name','$pa_cjh','$pin','$chex','$usedPoints')";
+                        mysql_query($sql1);
                         die();
                     }
                 }
