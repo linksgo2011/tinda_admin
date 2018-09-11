@@ -63,16 +63,18 @@ function ini()
         $arrsl[$dqppkey] = $pa_pingp . ($czxincs + 1);//更新数组
     }
 /////////////////pdcxsz end///////////////////////
-    if ($l_date1 == $countus["cx_date"] and !in_array($pa_cjh, $arr) and $countsetup["pz_shul"] == $czxincs) {
+    if ($l_date1 == $countus["cx_date"] and $countsetup["pz_shul"] <= $czxincs) {
         $cxpassA = "yes";
     }
 
-    print_r(
-        array($countus["cx_date"],
-            $l_date1,$pa_cjh, $arr,$countsetup["pz_shul"],$czxincs)
-    );exit;
+    // 同样的查询不记录日志并直接返回
+    if(in_array($pa_cjh,explode(",",$countus['cx_pass']))){
+        $logRs = mysql_query("SELECT * FROM rj where cjh = \"$pa_cjh\" limit 1;");
+        $log = mysql_fetch_assoc($logRs);
+        echo $log['pin'];
+        exit;
+    }
 
-    echo $cxpassA;exit;
     if($cxpassA == "yes"){
 
         $usePoints = true;
@@ -150,6 +152,7 @@ function ini()
 ///////znkq shop
 ///
 ///
+            // 如果站内有数据但是查不出来，TODO 怀疑这里 `pa_xingqh`='$pa_xingqh'
             $sqlAA = "select * from hchi_passcx where pa_pingp='" . $pa_pingp . "' and  pa_cjh='" . $pa_cjh . "' and `pa_xingqh`='$pa_xingqh'";
             $rsAA = mysql_query($sqlAA);
             $count = mysql_fetch_assoc($rsAA);
