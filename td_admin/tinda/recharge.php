@@ -51,7 +51,7 @@ require_once("../../include/admin.php");
 
         $orderSql = "insert into `order` 
 (product_id,user_id,order_number,amount,is_dealed,created,updated,days,`type`,`point`) value (
-'$productId','$userId','','$price',0,$now,$now,$days,$type,$point)";
+'$productId','$userId','','$price',1,$now,$now,$days,$type,$point)";
 
         $rs = mysql_query($orderSql);
 
