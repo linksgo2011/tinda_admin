@@ -19,7 +19,8 @@ function ini()
         'weigs' => $rows['qzxx'],
         'daoqdate' => $rows['end_date'],
         'danqjf' => $rows['jifengs'],
-        'area'=> $rows['area']
+        'area'=> $rows['area'],
+        'point'=>$rows['point']
     );
     echo json_encode($arr);
 }
