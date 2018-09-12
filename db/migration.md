@@ -92,3 +92,7 @@ ALTER TABLE `tinda`.`rj`
 ADD COLUMN `points` INT NULL DEFAULT 0 AFTER `chex`;
 
 
+# 密码查询提示语
+
+ALTER TABLE `tinda`.`hchi_pscxsz` 
+ADD COLUMN `pass_tip` VARCHAR(45) NULL AFTER `points`;
