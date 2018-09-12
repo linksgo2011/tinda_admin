@@ -12,6 +12,7 @@ function ini()
     require_once("include/global.php");
     require_once("include/log.php");
     require_once("include/points.php");
+    require_once("include/utils.php");
 
     $l_date = date("Y-m-d h:i:s");
     $l_date1 = date("Y-m-d");
@@ -105,48 +106,47 @@ function ini()
             } elseif ($html == "") {
                 echo 2;
                 die();
-            } else {
-                $usedPoints = 0;
-                if($usePoints){
-                    try{
-                        $usedPoints = payWithPoint($us_name);
+            }
 
-                    }catch(Exception $e){
-                        echo $e->getMessage();
-                        exit;
-                    }
-                }
+            if(isAllChinese($html)){
+                echo $html;
+                exit;
+            }
 
-                if ($l_date1 == $countus["cx_date"]) {
-                    $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
-                    if (mysql_query($sqlA)) {
+            $usedPoints = 0;
+            if($usePoints){
+                try{
+                    $usedPoints = payWithPoint($us_name);
 
-                        $sql1 = "insert into rj (yhm,cjh,pin,chex,points) values ('$us_name','$pa_cjh','$html','$pa_pingp','$usedPoints')";
-                        mysql_query($sql1);
-
-                        echo $html;
-
-
-
-                        die();
-                    }
-                } elseif ($l_date1 <> $countus["cx_date"]) {
-                    $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
-                    if (mysql_query($sqlA)) {
-
-                        $sql1 = "insert into rj (yhm,cjh,pin,chex,points) values ('$us_name','$pa_cjh','$html','$pa_pingp','$usedPoints')";
-                        mysql_query($sql1);
-
-
-
-                        echo $html;
-
-
-
-                        die();
-                    }
+                }catch(Exception $e){
+                    echo $e->getMessage();
+                    exit;
                 }
             }
+
+            if ($l_date1 == $countus["cx_date"]) {
+                $sqlA = "update feedbackinfo set cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
+                if (mysql_query($sqlA)) {
+
+                    $sql1 = "insert into rj (yhm,cjh,pin,chex,points) values ('$us_name','$pa_cjh','$html','$pa_pingp','$usedPoints')";
+                    mysql_query($sql1);
+
+                    echo $html;
+
+
+
+                    die();
+                }
+            } elseif ($l_date1 <> $countus["cx_date"]) {
+                $sqlA = "update feedbackinfo set cx_date='" . $l_date1 . "',cx_shul='" . implode(",", $arrsl) . "',cx_pass='" . $usercxpass . "' where title='" . $us_name . "'";
+                if (mysql_query($sqlA)) {
+                    $sql1 = "insert into rj (yhm,cjh,pin,chex,points) values ('$us_name','$pa_cjh','$html','$pa_pingp','$usedPoints')";
+                    mysql_query($sql1);
+                    echo $html;
+                    die();
+                }
+            }
+
 ///////zwcx end
         } elseif ($countzhanw["cx_url"] == "" and $countsetup["pz_off"] == 1) {//站内开启
 ///////znkq shop
@@ -158,6 +158,12 @@ function ini()
             $count = mysql_fetch_assoc($rsAA);
             if ($count["id"] <> "" and $count["pa_pin"] <> "") {
                 // 找到站内数据
+
+                if(isAllChinese($count["pa_pin"])){
+                    echo $count["pa_pin"];
+                    exit;
+                }
+
                 $usedPoints = 0;
                 if($usePoints){
                     try{

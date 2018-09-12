@@ -48,5 +48,5 @@ function checkPoint($username){
 
 
     $balance = $user['point'];
-    return $balance > $price;
+    return $balance >= $price;
 }

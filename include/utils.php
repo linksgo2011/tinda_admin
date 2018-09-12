@@ -27,3 +27,18 @@ function out($status,$data,$message){
     );
     exit;
 }
+
+/**
+ * 判断是否都是中文
+ * @param $str
+ * @return int
+ */
+function isAllChinese($str)
+{
+    $len = preg_match('/^[\x{4e00}-\x{9fa5}]+$/u',$str);
+    if ($len)
+    {
+        return true;
+    }
+    return false;
+}
