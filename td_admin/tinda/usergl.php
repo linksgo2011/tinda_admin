@@ -224,7 +224,7 @@ $(document).ready(function(e) {
                 <option <?php echo $rows['vip']?'':'selected' ?> value="0" value="">普通用户</option>
             </select>
         </td>
-            <td><?php echo $rows["point"]?></td><td>
+            <td><?php echo $rows["point"]?></td>
         <td><input type="submit" name="xiugan" id="xiugan" value="修改" class="btn1"><br/>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=xiaxian&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" class="tablelink">强制下线</a>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
         </tr> 
 </form>
