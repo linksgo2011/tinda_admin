@@ -68,14 +68,6 @@ function ini()
         $cxpassA = "yes";
     }
 
-    // 同样的查询不记录日志并直接返回
-    if(in_array($pa_cjh,explode(",",$countus['cx_pass']))){
-        $logRs = mysql_query("SELECT * FROM rj where cjh = \"$pa_cjh\" limit 1;");
-        $log = mysql_fetch_assoc($logRs);
-        echo $log['pin'];
-        exit;
-    }
-
     if($cxpassA == "yes"){
 
         $usePoints = true;
