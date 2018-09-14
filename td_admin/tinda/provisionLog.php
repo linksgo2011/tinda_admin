@@ -45,8 +45,7 @@ require_once("../../include/admin.php");
         $usname = $title;
 
         $sql = "
-        select `order`.*,
-`feedbackinfo`.* 
+        select `feedbackinfo`.*,`order`.* 
 from `order`,`feedbackinfo` 
 where is_dealed=1 and `order`.user_id=`feedbackinfo`.id 
 and `feedbackinfo`.title like '%$title%'

@@ -15,7 +15,11 @@ $userszl = $_POST["userszl"];
 	$rs=mysql_query($sql);
 	while($rows=mysql_fetch_assoc($rs))
 	{
- $arr = '<li class="mui-table-view-cell">车架号:'.$rows["cjh"].'         PIN:'.$rows["pin"].'积分:-'.$rows['points'].'</li>'.$arr;
+ $arr = '<li class="mui-table-view-cell">车架号:'.$rows["cjh"].'         PIN:'.$rows["pin"].'积分:-'.$rows['points'].
+     '<br />'.
+     '车型:'.$rows['chex'].
+     '时间:'.$rows['created'].
+     '</li>'.$arr;
 
 }
 
