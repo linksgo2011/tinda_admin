@@ -72,7 +72,7 @@ function ini()
 
         $usePoints = true;
         if(!checkPoint($us_name)){
-            echo "免费次数不足或积分不足！";
+            echo "免费次数不足或积分不足，二次需要20积分，请充值";
             exit;
         }
 
