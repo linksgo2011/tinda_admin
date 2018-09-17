@@ -35,16 +35,6 @@ if($_GET['tj'] == 'out'){
 		$sql1="update hchi_passcx set pa_pin='".$papin."' where id=$Aid";
 		if(mysql_query($sql1))
 		{
-		    // 写入日志
-            $sql="select * from hchi_passcx where id=$Aid";
-            $rs=mysql_query($sql);
-            $row=mysql_fetch_array($rs);
-            $yhm=$row["yhm"];
-            $cjh=$row["pa_cjh"];
-            $chex=$row['pa_chex'];
-            $sql1 = "insert into rj (yhm,cjh,pin,chex) values ('$yhm','$cjh','$papin','$chex')";
-            mysql_query($sql1);
-
 		    echo "<script language=javascript>alert('提交成功！');window.location='newpass.php'</script>";
 		}
 		die();

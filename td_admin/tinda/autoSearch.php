@@ -172,7 +172,7 @@ $(document).ready(function(e) {
         <td><?php echo $rows["cjh"]?></td>
         <td><?php echo $rows["pin"]?></td>
         <td><?php echo $rows["yhm"]?></td>
-        <td><?php echo $rows["points"]?></td>
+        <td>扣除<?php echo $rows["points"]?></td>
         <td><?php echo $rows["created"]?></td>
         <td>
        </tr>
