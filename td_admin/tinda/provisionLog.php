@@ -36,6 +36,7 @@ require_once("../../include/admin.php");
             <th>类型</th>
             <th>积分</th>
             <th>时间(天)</th>
+            <th>充值方式</th>
             <th>充值时间</th>
         </tr>
         </thead>
@@ -79,6 +80,8 @@ order by created desc
             $point = $product['point'];
             $type = $attr[$product['type']];
             $created = date("Y-m-d h:i:s",$product['created']);
+            $rechargeType = ($product['product_id'] == 0)?"人工充值":"客户直充";
+
 
             echo "<tr>
                 <td>$user</td>
@@ -86,6 +89,7 @@ order by created desc
                 <td>$type</td>
                 <td>$point</td>
                 <td>$days</td>
+                <td>$rechargeType</td>
                 <td>$created</td>
             </tr>";
         }

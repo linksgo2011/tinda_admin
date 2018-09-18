@@ -97,7 +97,7 @@ $(document).ready(function(e) {
 	    <div class="formbody" style="background:#ddd">
 <form id="form1" name="form1"  method="post">
       <label></label>
-      <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="车型/车架号/用户名/密码" size="60">
+      <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="车型/车架号/用户名/密码/积分" size="60">
       <input type="submit" class="btn" value="查找"/>
 </form>       
 	</div> 
@@ -134,6 +134,7 @@ $(document).ready(function(e) {
 	    $whereSql = "where cjh like '%".$sousuo."%' ".
         "or chex like '%".$sousuo."%'".
         "or yhm like '%".$sousuo."%'".
+        "or points like '%".$sousuo."%'".
         "or pin like '%".$sousuo."%'";
 	}
 
