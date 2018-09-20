@@ -147,7 +147,7 @@ $(document).ready(function(e) {
 	    $field = $keywords[0];
 	    $value = $keywords[1];
 
-        $whereSql = "where `".$field."` like '%".$value."%' ;";
+        $whereSql = "where `".$field."` like '%".$value."%' ";
     }
 
 	$sql = $selectSql . " " . $whereSql;
