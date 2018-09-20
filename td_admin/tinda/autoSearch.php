@@ -99,7 +99,11 @@ $(document).ready(function(e) {
       <label></label>
       <input name="sousuo" type="text" id="sousuo" value="<?php echo $sousuo?>" class="dfinput" placeholder="车型/车架号/用户名/密码/积分" size="60">
       <input type="submit" class="btn" value="查找"/>
-</form>       
+</form>
+
+            <p>
+                高级查询: 使用搜索"字段:值"的格式即可搜索数据库中指定字段。例如： "points:30"，搜索积分为30的所有记录。
+            </p>
 	</div> 
 	
 	
@@ -137,6 +141,14 @@ $(document).ready(function(e) {
         "or points like '%".$sousuo."%'".
         "or pin like '%".$sousuo."%'";
 	}
+
+	if(strpos($sousuo,":")){
+	    $keywords = explode($sousuo,":");
+	    $field = $keywords[0];
+	    $value = $keywords[1];
+
+        $whereSql = "where `".$field."` like '%".$value."%' ;";
+    }
 
 	$sql = $selectSql . " " . $whereSql;
 
