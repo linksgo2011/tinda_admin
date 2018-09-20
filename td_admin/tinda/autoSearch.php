@@ -143,7 +143,7 @@ $(document).ready(function(e) {
 	}
 
 	if(strpos($sousuo,":")){
-	    $keywords = explode($sousuo,":");
+	    $keywords = explode(":",$sousuo);
 	    $field = $keywords[0];
 	    $value = $keywords[1];
 
