@@ -72,8 +72,10 @@ function ini()
     if(in_array($pa_cjh,explode(",",$countus['cx_pass']))){
         $logRs = mysql_query("SELECT * FROM rj where cjh = \"$pa_cjh\" and yhm = \"$us_name\" and apply_code = \"$pa_xingqh\" limit 1;");
         $log = mysql_fetch_assoc($logRs);
-        echo $log['pin'];
-        exit;
+        if(!empty($log)){
+            echo $log['pin'];
+            exit;
+        }
     }
 
     if($cxpassA == "yes"){
