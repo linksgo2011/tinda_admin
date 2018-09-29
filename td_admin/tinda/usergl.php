@@ -81,6 +81,13 @@ if($_GET['tj'] == 'out'){
 		}
 		die();
 	}
+
+
+	// VIP 用户统计
+    $countSql = "SELECT COUNT( * ) as vipCount FROM feedbackinfo WHERE DATE( end_date ) >= NOW( )";
+	$rs = mysql_query($countSql);
+    $vipCountArr = mysql_fetch_assoc($rs);
+    $vipCount = $vipCountArr['vipCount'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -132,6 +139,7 @@ $(document).ready(function(e) {
       <label></label>
       <input name="usname" type="text" id="usname" value="<?php echo $usname?>" class="dfinput" placeholder="用户名/经销商/姓名/手机/提示" size="60">
       <input type="submit" class="btn" value="查找"/>
+        <span> VIP用户数：<?php echo $vipCount; ?></span>
 </form>       
 	</div> 
 	</div> 
