@@ -80,7 +80,7 @@ require_once("../../include/admin.php");
             </li>
             <li>
                 <label>积分</label>
-                <input name="point" type="number" min="0" required class="dfinput" />
+                <input name="point" type="number" required class="dfinput" />
             </li>
             <li>
                 <label>&nbsp;</label>
