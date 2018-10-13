@@ -57,7 +57,8 @@ $(function(){
         <li class="active"><cite></cite><a href="tinda/danp.php?finl=about" target="rightFrame">关于我们</a><i></i></li>
         <li><cite></cite><a href="tinda/danp.php?finl=fwlx" target="rightFrame">客服热线</a><i></i></li>
         <li><cite></cite><a href="tinda/danp.php?finl=jxzc" target="rightFrame">技术支持</a><i></i></li>
-        </ul>    
+        <li><cite></cite><a href="tinda/danp.php?finl=provideData" target="rightFrame">资料提供</a><i></i></li>
+        </ul>
     </dd>
     <dd>
     <div class="title"><span><img src="images/leftico02.png" /></span>用户信息</div>

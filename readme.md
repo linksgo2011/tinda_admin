@@ -4,7 +4,9 @@
 
 - 使用 ToroPHP做路由
 - 使用 php-jwt做验证
+- 使用 Medoo 作为简易ORM
 
-### TODO
+## contribution 注意事项
 
-- 数据库框架
+- 新加的API应该放到api目录下
+- 统一使用token认证
