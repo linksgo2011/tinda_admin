@@ -58,7 +58,7 @@ $(function(){
         <li><cite></cite><a href="tinda/danp.php?finl=fwlx" target="rightFrame">客服热线</a><i></i></li>
         <li><cite></cite><a href="tinda/danp.php?finl=jxzc" target="rightFrame">技术支持</a><i></i></li>
         <li><cite></cite><a href="tinda/danp.php?finl=provideData" target="rightFrame">资料提供</a><i></i></li>
-        <li><cite></cite><a href="tinda/danp.php?finl=joinUs" target="rightFrame">加盟连锁</a><i></i></li>
+        <li><cite></cite><a href="tinda/danp.php?finl=joinUs" target="rightFrame">连锁加盟</a><i></i></li>
         </ul>
     </dd>
     <dd>
