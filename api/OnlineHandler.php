@@ -2,7 +2,7 @@
 
 require_once ("BaseHandler.php");
 require_once ("../lib/ToroPHP/Toro.php");
-require_once ("Authenticator.php");
+require_once("../lib/Authenticator.php");
 
 class OnlineHandler extends BaseHandler{
 

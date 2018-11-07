@@ -14,8 +14,8 @@ class Db{
                 'database_name' => 'tinda',
                 'server' => '127.0.0.1',
                 'username' => 'root',
+//                'password' => '123456', // local
                 'password' => 'chens0925CHENS7',
-
                 'charset' => 'utf8'
             ]);
         }

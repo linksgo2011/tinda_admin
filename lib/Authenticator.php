@@ -1,6 +1,6 @@
 <?php
 
-require_once ("../lib/php-jwt/JWT.php");
+require_once("../lib/php-jwt/JWT.php");
 use \Firebase\JWT\JWT as JWT;
 
 

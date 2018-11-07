@@ -1,0 +1,133 @@
+html{
+    font-size:13px;
+    background:#fff;
+    font-weight: lighter;
+}
+.txt-c{
+    text-align: center;
+}
+.search-box{
+    padding: 5px;
+    padding-right: 60px;
+    position: relative;
+}
+.search-box input{
+    margin-bottom: 0px;
+}
+.search-box .mui-btn{
+    width: 50px;
+    position: absolute;
+    right:5px;
+    top: 5px;
+    line-height: 26px;
+}
+
+.operations a{
+    display: block;
+    padding: 10px;
+    justify-content: space-around;
+    text-align: center;
+    color:#333;
+}
+.operations a img{
+    width: 30px;
+}
+
+.module-title{
+    margin-left: 5px;
+    font-weight: lighter;
+    font-size: 14px;
+}
+.product-item{
+    height: 150px;
+}
+
+.pagination{
+    padding: 20px 0;
+}
+.pagination a{
+    text-align: center;
+    font-size:13px;
+    color:#ff5053;
+}
+
+.alert{
+    text-align: center;
+    font-size: 13px;
+    line-height: 30px;
+}
+
+.product-detail .mui-table-view-cell{
+    font-size: 13px;
+    font-weight: lighter;
+}
+.product-detail .module-title{
+    margin:10px;
+}
+.product-detail a.tel-link{
+    display: inline;
+    color:#ff5053;
+}
+.product-detail .message-owner{
+    color: #FF7F24;
+}
+
+.product-detail .mui-table-view:before{
+    display: none;
+}
+
+.comment-form{
+    font-size: 13px;
+    font-weight: lighter;
+}
+.image-box{
+    height: 200px;
+    overflow: hidden;
+}
+
+#compose-form.mui-input-group .mui-input-row{
+    height: auto;
+}
+
+.image-uploader{
+    padding: 10px;
+}
+
+.image-uploader .add-btn{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border:1px solid #ccc;
+    text-align: center;
+    background-image:url("../images/plus.png") !important;
+    text-indent: -100000px;
+    float:left;
+}
+
+.image-uploader .preview-item{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    float:left;
+    margin-right:10px;
+    margin-bottom:10px;
+    border: 1px solid #ccc;
+    padding: 1px;
+    position: relative;
+}
+.image-uploader .preview-item i{
+    position: absolute;
+    bottom:0px;
+    height: 20px;
+    width: 100%;
+    background: rgba(0,0,0,.2);
+}
+.image-uploader .preview-item i:before{
+    position: absolute;
+    left:10px;
+}
+
+.image-uploader .preview-item img{
+    width: 100%;
+}

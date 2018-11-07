@@ -96,3 +96,36 @@ ADD COLUMN `points` INT NULL DEFAULT 0 AFTER `chex`;
 
 ALTER TABLE `tinda`.`hchi_pscxsz` 
 ADD COLUMN `pass_tip` VARCHAR(45) NULL AFTER `points`;
+
+## 二手信息
+
+CREATE TABLE `info_product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(45) DEFAULT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `price` decimal(10,0) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '0' COMMENT '0 草稿\n1. 发布\n-1删除',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `info_product_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `comment` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `product_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `info_product_picture` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `image_path` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` tinyint(4) DEFAULT '0' COMMENT '0 正常\n-1 删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
