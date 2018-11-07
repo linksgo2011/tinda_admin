@@ -1,6 +1,6 @@
 <?php
 
-require_once("Authenticator.php");
+require_once("../lib/Authenticator.php");
 
 class BaseHandler {
 
