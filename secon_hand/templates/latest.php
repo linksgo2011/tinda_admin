@@ -50,6 +50,7 @@
     <?endif;?>
 </div>
 <script src="<?echo $staticRootPath?>/js/mui.min.js"></script>
+<script src="../js/jquery.js" ></script>
 <script>
     function go(url){
         mui.openWindow({
