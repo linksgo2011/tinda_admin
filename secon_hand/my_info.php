@@ -20,7 +20,8 @@ $products = $db->select("info_product", "*", $where);
 
 foreach ($products as &$product) {
     $product['picture'] = $db->get('info_product_picture', ["image_path"], [
-        "product_id[=]" => $product['id']
+        "product_id[=]" => $product['id'],
+        "status[=]" => "0",
     ]);
 }
 

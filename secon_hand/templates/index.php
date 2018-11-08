@@ -29,15 +29,15 @@
     </div>
 
     <div class="operations mui-row">
-        <a href="./latest.php" class="action mui-col-sm-4">
+        <a href="javascript:go('./latest.php') " class="action mui-col-sm-4">
             <img src="<?echo $staticRootPath?>/images/zuixin.png" alt="">
             <p>最新发布</p>
         </a>
-        <a href="./compose.php" class="action mui-col-sm-4">
+        <a href="javascript:go('./compose.php')" class="action mui-col-sm-4">
             <img src="<?echo $staticRootPath?>/images/delivery.png" alt="">
            <p>我要发布</p>
         </a>
-        <a href="./my_info.php" class="action mui-col-sm-4">
+        <a href="javascript:go('./my_info.php')" class="action mui-col-sm-4">
             <img src="<?echo $staticRootPath?>/images/gerendingzhi.png" alt="">
             <p>我发布的</p>
         </a>
@@ -59,6 +59,57 @@
         <?endforeach;?>
     </ul>
 </div>
+<script type="application/html" id="item-template">
+    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+            <a href="detail.php?id={id}" class="product-item">
+                            <img class="mui-media-object" src="{image_path}">
+                    </a>
+        <div class="mui-media-body">{title}</div>
+    </li>
+</script>
+
 <script src="<?echo $staticRootPath?>/js/mui.min.js"></script>
+<script src="../js/jquery.js" ></script>
+
+<script>
+    mui.init({
+        preloadPages:[
+            {
+                url:"./compose.php"
+            },
+            {
+                url:"./latest.php"
+            },{
+                url:"./my_info.php"
+            }
+        ],
+        preloadLimit:5
+    });
+
+    function go(url){
+        mui.openWindow({
+            url: url,
+            id: url,
+        });
+    }
+
+    mui.ready(function () {
+        mui.get(".",function(rs){
+            var data = JSON.parse(rs);
+            data.products.forEach(function(item){
+                var imagePath = "./templates/images/no_pic.png";
+                var html = document.getElementById("item-template").innerHTML;
+                html = html.replace("{id}",item.id);
+                html = html.replace("{title}",item.title);
+                if(item.picture){
+                    imagePath = item.picture.image_path;
+                }
+                html = html.replace("{image_path}",imagePath);
+                $("#latest").append(html);
+            })
+        })
+    });
+
+</script>
 </body>
 </html>

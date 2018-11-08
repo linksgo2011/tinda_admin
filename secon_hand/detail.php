@@ -44,8 +44,11 @@ if ($_POST) {
 
     if (!$savedId) {
         $error = "评论失败!";
+        echo json_encode(["status"=>500,"error"=>$error]);
+    }else{
+        echo json_encode(["status"=>200]);
     }
-
+    exit;
 }
 
 $product['pictures'] = $db->select('info_product_picture', ["image_path"], [

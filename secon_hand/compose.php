@@ -41,11 +41,12 @@ $pictures = $db->select("info_product_picture", "*", [
 
 if(@$_GET['action'] == "del"){
     $saved = $db->update("info_product",['status'=>"-1"], ["id[=]" => $product['id']]);
-    header('Location: my_info.php');
+    echo json_encode(["status"=>200]);
     exit;
 }
 
 $error;
+
 if (!empty($_POST)) {
     $data = $_POST;
     $validated = Validator::is_valid($data, [
@@ -56,23 +57,18 @@ if (!empty($_POST)) {
 
     if ($validated !== true) {
         $error = "输入有误，请输入正确的价格、电话和标题!";
-        View::render($templateDir . "/compose.php", array(
-            "title" => "发布二手信息",
-            "staticRootPath" => $templateDir,
-            "product" => $product,
-            "error" => $error
-        ));
+        echo json_encode(["status"=>400,'error'=>$error]);
         exit;
     }
     $data['status'] = 1;
     $data['modified_at'] = date("Y-m-d H:i:s");
     $saved = $db->update("info_product", $data, ["id[=]" => $product['id']]);
     if ($saved->rowCount()) {
-
-        header('Location: my_info.php');
+        echo json_encode(["status"=>200]);
         exit;
     } else {
-        $error = "保存失败!";
+        echo json_encode(["status"=>500,"保存失败"]);
+        exit;
     }
 }
 

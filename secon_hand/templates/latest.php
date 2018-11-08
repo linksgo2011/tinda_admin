@@ -50,6 +50,5 @@
     <?endif;?>
 </div>
 <script src="<?echo $staticRootPath?>/js/mui.min.js"></script>
-
 </body>
 </html>

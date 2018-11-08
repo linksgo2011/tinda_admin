@@ -59,7 +59,7 @@
     </ul>
 
     <br>
-    <form class="mui-input-group comment-form" method="post">
+    <form class="mui-input-group comment-form" method="post" id="comment-form">
         <div class="mui-input-row">
             <input type="text" name="comment" class="mui-input-clear" placeholder="请输入留言...">
         </div>
@@ -69,5 +69,23 @@
     </form>
 </div>
 <script src="<?echo $staticRootPath?>/js/mui.min.js"></script>
+<script src="../js/jquery.js" ></script>
+
+<script>
+    $("#comment-form").submit(function (event) {
+        var data = $(this).serialize();
+
+        event.preventDefault();
+        mui.post(document.location.href,data,function(rs){
+            var response = JSON.parse(rs);
+            if(response.status == 200){
+                alert("操作成功!");
+                document.location.reload();
+            }else{
+                alert(response.error);
+            }
+        })
+    });
+</script>
 </body>
 </html>

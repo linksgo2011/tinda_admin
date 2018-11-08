@@ -13,12 +13,15 @@ $products = $db->select("info_product", "*", [
 
 foreach($products as &$product){
     $product['picture'] = $db->get('info_product_picture',["image_path"],[
-        "product_id[=]"=> $product['id']
+        "product_id[=]"=> $product['id'],
+        "status[=]" => "0",
     ]);
 }
 
-View::render($templateDir . "/index.php", array(
+$output = array(
     "title" => "二手交易信息",
     "staticRootPath" => $templateDir,
     "products" => $products
-));
+);
+
+View::render($templateDir . "/index.php", $output);

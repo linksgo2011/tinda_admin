@@ -59,7 +59,7 @@
             <button class="mui-btn mui-btn-danger mui-btn-outlined" >提 交</button>
         </div>
     </form>
-
+    <script src="<?echo $staticRootPath?>/js/mui.min.js"></script>
     <script type="text/javascript">
         var uploadUrl = "./imageUploadApi.php?dir=image&product_id="+<?=$product['id']?>;
         function fileSelected() {
@@ -107,8 +107,23 @@
                 }
             });
         })
+
+        $("#compose-form").submit(function (event) {
+            var data = $(this).serialize();
+
+            event.preventDefault();
+            mui.post(document.location.href,data,function(rs){
+                var response = JSON.parse(rs);
+                if(response.status == 200){
+                    alert("操作成功!");
+                    document.location.reload();
+                }else{
+                    alert(response.error);
+                }
+            })
+        });
     </script>
 </div>
-<script src="<?echo $staticRootPath?>/js/mui.min.js"></script>
+
 </body>
 </html>
