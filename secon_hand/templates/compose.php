@@ -42,9 +42,9 @@
             <textarea name="description" id="description" cols="30" rows="5" required placeholder="请输入描述"><?=$product['description']?></textarea>
         </div>
 
-        <div class="mui-input-row">
+        <div class="mui-input-row" style="padding-bottom: 10px;">
             <label>上传图片</label>
-            <div class="image-uploader" id="image-uploader">
+            <div class="image-uploader" id="image-uploader" >
                 <? foreach ($pictures as $key => $picture): ?>
                     <div class="preview-item" data-id="<?=$picture['id']?>">
                         <img src="<?=$picture['image_path'] ?>" alt="">
