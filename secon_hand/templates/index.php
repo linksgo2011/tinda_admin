@@ -47,7 +47,7 @@
     <ul class="mui-table-view mui-grid-view">
         <?foreach ($products as $key=>$product):?>
             <li class="mui-table-view-cell mui-media mui-col-xs-6">
-                <a href="detail.php?id=<?=$product['id']?>" class="product-item">
+                <a href="detail.php?id=<?=$product['id']?>" class="product-item auto-open">
                     <?if($product['picture']):?>
                         <img class="mui-media-object" src="<?=$product['picture']['image_path']?>">
                     <?else:;?>
@@ -88,27 +88,32 @@
 
     function go(url){
         mui.openWindow({
-            url: url,
-            id: url,
-        });
+        url: url,
+        id: url,
+    });
     }
 
     mui.ready(function () {
-        mui.get(".",function(rs){
-            var data = JSON.parse(rs);
-            data.products.forEach(function(item){
-                var imagePath = "./templates/images/no_pic.png";
-                var html = document.getElementById("item-template").innerHTML;
-                html = html.replace("{id}",item.id);
-                html = html.replace("{title}",item.title);
-                if(item.picture){
-                    imagePath = item.picture.image_path;
-                }
-                html = html.replace("{image_path}",imagePath);
-                $("#latest").append(html);
-            })
-        })
+        $("a.auto-open").click(function(event){
+            event.preventDefault();
+            go($(this).attr("href"));
+        });
     });
+
+        // mui.get(".",function(rs){
+        //     var data = JSON.parse(rs);
+        //     data.products.forEach(function(item){
+        //         var imagePath = "./templates/images/no_pic.png";
+        //         var html = document.getElementById("item-template").innerHTML;
+        //         html = html.replace("{id}",item.id);
+        //         html = html.replace("{title}",item.title);
+        //         if(item.picture){
+        //             imagePath = item.picture.image_path;
+        //         }
+        //         html = html.replace("{image_path}",imagePath);
+        //         $("#latest").append(html);
+        //     })
+        // })
 
 </script>
 </body>
