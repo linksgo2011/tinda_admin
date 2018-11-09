@@ -46,10 +46,10 @@ require_once("../../include/admin.php");
 
         $sql = "
         select `feedbackinfo`.title as username,`info_product`.* 
-from `order`,`info_product` 
-where `status`='1' and `order`.user_id=`feedbackinfo`.id 
-and `info_product`.title like '%$title%'
-order by created desc
+from `feedbackinfo`,`info_product` 
+where `status`='1' and `info_product`.user_id=`feedbackinfo`.id 
+and `info_product`.info_product like '%$title%'
+order by created_at desc
         ";
         $rs = mysql_query($sql);
         $pagesize=20;
