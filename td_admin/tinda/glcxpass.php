@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once("../../include/global.php");
 $ad_name1234=$_SESSION["ad_name1234"];
 $ad_id1234=$_SESSION["ad_id1234"];

@@ -148,6 +148,7 @@ $(document).ready(function(e) {
         <td><?php echo $rows["pa_cjh"]?></td>
         <td>
         <input name="pa_id" type="hidden" id="pa_id" value="<?php echo $rows["id"]?>">
+
         <input name="pa_pin" type="text" id="pa_pin" value="<?php echo $rows["pa_pin"]?>" size="50" class="dfinput" style="width:auto;">
         </td>
             <td><?php echo $rows["yhm"]?></td>

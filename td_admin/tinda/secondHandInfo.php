@@ -48,7 +48,7 @@ require_once("../../include/admin.php");
         select `feedbackinfo`.title as username,`info_product`.* 
 from `feedbackinfo`,`info_product` 
 where `status`='1' and `info_product`.user_id=`feedbackinfo`.id 
-and `info_product`.info_product like '%$title%'
+and `info_product`.title like '%$title%'
 order by created_at desc
         ";
         $rs = mysql_query($sql);
@@ -77,6 +77,7 @@ order by created_at desc
             echo "<tr>
                 <td>$username</td>
                 <td>$price</td>
+                <td>$title</td>
                 <td>$phone</td>
                 <td>$created_at</td>
                 <td></td>
