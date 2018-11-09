@@ -17,6 +17,7 @@
 <header class="mui-bar mui-bar-nav">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
     <h1 class="mui-title"><? echo $title ?></h1>
+    <a class="mui-action-home mui-icon mui-icon-home mui-pull-right"></a>
 </header>
 
 <div class="mui-content product-detail" style="background-color:#fff">
@@ -85,6 +86,11 @@
                 alert(response.error);
             }
         })
+    });
+
+    $("a.mui-action-home").click(function(event){
+        event.preventDefault();
+        window.plus && plus.webview.getWebviewById('main').show();
     });
 </script>
 </body>
