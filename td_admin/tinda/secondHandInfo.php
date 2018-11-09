@@ -41,6 +41,19 @@ require_once("../../include/admin.php");
         </thead>
         <tbody>
         <?php
+
+        if($_GET['action'] == 'del'){
+            $id = $_GET['id'];
+            $sql = "delete from info_product where id='$id'";
+
+            if (mysql_query($sql)) {
+                echo "<script language=javascript>alert('设置成功！');window.location='secondHandInfo.php'</script>";
+            } else {
+                echo "<script language=javascript>alert('编辑失败！');window.location='secondHandInfo.php'</script>";
+            }
+
+            die();
+        }
         $title = $_GET['usname'];
         $usname = $title;
 
@@ -71,6 +84,7 @@ order by created_at desc
         $sql .= "limit $startno,$pagesize";
         $rs = mysql_query($sql);
 
+
         while ($product = mysql_fetch_assoc($rs)) {
             extract($product);
 
@@ -80,7 +94,7 @@ order by created_at desc
                 <td>$title</td>
                 <td>$phone</td>
                 <td>$created_at</td>
-                <td></td>
+                <td><a href='?action=del&id=$id&usname=$usname'>删除</a></td>
             </tr>";
         }
         ?>
