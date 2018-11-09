@@ -98,7 +98,7 @@ $(function(){
     </dd>
         <dd><div class="title"><span><img src="images/leftico05.png" /></span>二手信息</div>
             <ul class="menuson">
-                <li><cite></cite><a href="tinda/secondHandInfo.php.php" target="rightFrame">二手信息列表</a><i></i></li>
+                <li><cite></cite><a href="tinda/secondHandInfo.php" target="rightFrame">二手信息列表</a><i></i></li>
             </ul>
         </dd>
     <dd><div class="title"><span><img src="images/leftico04.png" /></span>系统设置</div>
