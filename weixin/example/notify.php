@@ -79,6 +79,9 @@ class PayNotifyCallBack extends WxPayNotify
                 }
 
                 mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
+
+                // 更新用户为VIP
+                setUserToVIP($userId);
             }else{
                 // 充积分
                 $userId = $order['user_id'];
@@ -91,9 +94,6 @@ class PayNotifyCallBack extends WxPayNotify
 
                 mysql_query("update `order` set is_dealed=1 where order_number='$orderNumber'");
             }
-
-            // 更新用户为VIP
-            setUserToVIP($userId);
         }
 		return true;
 	}
