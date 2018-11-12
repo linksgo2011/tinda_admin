@@ -91,6 +91,7 @@
         mui.openWindow({
         url: url,
         id: url,
+            createNew:true
     });
     }
 
@@ -104,6 +105,9 @@
             window.plus && plus.webview.getWebviewById('main').show();
         });
 
+        window.addEventListener('refresh', function(){
+            location.reload();
+        });
     });
 
         // mui.get(".",function(rs){
@@ -120,7 +124,6 @@
         //         $("#latest").append(html);
         //     })
         // })
-
 </script>
 </body>
 </html>

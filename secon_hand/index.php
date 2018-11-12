@@ -1,5 +1,6 @@
 <?php
 
+
 require_once("../lib/Db.php");
 require_once("../lib/View.php");
 require_once("./info_base.php");

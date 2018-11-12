@@ -91,7 +91,6 @@
             alert("图片上传失败.");
         }
 
-
         $(function(){
             $(".preview-item").on('click',function(event){
                 $id = $(this).attr("data-id");
@@ -117,6 +116,7 @@
                 var response = JSON.parse(rs);
                 if(response.status == 200){
                     alert("操作成功!");
+                    mui.fire(plus.webview.currentWebview().opener(), 'refresh');
                     document.location.reload();
                 }else{
                     alert(response.error);
@@ -128,6 +128,7 @@
             event.preventDefault();
             window.plus && plus.webview.getWebviewById('main').show();
         });
+
     </script>
 </div>
 

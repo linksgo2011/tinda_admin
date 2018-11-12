@@ -53,6 +53,7 @@
 <script src="<?echo $staticRootPath?>/js/mui.min.js"></script>
 <script src="../js/jquery.js" ></script>
 <script>
+
     function go(url){
         mui.openWindow({
             url: url,
@@ -69,6 +70,11 @@
         $("a.mui-action-home").click(function(event){
             event.preventDefault();
             window.plus && plus.webview.getWebviewById('main').show();
+        });
+
+        window.addEventListener('refresh', function(){
+            mui.fire(plus.webview.currentWebview().opener(), 'refresh');
+            location.reload();
         });
     });
 </script>
