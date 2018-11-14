@@ -31,7 +31,10 @@
             价格: <? echo $product['price']; ?></a>
         </li>
         <li class="mui-table-view-cell">
-            联系方式: <a class="tel-link" href="tel:<? echo $product['phone']; ?>"><? echo $product['phone']; ?></a>
+            电话: <a class="tel-link" href="tel:<? echo $product['phone']; ?>"><? echo $product['phone']; ?></a>
+        </li>
+        <li class="mui-table-view-cell">
+            微信/QQ: <? echo $product['tecent_contact']?$product['tecent_contact']:"无"; ?></a>
         </li>
         <li class="mui-table-view-cell">
             发布时间: <? echo $product['created_at']; ?></a>

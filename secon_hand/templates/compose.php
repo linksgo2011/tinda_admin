@@ -35,9 +35,15 @@
             <input name="phone" type="text" class="mui-input-clear" required placeholder="请输入电话" value="<?=$product['phone']?>">
         </div>
         <div class="mui-input-row">
+            <label>微信/QQ</label>
+            <input name="tecent_contact" type="text" class="mui-input-clear" required placeholder="请输入微信或者QQ（选填）" value="<?=$product['tecent_contact']?>">
+        </div>
+
+        <div class="mui-input-row">
             <label>价格</label>
             <input name="price" type="text" class="mui-input-clear" required placeholder="请输入价格" value="<?=$product['price']?>">
         </div>
+
         <div class="mui-input-row">
             <label>描述</label>
             <textarea name="description" id="description" cols="30" rows="5" required placeholder="请输入描述"><?=$product['description']?></textarea>

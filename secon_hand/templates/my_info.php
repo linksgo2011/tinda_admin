@@ -61,15 +61,8 @@
 <script src="<?echo $staticRootPath?>/js/mui.min.js"></script>
 <script src="../js/jquery.js" ></script>
 <script>
-    mui.init({
-        beforeback: function() {
-            var list = plus.webview.currentWebview().opener();
-            mui.fire(list, 'refresh');
-            return true;
-        }
-    });
 
-    mui.ready(function(){
+    mui.plusReady(function(){
         $(".del-btn").click(function (event) {
             if(!confirm("确认删除？")){
                 return;
@@ -92,14 +85,8 @@
             event.preventDefault();
             window.plus && plus.webview.getWebviewById('main').show();
         });
-
-        window.addEventListener('refresh', function(){
-            mui.fire(plus.webview.currentWebview().opener(), 'refresh');
-            location.reload();
-        });
     })
 
-    mui.fire(plus.webview.currentWebview().opener(), 'refresh');
 </script>
 </body>
 </html>

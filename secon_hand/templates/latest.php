@@ -61,7 +61,7 @@
         });
     }
 
-    mui.ready(function () {
+    mui.plusReady(function () {
         $("a.auto-open").click(function(event){
             event.preventDefault();
             go($(this).attr("href"));

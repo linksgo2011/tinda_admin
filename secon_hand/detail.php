@@ -20,6 +20,7 @@ $product = $db->get("info_product", ["[>]feedbackinfo" => ["user_id" => "id"]], 
     "info_product.price",
     "info_product.description",
     "info_product.created_at",
+    "info_product.tecent_contact",
     "user" => [
         "feedbackinfo.title"
     ]

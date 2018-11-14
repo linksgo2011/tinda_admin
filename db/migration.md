@@ -129,3 +129,8 @@ CREATE TABLE `info_product_picture` (
   `status` tinyint(4) DEFAULT '0' COMMENT '0 正常\n-1 删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `tinda`.`info_product` 
+ADD COLUMN `tecent_contact` VARCHAR(45) NULL AFTER `modified_at`;
+

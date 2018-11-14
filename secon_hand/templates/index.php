@@ -18,7 +18,7 @@
     <a class="mui-action-home mui-icon mui-icon-home mui-pull-right"></a>
 </header>
 
-<div class="mui-content" style="background-color:#fff">
+<div class="mui-content" style="background-color:#fff" id="entry">
     <div class="search-box">
         <form method="GET" action="<?echo wrapQueryParameters([],"latest.php")?>">
             <input type="text" name="keyword" class="mui-input-clear" placeholder="关键字搜索">
@@ -95,7 +95,7 @@
     });
     }
 
-    mui.ready(function () {
+    mui.plusReady(function () {
         $("a.auto-open").click(function(event){
             event.preventDefault();
             go($(this).attr("href"));
@@ -105,10 +105,18 @@
             window.plus && plus.webview.getWebviewById('main').show();
         });
 
+        if(!window.localStorage.getItem("showSecondHandPolicy")){
+            mui.alert("本平台只提供信息查询，所产生的一切交易和本平台无关，在交易期间请核对身份，各自协商交易方式，以免上当受骗","声明","我知道了");
+            window.localStorage.setItem("showSecondHandPolicy",true);
+        }
+
         window.addEventListener('refresh', function(){
-            location.reload();
+            $.get(".",function(rs){
+                $("#entry").html($(rs)[17].innerHTML);
+            })
         });
     });
+
 
         // mui.get(".",function(rs){
         //     var data = JSON.parse(rs);

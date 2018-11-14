@@ -52,7 +52,8 @@ if (!empty($_POST)) {
     $validated = Validator::is_valid($data, [
         'title' => 'required|max_len,255',
         'phone' => 'required|phone_number',
-        'price' => 'required|float'
+        'price' => 'required|float',
+        'tecent_contact' => 'max_len,255'
     ]);
 
     if ($validated !== true) {
