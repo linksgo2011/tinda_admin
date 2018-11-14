@@ -36,7 +36,7 @@
         </div>
         <div class="mui-input-row">
             <label>微信/QQ</label>
-            <input name="tecent_contact" type="text" class="mui-input-clear" required placeholder="请输入微信或者QQ（选填）" value="<?=$product['tecent_contact']?>">
+            <input name="tecent_contact" type="text" class="mui-input-clear"  placeholder="请输入微信或者QQ（选填）" value="<?=$product['tecent_contact']?>">
         </div>
 
         <div class="mui-input-row">
