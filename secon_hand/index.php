@@ -12,6 +12,10 @@ $products = $db->select("info_product", "*", [
     "LIMIT" => 6
 ]);
 
+$meta = $db->get("meta","*",[
+    'key[=]'=>"secondHandBanner"
+]);
+
 foreach($products as &$product){
     $product['picture'] = $db->get('info_product_picture',["image_path"],[
         "product_id[=]"=> $product['id'],
@@ -22,7 +26,8 @@ foreach($products as &$product){
 $output = array(
     "title" => "二手交易信息",
     "staticRootPath" => $templateDir,
-    "products" => $products
+    "products" => $products,
+    "banner"=>$meta['value']
 );
 
 View::render($templateDir . "/index.php", $output);

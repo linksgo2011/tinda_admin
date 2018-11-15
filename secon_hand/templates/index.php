@@ -26,7 +26,7 @@
         </form>
     </div>
     <div class="a_ad">
-        <img src="http://placehold.it/400x300?text=no%20picture" width="100%" alt="">
+        <img src="<?echo $banner?>" width="100%" alt="">
     </div>
 
     <div class="operations mui-row">
