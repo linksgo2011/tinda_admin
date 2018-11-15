@@ -93,7 +93,7 @@ if($_POST["tjbx-abc"]=='h-chi-vgs-8-com')
     <div id="usual1" class="usual">
 
         <div class="tabson">
-            <form id="form1" name="form1" action="subBannerSetting.php" method="post">
+            <form id="form1" name="form1" action="secondHandBannerSetting.php" method="post">
                 <input name="tjbx-abc" type="hidden" id="tjbx-abc" value="h-chi-vgs-8-com" />
 
                 <ul class="forminfo">
