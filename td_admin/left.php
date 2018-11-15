@@ -98,6 +98,7 @@ $(function(){
     </dd>
         <dd><div class="title"><span><img src="images/leftico05.png" /></span>二手信息</div>
             <ul class="menuson">
+                <li><cite></cite><a href="secondHandBannerSetting.php" target="rightFrame">首页广告设置</a><i></i></li>
                 <li><cite></cite><a href="tinda/secondHandInfo.php" target="rightFrame">二手信息列表</a><i></i></li>
             </ul>
         </dd>
