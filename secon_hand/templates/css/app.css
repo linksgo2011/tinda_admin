@@ -74,6 +74,9 @@ html{
 .product-detail .message-owner{
     color: #FF7F24;
 }
+.product-detail img{
+    max-width:100%;
+}
 
 .product-detail .mui-table-view:before{
     display: none;
