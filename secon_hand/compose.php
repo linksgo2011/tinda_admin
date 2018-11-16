@@ -55,7 +55,11 @@ if (!empty($_POST)) {
         'price' => 'required|float',
         'tecent_contact' => 'max_len,255'
     ]);
-
+    if(count($pictures) == 0){
+        $error = "请至少上传一张图片!";
+        echo json_encode(["status"=>400,'error'=>$error]);
+        exit;
+    }
     if ($validated !== true) {
         $error = "输入有误，请输入正确的价格、电话和标题!";
         echo json_encode(["status"=>400,'error'=>$error]);
