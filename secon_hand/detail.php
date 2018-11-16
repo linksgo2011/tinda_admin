@@ -53,7 +53,8 @@ if ($_POST) {
 }
 
 $product['pictures'] = $db->select('info_product_picture', ["image_path"], [
-    "product_id[=]" => $product['id']
+    "product_id[=]" => $product['id'],
+    "status[=]"=>"0"
 ]);
 
 $product['comments'] = $db->select('info_product_comment', ["[>]feedbackinfo" => ["user_id" => "id"]], [
