@@ -66,7 +66,6 @@ $(function(){
     <ul class="menuson">
         <li><cite></cite><a href="tinda/usergl.php" target="rightFrame">用户管理</a><i></i></li>
         <li><cite></cite><a href="../register.php" target="rightFrame">添加用户</a><i></i></li>
-        <li><cite></cite><a href="tinda/chaxfinl.php?module=data" target="rightFrame">资料菜单</a><i></i></li>
         <li><cite></cite><a href="subBannerSetting.php" target="rightFrame">查询页广告设置</a><i></i></li>
     </ul>
     </dd> 
@@ -94,6 +93,12 @@ $(function(){
             <li><cite></cite><a href="tinda/liveUsers.php" target="rightFrame">直播用户</a><i></i></li>
             <li><cite></cite><a href="tinda/addLveUser.php" target="rightFrame">直播开通</a><i></i></li>
             <li><cite></cite><a href="tinda/applyLives.php" target="rightFrame">申请审核</a><i></i></li>
+        </ul>
+    </dd>
+
+    <dd><div class="title"><span><img src="images/leftico05.png" /></span>资料管理</div>
+        <ul class="menuson">
+        <li><cite></cite><a href="tinda/chaxfinl.php?module=data" target="rightFrame">资料菜单</a><i></i></li>
         </ul>
     </dd>
         <dd><div class="title"><span><img src="images/leftico05.png" /></span>二手信息</div>

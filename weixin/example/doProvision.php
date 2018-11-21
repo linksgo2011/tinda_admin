@@ -21,10 +21,16 @@ $days = $product['days'];
 $point = $product['point'];
 $type = $product['type'];
 
+
 if(!$user){
     echo "<h1>该帐号尚未注册,请扫描二维码安装并注册后进行开通</h1>";
     exit;
 }
+if($type == 2 && !$user['vip']){
+    echo "该账户尚未开通VIP，不能充值积分";
+    exit;
+}
+
 if(!$product){
     echo "<h1>产品找不到！</h1>";
     exit;
