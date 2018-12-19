@@ -37,7 +37,7 @@ class LoginHandler extends BaseHandler{
 
             // update token
             $db->update("feedbackinfo",
-                array('us_koner'=>$token),
+                array('us_koner'=>$token,'dl_date'=>date("Y-m-d h:i:s")),
                 array("id[=]"=>$user['id'])
             );
 
