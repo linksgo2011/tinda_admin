@@ -31,7 +31,7 @@ class OnlineHandler extends BaseHandler{
             "id[=]" => $uuid
         ]);
 
-        if(strtotime($user['end_date']) <= time()){
+        if(strtotime($user['end_date']) <= time() && $user['vip']){
             $db->update("feedbackinfo",
                 array('vip'=>0,'us_koner'=>''),
                 array("id[=]"=>$user['id'])
