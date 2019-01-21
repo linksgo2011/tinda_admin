@@ -5,7 +5,7 @@ $ad_id1234=$_SESSION["ad_id1234"];
 
 
 // 过期VIP重置
-mysql_query('update feedbackinfo set vip = 0 where unix_timestamp(end_date) < unix_timestamp(now()) and vip=1');
+mysql_query('update feedbackinfo set vip = 0,us_koner="" where unix_timestamp(end_date) < unix_timestamp(now()) and vip=1');
 
 
 ////////////////////////////
