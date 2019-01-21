@@ -31,6 +31,15 @@ class OnlineHandler extends BaseHandler{
             "id[=]" => $uuid
         ]);
 
+        if(strtotime($user['end_date']) >= time()){
+            $db->update("feedbackinfo",
+                array('vip'=>0,'us_koner'=>''),
+                array("id[=]"=>$user['id'])
+            );
+
+            $this->out(401,null,"User vip is expired!");
+        }
+
         if($user["us_koner"] != $token){
             $this->out(401,null,"Client token is not same!");
         }else{
