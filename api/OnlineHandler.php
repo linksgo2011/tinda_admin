@@ -26,7 +26,8 @@ class OnlineHandler extends BaseHandler{
 
         $user = $db->get("feedbackinfo", [
             "id",
-            "us_koner"
+            "us_koner",
+            "end_date"
         ], [
             "id[=]" => $uuid
         ]);
