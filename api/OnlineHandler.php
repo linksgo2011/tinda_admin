@@ -31,13 +31,16 @@ class OnlineHandler extends BaseHandler{
             "id[=]" => $uuid
         ]);
 
-        if(
-            (strtotime($user['end_date']) <= time() && $user['vip'] == 1) || 
-            (strtotime($user['end_date']) > time() && $user['vip'] == 0)
-        ){
-            $vip = ($user['vip']==1)?0:1;
+        if(strtotime($user['end_date']) <= time() && $user['vip'] != 0){
             $db->update("feedbackinfo",
-                array('vip'=>$vip,'us_koner'=>''),
+                array('vip'=> 0,'us_koner'=>''),
+                array("id[=]"=>$user['id'])
+            );
+        }
+
+        if(strtotime($user['end_date']) > time() && $user['vip'] != 1){
+            $db->update("feedbackinfo",
+                array('vip'=> 1,'us_koner'=>''),
                 array("id[=]"=>$user['id'])
             );
         }
