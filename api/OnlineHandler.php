@@ -36,8 +36,6 @@ class OnlineHandler extends BaseHandler{
                 array('vip'=>0,'us_koner'=>''),
                 array("id[=]"=>$user['id'])
             );
-
-            $this->out(401,null,"User vip is expired!");
         }
 
         if($user["us_koner"] != $token){
