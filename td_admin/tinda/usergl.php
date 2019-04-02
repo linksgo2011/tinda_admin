@@ -38,11 +38,11 @@ if($_GET['tj'] == 'out'){
 	$Aid=$_GET["Aid"];
 
 	$sql="delete from feedbackinfo where id=$Aid";
-	if(mysql_query($sql)){ 
-        echo '<html>'; 
-        echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>'; 
+	if(mysql_query($sql)){
+        echo '<html>';
+        echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
 		echo "<script language=javascript>alert('删除成功！');window.location='usergl.php?pageno=".$pageno."&usname=".$usname."'</script>";
-        echo '</html>'; 
+        echo '</html>';
 		}
 	}
 	if($_GET['edit'] == 'xiaxian'){
@@ -50,7 +50,7 @@ if($_GET['tj'] == 'out'){
 		$sqlA="select * from feedbackinfo where id=$Aid";
 		$rsA=mysql_fetch_assoc(mysql_query($sqlA));
 //	    $d = strtotime($rsA["dl_date"])-1;
-		$sql1="update feedbackinfo set us_koner=us_koner"."1 where id=$Aid";
+		$sql1="update feedbackinfo set us_koner='' where id=$Aid";
 		if (mysql_query($sql1))
 		{
 		echo "<script language=javascript>alert('下线成功！');window.location='usergl.php?pageno=".$pageno."&usname=".$usname."'</script>";
@@ -112,14 +112,14 @@ if($_GET['tj'] == 'out'){
         cssPath : './index.css'
     });
   </script>
-  
+
 <script type="text/javascript">
 $(document).ready(function(e) {
     $(".select1").uedSelect({
-		width : 345			  
+		width : 345
 	});
 	$(".select2").uedSelect({
-		width : 167  
+		width : 167
 	});
 	$(".select3").uedSelect({
 		width : 100
@@ -138,21 +138,21 @@ $(document).ready(function(e) {
     <li><a href="#">用户管理</a></li>
     </ul>
     </div>
-    
+
     <div class="formbody" style="background:#ddd">
 <form id="form1" name="form1" action="usergl.php" method="get">
       <label></label>
       <input name="usname" type="text" id="usname" value="<?php echo $usname?>" class="dfinput" placeholder="用户名/经销商/姓名/手机/提示" size="60">
       <input type="submit" class="btn" value="查找"/>
         <span style="display: inline"> VIP用户数：<?php echo $vipCount; ?></span>
-</form>       
-	</div> 
-	</div> 
+</form>
+	</div>
+	</div>
 </div>
 <!--------------------------------------->
-    <div id="usual1" class="usual"> 
-    
-    
+    <div id="usual1" class="usual">
+
+
     <table class="tablelist">
     	<thead>
     	<tr>
@@ -171,7 +171,7 @@ $(document).ready(function(e) {
         <th>操作</th>
         </tr>
         </thead>
-        
+
         <tbody>
 <?php
 	$pagesize=20;
@@ -239,30 +239,30 @@ $(document).ready(function(e) {
         </td>
             <td><?php echo $rows["point"]?></td>
         <td><input type="submit" name="xiugan" id="xiugan" value="修改" class="btn1"><br/>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=xiaxian&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" class="tablelink">强制下线</a>&nbsp;&nbsp;<a href="?Aid=<?php echo $rows["id"]?>&edit=del&pageno=<?php echo $pageno?>&usname=<?php echo $usname?>" onClick="return confirm('确定删除吗?将不可恢复！');" class="tablelink"> 删除</a></td>
-        </tr> 
+        </tr>
 </form>
 <?php }?>
         </tbody>
-        
+
     </table>
     <div class="pagin">
       <?php require_once("../page.php");?>
-    </div>  
-       
-	</div> 
- 
-	<script type="text/javascript"> 
-      $("#usual1 ul").idTabs(); 
+    </div>
+
+	</div>
+
+	<script type="text/javascript">
+      $("#usual1 ul").idTabs();
     </script>
-    
+
     <script type="text/javascript">
 	$('.tablelist tbody tr:odd').addClass('odd');
 	</script>
-    
-    
-    
-    
-    
+
+
+
+
+
     </div>
 
 
