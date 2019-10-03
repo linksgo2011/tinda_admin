@@ -2,7 +2,7 @@
 
 header("Access-Control-Allow-Origin:*");
 header('Access-Control-Allow-Methods:POST');
-// 响应头设置     
+// 响应头设置
 header('Access-Control-Allow-Headers:x-requested-with,content-type');
 header("Content-type: text/html; charset=utf-8");
 ini();
@@ -10,6 +10,8 @@ ini();
 function ini()
 {
     require_once("include/global.php");
+    require_once("lib/Authenticator.php");
+
     $sey = $_POST['sey'];
     $finlA = $_POST['limit'];
     $rsaa = mysql_query("select * from hchi_cxfl where cx_title='" . $finlA . "' order by id asc");
