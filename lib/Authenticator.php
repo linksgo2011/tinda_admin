@@ -1,6 +1,8 @@
 <?php
 
-require_once("../lib/php-jwt/JWT.php");
+require_once(dirname(__FILE__)."/php-jwt/JWT.php");
+require_once (dirname(__FILE__)."/Db.php");
+
 use \Firebase\JWT\JWT as JWT;
 
 
@@ -16,6 +18,19 @@ class Authenticator {
         $uuid = $jwtObject->uuid;
         $exp = $jwtObject->exp;
         if(time() > $exp){
+            return false;
+        }
+        // 数据库有效性验证
+        $db = Db::getInstance();
+
+        $user = $db->get("feedbackinfo", [
+            "id",
+            "end_date",
+            "vip"
+        ], [
+            "id[=]" => $uuid
+        ]);
+        if(strtotime($user['end_date']) <= time() && $user['vip'] == 0){
             return false;
         }
         return $uuid;
