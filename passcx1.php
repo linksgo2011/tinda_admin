@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 header("Access-Control-Allow-Origin:*");
 header('Access-Control-Allow-Methods:POST');
 // 响应头设置     
@@ -76,6 +76,14 @@ function ini()
             echo $log['pin'];
             exit;
         }
+    }
+
+    $logCountResult = mysql_query("select count(1) as queryTimes FROM `rj` = WHERE created > CURDATE( ) AND yhm = \"$us_name\"");
+    define("MAX_DAY_QUERY_TIMES", 4);
+    $logCount = mysql_fetch_assoc($logCountResult);
+    if($logCount['queryTimes'] > MAX_DAY_QUERY_TIMES){
+        echo '超过当日最大查询次数';
+        exit;
     }
 
     if($cxpassA == "yes"){
