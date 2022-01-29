@@ -81,9 +81,10 @@ function ini()
     $logCountResult = mysql_query("select count(1) as queryTimes FROM `rj` = WHERE created > CURDATE( ) AND yhm = \"$us_name\"");
     $logCount = mysql_fetch_assoc($logCountResult);
 //    define("MAX_DAY_QUERY_TIMES", 4);
-    if($logCount['queryTimes'] > $sqlsetup['total_times_per_day']){
-        echo '超过当日最大查询次数';
-        exit;
+    if($logCount['queryTimes'] > $countsetup['total_times_per_day']){
+//        echo '超过当日最大查询次数';
+//        exit;
+        $cxpassA = "yes";
     }
 
     if($cxpassA == "yes"){
@@ -103,7 +104,7 @@ function ini()
     } else {//查询数用完
         if ($countzhanw["cx_url"] <> "") {//站外查询
 ///////zwcx shop
-            $url = $countzhanw["cx_url"] . '?type=' . $countzhanw["cx_type"] . '&vinm=' . $pa_cjh . '&CarType=' . $countzhanw["cx_cartype"] . '&sqm=' . $pa_xingqh;
+            $url = $countzhanw["cx_url"] . '?type=' . $countzhanw["cx_type"] . '&vinm=' . $pa_cjh . '&CarType=' . $countzhanw["cx_cartype"] . '&sqm=' . $pa_xingqh . '&SN=' . $us_name;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
