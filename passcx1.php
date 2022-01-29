@@ -1,7 +1,7 @@
-<?php
+﻿<?php
 header("Access-Control-Allow-Origin:*");
 header('Access-Control-Allow-Methods:POST');
-// 响应头设置     
+// 响应头设置
 header('Access-Control-Allow-Headers:x-requested-with,content-type');
 header("Content-type: text/html; charset=utf-8");
 ini();
@@ -79,9 +79,9 @@ function ini()
     }
 
     $logCountResult = mysql_query("select count(1) as queryTimes FROM `rj` = WHERE created > CURDATE( ) AND yhm = \"$us_name\"");
-    define("MAX_DAY_QUERY_TIMES", 4);
     $logCount = mysql_fetch_assoc($logCountResult);
-    if($logCount['queryTimes'] > MAX_DAY_QUERY_TIMES){
+//    define("MAX_DAY_QUERY_TIMES", 4);
+    if($logCount['queryTimes'] > $sqlsetup['total_times_per_day']){
         echo '超过当日最大查询次数';
         exit;
     }

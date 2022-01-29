@@ -69,8 +69,9 @@ $rows1 = mysql_fetch_assoc($rs1);
         $closed_tip = $_POST['closed_tip'];
         $pass_tip = $_POST['pass_tip'];
         $points = $_POST['points'];
+        $total_times_per_day = $_POST['total_times_per_day'];
 
-        $sql1 = "update hchi_pscxsz set pz_shul='$pz_shul',pz_off='$pz_off',closed_tip='$closed_tip',points='$points',pass_tip='$pass_tip' where id='" . $Aid . "'";
+        $sql1 = "update hchi_pscxsz set pz_shul='$pz_shul',total_times_per_day='$total_times_per_day',pz_off='$pz_off',closed_tip='$closed_tip',points='$points',pass_tip='$pass_tip' where id='" . $Aid . "'";
         if (mysql_query($sql1)) {
             echo "<script language=javascript>alert('设置成功！');window.location='chasetup.php'</script>";
         } else {
@@ -88,6 +89,10 @@ $rows1 = mysql_fetch_assoc($rs1);
             <li>
                 <label>查询每天</label><input name="pz_shul" type="text" class="dfinput" id="pz_shul"
                                           value="<?php echo $rows1["pz_shul"] ?>" style="width:80px;"/>&nbsp;次
+            </li>
+            <li>
+                <label>总次数</label><input name="total_times_per_day" type="text" class="dfinput" id="total_times_per_day"
+                                          value="<?php echo $rows1["total_times_per_day"] ?>" style="width:80px;"/>&nbsp;次
             </li>
            <li>
                 <label>扣除积分</label><input name="points" type="number" class="dfinput" id="pz_shul"
